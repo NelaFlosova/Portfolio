@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step Scroll Animations</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f5f5f7;
+            overflow-x: hidden;
+        }
+
+        .scroll-container {
+            width: 100%;
+            height: 100vh; 
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sticky-wrapper {
+            width: 100vw;
+            height: 100vh;
+            position: relative; 
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            position: absolute;
+            border-radius: 24px;
+            will-change: transform, top, left, width, height, border-radius, box-shadow;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden; 
+        }
+
+        .text-layer {
+            position: absolute;
+            top: 15%;      
+            left: 10%;
+            width: 80%;    
+            height: 70%;   
+            z-index: 100;  
+            opacity: 0;
+            pointer-events: none; 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; 
+        }
+
+        .text-layer h2 {
+            color: white;
+            font-size: clamp(2rem, 4vw, 3.5rem); 
+            font-weight: 400; 
+            line-height: 1.1;
+            margin: 0;
+            padding: 40px; 
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            max-width: 70%; 
+            transform: translateY(30px);
+        }
+
+        .text-layer p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            line-height: 1.4;
+            margin: 0;
+            padding: 40px;
+            text-align: left;
+            align-self: flex-end; 
+            max-width: 400px;
+            transform: translateY(30px);
+        }
+
+        .fixed-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 80px; 
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            padding: 0 40px; 
+            box-sizing: border-box;
+            z-index: 150; 
+            font-size: 14px;
+            font-weight: 500;
+            color: #1a1a1a;
+            pointer-events: none; 
+        }
+        
+        .footer-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .arrow-icon {
+            font-size: 18px;
+            font-weight: 300;
+        }
+
+        .c1 { background-color: #e6e6e6; } 
+        .c2 { background-color: #cccccc; } 
+        .c3 { background-color: #bfbfbf; } 
+        .c4 { background-color: #d9d9d9; } 
+        .c5 { background-color: #b3b3b3; } 
+
+        .content-below {
+            position: relative;
+            background: white;
+            padding: 150px 50px;
+            z-index: 20;
+            min-height: 100vh;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="scroll-container">
+        
+        <div class="sticky-wrapper">
+            <div class="card c1"></div>
+            <div class="card c2"></div>
+            <div class="card c3"></div>
+            <div class="card c4"></div>
+            <div class="card c5"></div>
+
+            <div class="text-layer">
+                <h2>I create powerful<br>web presentations<br>with impact.</h2>
+                <p>I create powerful web presentations with impact. I create powerful web presentations with impact.</p>
+            </div>
+
+            <div class="fixed-footer">
+                <div class="footer-item">Czech Republic</div>
+                <div class="footer-item arrow-icon">↓</div>
+                <div class="footer-item">Available for projects</div>
+                <div class="footer-item arrow-icon">↓</div>
+                <div class="footer-item">© 2025</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="content-below">
+        <h2 style="font-size: 2rem; margin-bottom: 20px;">Další sekce webu</h2>
+        <p>Všimni si, že karty i spodní lišta odjely nahoru a uvolnily místo tomuto obsahu.</p>
+    </div>
+
+    <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 1) VÝCHOZÍ STAV KARET (stack uprostřed)
+    const initialWidth = "250px";
+    const initialHeight = "320px";
+
+    gsap.set(".card", {
+        top: "50%",
+        left: "50%",
+        xPercent: -50,
+        yPercent: -50,
+        width: initialWidth,
+        height: initialHeight,
+        rotation: 0
+    });
+
+    gsap.set(".c1", { rotation: -3, zIndex: 5 });
+    gsap.set(".c2", { rotation: 2, zIndex: 4 });
+    gsap.set(".c3", { rotation: -1, zIndex: 3 });
+    gsap.set(".c4", { rotation: 4, zIndex: 2 });
+    gsap.set(".c5", { rotation: -2, zIndex: 1 });
+
+    // 2) HLAVNÍ TIMELINE – start (stack) → scatter → gather + text
+    const tl = gsap.timeline({ paused: true });
+
+    tl.addLabel("start");
+
+    // FÁZE 1 – ROZLET (scatter) – 2% gap, větší karty
+    tl.to(".c1", {
+        top: "10%", left: "2%",
+        width: "35%", height: "40%",
+        rotation: 0, xPercent: 0, yPercent: 0,
+        duration: 1.2
+    }, 0);
+
+    tl.to(".c2", {
+        top: "10%", left: "39%",
+        width: "22%", height: "35%",
+        rotation: 0, xPercent: 0, yPercent: 0,
+        duration: 1.2
+    }, 0);
+
+    tl.to(".c3", {
+        top: "10%", left: "63%",
+        width: "35%", height: "30%",
+        rotation: 0, xPercent: 0, yPercent: 0,
+        duration: 1.2
+    }, 0);
+
+    tl.to(".c4", {
+        top: "53%", left: "2%",
+        width: "57%", height: "37%",
+        rotation: 0, xPercent: 0, yPercent: 0,
+        duration: 1.2
+    }, 0);
+
+    tl.to(".c5", {
+        top: "43%", left: "61%",
+        width: "35%", height: "47%",
+        rotation: 0, xPercent: 0, yPercent: 0,
+        duration: 1.2
+    }, 0);
+
+    tl.addLabel("scatter");
+
+    // FÁZE 2 – SPOJENÍ + ZTMAVENÍ
+    tl.to(".c1", {
+        top: "15%", left: "10%", width: "35%", height: "40%",
+        borderRadius: "24px 0 0 0", boxShadow: "none", duration: 1.2
+    }, ">"); 
+
+    tl.to(".c2", {
+        top: "15%", left: "45%", width: "20%", height: "40%",
+        borderRadius: "0 0 0 0", boxShadow: "none", duration: 1.2
+    }, "<"); 
+
+    tl.to(".c3", {
+        top: "15%", left: "65%", width: "25%", height: "30%",
+        borderRadius: "0 24px 0 0", boxShadow: "none", duration: 1.2
+    }, "<");
+
+    tl.to(".c4", {
+        top: "55%", left: "10%", width: "55%", height: "30%",
+        borderRadius: "0 0 0 24px", boxShadow: "none", duration: 1.2
+    }, "<");
+
+    tl.to(".c5", {
+        top: "45%", left: "65%", width: "25%", height: "40%",
+        borderRadius: "0 0 24px 0", boxShadow: "none", duration: 1.2
+    }, "<");
+
+    tl.to(".card", {
+        boxShadow: "inset 0 0 0 2000px rgba(80, 80, 80, 0.6)", 
+        duration: 1.2
+    }, "<");
+
+    // TEXT – po složení
+    tl.to(".text-layer", { opacity: 1, duration: 1, ease: "power2.out" });
+    tl.to(".text-layer h2", { y: 0, duration: 1, ease: "power2.out" }, "<");
+    tl.to(".text-layer p",  { y: 0, duration: 1, ease: "power2.out" }, "<");
+
+    tl.addLabel("gather");
+
+    // 3) STAVY PRO SCROLL – zóny, kde se má aktivovat který stav
+    const states = [
+        { name: "start",   from: 0.0, to: 0.2 },
+        { name: "scatter", from: 0.2, to: 0.6 },
+        { name: "gather",  from: 0.6, to: 1.01 }
+    ];
+
+    const stateOrder = ["start", "scatter", "gather"];
+
+    // progress, kam chceme scroll po dohrání daného stavu
+    const targetProgressAfter = {
+        start:   0.05,
+        scatter: 0.59, // těsně před gather zónou
+        gather:  0.99  // skoro na konci – další scroll už odpinne
+    };
+
+    function getStateByProgress(p) {
+        return states.find(s => p >= s.from && p < s.to) || states[states.length - 1];
+    }
+
+    let currentState = "start";
+    let lastProgress = 0;
+    let activeTween = null;
+    let scrollTween = null;
+    let isAutoScrolling = false;
+    let mainST;
+
+    // 4) SCROLLTRIGGER – max 1 krok nahoru/dolů na jeden update
+    mainST = ScrollTrigger.create({
+        trigger: ".scroll-container",
+        start: "top top",
+        end: "+=200%",
+        pin: true,
+        onUpdate: (self) => {
+            if (isAutoScrolling) return;
+
+            const p   = self.progress;
+            const delta = p - lastProgress;
+            const dir = delta > 0 ? 1 : (delta < 0 ? -1 : 0);
+            lastProgress = p;
+
+            if (!dir) return;
+
+            const desiredStateObj = getStateByProgress(p);
+            if (!desiredStateObj) return;
+
+            const desiredIndex = stateOrder.indexOf(desiredStateObj.name);
+            const currentIndex = stateOrder.indexOf(currentState);
+
+            // jsme už tam? nic nedělej
+            if (desiredIndex === currentIndex) return;
+
+            // dovol jen jeden krok dopředu/dozadu
+            let targetIndex;
+            if (desiredIndex > currentIndex) {
+                targetIndex = currentIndex + 1;
+            } else {
+                targetIndex = currentIndex - 1;
+            }
+
+            targetIndex = Math.max(0, Math.min(stateOrder.length - 1, targetIndex));
+            const target = stateOrder[targetIndex];
+
+            currentState = target;
+
+            if (activeTween) activeTween.kill();
+
+            activeTween = tl.tweenTo(target, {
+                duration: 1.2,
+                ease: "power2.inOut",
+                onComplete: () => {
+                    const desiredProgress = targetProgressAfter[target];
+                    if (desiredProgress == null) return;
+
+                    const start = mainST.start;
+                    const end   = mainST.end;
+                    const targetScroll = start + desiredProgress * (end - start);
+
+                    // plynulé dotažení scrollbaru místo trhnutí
+                    if (scrollTween) scrollTween.kill();
+
+                    const proxy = { value: mainST.scroll() };
+
+                    isAutoScrolling = true;
+                    scrollTween = gsap.to(proxy, {
+                        value: targetScroll,
+                        duration: 0.8,
+                        ease: "power2.inOut",
+                        onUpdate: () => {
+                            mainST.scroll(proxy.value);
+                        },
+                        onComplete: () => {
+                            isAutoScrolling = false;
+                            scrollTween = null;
+                        }
+                    });
+                }
+            });
+        }
+    });
+</script>
+
+</body>
+</html>
