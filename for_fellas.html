@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Fellas - Portfolio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #1a1a1a;
+            line-height: 1.6;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f5f5f5;
+            z-index: 1000;
+            padding: 30px 40px;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-logo-icon {
+            width: 32px;
+            height: 32px;
+            background-color: #1a1a1a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 600;
+            color: #f5f5f5;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-logo-text {
+            font-size: 20px;
+            font-weight: 500;
+            color: #1a1a1a;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 12px;
+        }
+
+        .nav-button {
+            padding: 12px 28px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #1a1a1a;
+            background-color: transparent;
+            border: 1px solid #d1d1d1;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-button.primary {
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+            border-color: #1a1a1a;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-button.primary:hover {
+            background-color: #333;
+            border-color: #333;
+        }
+
+        .menu-dots {
+            font-size: 18px;
+            line-height: 1;
+        }
+
+        /* Dropdown Menu */
+        .menu-dropdown {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 16px;
+            padding: 8px;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-wrapper {
+            position: relative;
+        }
+
+        .menu-wrapper.active .menu-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .menu-dropdown a {
+            display: block;
+            padding: 12px 16px;
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            border-radius: 10px;
+            transition: background-color 0.2s ease;
+        }
+
+        .menu-dropdown a:hover {
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 40px 80px; /* Added top padding for fixed nav */
+        }
+
+        /* 3-column grid: 300px + 150px + 300px + 150px + 300px = 1200px */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 300px 300px 300px;
+            column-gap: 150px;
+            row-gap: 80px;
+        }
+
+        .section-title {
+            font-size: 64px;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1;
+            grid-column: 1;
+        }
+
+        .section-content {
+            grid-column: 2 / 4;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .section-heading {
+            font-size: clamp(24px, 3vw, 32px);
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+        }
+
+        .section-text {
+            font-size: clamp(16px, 1.8vw, 18px);
+            line-height: 1.7;
+            color: #333;
+            font-weight: 300;
+        }
+
+        /* Physics container */
+        .physics-container {
+            grid-column: 1 / 4;
+            width: 100%;
+            height: 400px;
+            background-color: #fff;
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+        }
+
+        #physics-canvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Contact form */
+        .contact-section {
+            grid-column: 1 / 4;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 40px;
+        }
+
+        .contact-heading {
+            font-size: clamp(20px, 2.5vw, 28px);
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+
+        .contact-text {
+            font-size: clamp(16px, 1.8vw, 18px);
+            line-height: 1.7;
+            color: #333;
+            font-weight: 300;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 16px 20px;
+            font-size: 16px;
+            font-family: inherit;
+            color: #1a1a1a;
+            background-color: #fff;
+            border: 1px solid #d1d1d1;
+            border-radius: 12px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #1a1a1a;
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-button {
+            padding: 16px 32px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #fff;
+            background-color: #5856d6;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+
+        .form-button:hover {
+            background-color: #4745b8;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1280px) {
+            .container {
+                max-width: 100%;
+                padding: 60px 40px;
+            }
+
+            .grid-layout {
+                grid-template-columns: 1fr 1fr;
+                column-gap: 80px;
+            }
+
+            .section-title {
+                grid-column: 1;
+            }
+
+            .section-content {
+                grid-column: 2;
+            }
+
+            .physics-container {
+                grid-column: 1 / 3;
+            }
+
+            .contact-section {
+                grid-column: 1 / 3;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 24px;
+            }
+
+            .grid-layout {
+                grid-template-columns: 1fr;
+                row-gap: 40px;
+            }
+
+            .section-title {
+                grid-column: 1;
+                font-size: 48px;
+                margin-bottom: 20px;
+            }
+
+            .section-content {
+                grid-column: 1;
+                gap: 30px;
+            }
+
+            .physics-container {
+                grid-column: 1;
+                height: 300px;
+            }
+
+            .contact-section {
+                grid-column: 1;
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .grid-layout {
+                row-gap: 30px;
+            }
+
+            .section-content {
+                gap: 24px;
+            }
+
+            .physics-container {
+                border-radius: 16px;
+            }
+        }
+
+        /* Enhanced accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #1a1a1a;
+                color: #f5f5f5;
+            }
+
+            .section-text,
+            .contact-text {
+                color: #d1d1d1;
+            }
+
+            .physics-container {
+                background-color: #2a2a2a;
+                border-color: #404040;
+            }
+
+            .form-input,
+            .form-textarea {
+                background-color: #2a2a2a;
+                border-color: #404040;
+                color: #f5f5f5;
+            }
+
+            .form-input:focus,
+            .form-textarea:focus {
+                border-color: #f5f5f5;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="nav-left">
+                <div class="nav-logo-icon">NF</div>
+                <div class="nav-logo-text">Nela Flosova</div>
+            </div>
+            <div class="nav-right">
+                <a href="about.html" class="nav-button primary">Let's Talk <span>•</span></a>
+                <div class="menu-wrapper">
+                    <button class="nav-button menu-toggle">Menu <span class="menu-dots">••</span></button>
+                    <div class="menu-dropdown">
+                        <a href="index.html">Work</a>
+                        <a href="about.html">About</a>
+                        <a href="services.html">Services</a>
+                        <a href="for_fellas.html">For Fellas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        // Menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const menuWrapper = document.querySelector('.menu-wrapper');
+
+            menuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                menuWrapper.classList.toggle('active');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!menuWrapper.contains(e.target)) {
+                    menuWrapper.classList.remove('active');
+                }
+            });
+
+            // Close menu when clicking a link
+            const menuLinks = document.querySelectorAll('.menu-dropdown a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    menuWrapper.classList.remove('active');
+                });
+            });
+        });
+    </script>
+
+    <main class="container">
+        <div class="grid-layout">
+            <h1 class="section-title">WHAT I USE</h1>
+
+            <div class="section-content">
+                <div>
+                    <h2 class="section-heading">Technologies & Tools</h2>
+                    <p class="section-text">
+                        I work with modern technologies and tools to create exceptional digital experiences.
+                        From design to development, these are the tools that help me bring ideas to life.
+                        Hover over the logos below to interact with them!
+                    </p>
+                </div>
+            </div>
+
+            <div class="physics-container">
+                <canvas id="physics-canvas"></canvas>
+            </div>
+
+            <div class="contact-section">
+                <div>
+                    <h3 class="contact-heading">Explore & Inspire</h3>
+                    <p class="contact-text">
+                        Hey! Do you have any cool technologies I could try exploring? Send them to me!
+                    </p>
+                </div>
+
+                <form class="contact-form">
+                    <input type="email" class="form-input" placeholder="Type your email..." required>
+                    <textarea class="form-textarea" placeholder="Type your message..." required></textarea>
+                    <button type="submit" class="form-button">Send</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Matter.js physics simulation
+        const { Engine, Render, World, Bodies, Mouse, MouseConstraint, Events, Body } = Matter;
+
+        // Create engine with stricter settings
+        const engine = Engine.create();
+        const world = engine.world;
+        world.gravity.y = 0.6; // Slightly reduced gravity
+
+        // Get canvas container
+        const container = document.getElementById('physics-canvas');
+        const containerWidth = container.offsetWidth;
+        const containerHeight = container.offsetHeight;
+
+        // Create renderer
+        const render = Render.create({
+            canvas: container,
+            engine: engine,
+            options: {
+                width: containerWidth,
+                height: containerHeight,
+                wireframes: false,
+                background: 'transparent'
+            }
+        });
+
+        // Create FIRM walls (thicker and positioned correctly inside bounds)
+        const wallThickness = 100;
+        const walls = [
+            // Top wall
+            Bodies.rectangle(containerWidth / 2, -wallThickness / 2, containerWidth + wallThickness * 2, wallThickness, {
+                isStatic: true,
+                friction: 0.3,
+                restitution: 0.5,
+                render: { fillStyle: 'transparent' }
+            }),
+            // Bottom wall
+            Bodies.rectangle(containerWidth / 2, containerHeight + wallThickness / 2, containerWidth + wallThickness * 2, wallThickness, {
+                isStatic: true,
+                friction: 0.3,
+                restitution: 0.5,
+                render: { fillStyle: 'transparent' }
+            }),
+            // Left wall
+            Bodies.rectangle(-wallThickness / 2, containerHeight / 2, wallThickness, containerHeight + wallThickness * 2, {
+                isStatic: true,
+                friction: 0.3,
+                restitution: 0.5,
+                render: { fillStyle: 'transparent' }
+            }),
+            // Right wall
+            Bodies.rectangle(containerWidth + wallThickness / 2, containerHeight / 2, wallThickness, containerHeight + wallThickness * 2, {
+                isStatic: true,
+                friction: 0.3,
+                restitution: 0.5,
+                render: { fillStyle: 'transparent' }
+            })
+        ];
+
+        // Minimalist color palette matching portfolio theme
+        const colors = [
+            '#1a1a1a', // black
+            '#333333', // dark gray
+            '#666666', // medium gray
+            '#999999', // light gray
+            '#cccccc', // very light gray
+            '#2a2a2a', // dark charcoal
+            '#4a4a4a', // charcoal
+            '#7a7a7a', // medium charcoal
+            '#aaaaaa', // light charcoal
+            '#dddddd', // almost white
+        ];
+
+        const balls = [];
+        const ballRadius = 45; // Larger balls
+        const spacing = 110;
+        const startX = 150;
+
+        // Create 10 colored balls - start high above container for water droplet effect
+        for (let i = 0; i < 10; i++) {
+            const x = (i % 5) * spacing + startX;
+            const y = -200 - (i * 50); // Start above container, staggered heights
+
+            const ball = Bodies.circle(x, y, ballRadius, {
+                restitution: 0.6,
+                friction: 0.01,
+                frictionAir: 0.01,
+                density: 0.001,
+                slop: 0.05,
+                render: {
+                    fillStyle: colors[i],
+                    strokeStyle: colors[i],
+                    lineWidth: 0
+                }
+            });
+            balls.push(ball);
+        }
+
+        // Create 20 smaller gray balls
+        const smallBallRadius = ballRadius / 2;
+        const grayColor = '#9e9e9e';
+
+        for (let i = 0; i < 20; i++) {
+            // Random positions across the container
+            const x = Math.random() * (containerWidth - 100) + 50;
+            const y = Math.random() * (containerHeight - 100) + 50;
+
+            const smallBall = Bodies.circle(x, y, smallBallRadius, {
+                restitution: 0.6,
+                friction: 0.01,
+                frictionAir: 0.01,
+                density: 0.0005,
+                slop: 0.05,
+                render: {
+                    fillStyle: grayColor,
+                    strokeStyle: grayColor,
+                    lineWidth: 0
+                }
+            });
+            balls.push(smallBall);
+        }
+
+        // Add all bodies to world
+        World.add(world, [...walls, ...balls]);
+
+        // Mouse repulsion effect (like stirring with a stick)
+        // Track mouse position relative to container
+        let mousePosition = { x: -1000, y: -1000 }; // Start off-screen
+        let isMouseOverContainer = false;
+
+        container.addEventListener('mouseenter', function() {
+            isMouseOverContainer = true;
+        });
+
+        container.addEventListener('mouseleave', function() {
+            isMouseOverContainer = false;
+            mousePosition = { x: -1000, y: -1000 }; // Move off-screen
+        });
+
+        container.addEventListener('mousemove', function(event) {
+            if (isMouseOverContainer) {
+                const rect = container.getBoundingClientRect();
+                mousePosition.x = event.clientX - rect.left;
+                mousePosition.y = event.clientY - rect.top;
+            }
+        });
+
+        // Apply repulsion force on every engine update
+        Events.on(engine, 'beforeUpdate', function() {
+            balls.forEach(ball => {
+                const dx = ball.position.x - mousePosition.x;
+                const dy = ball.position.y - mousePosition.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                // Check if ball is near a wall
+                const padding = ballRadius + 5;
+                const nearLeftWall = ball.position.x < padding + 50;
+                const nearRightWall = ball.position.x > containerWidth - padding - 50;
+                const nearTopWall = ball.position.y < padding + 50;
+                const nearBottomWall = ball.position.y > containerHeight - padding - 50;
+                const nearAnyWall = nearLeftWall || nearRightWall || nearTopWall || nearBottomWall;
+
+                // Repulsion radius
+                const repulsionRadius = 100;
+                const nearMouse = distance < repulsionRadius;
+
+                // Detect trap situation: ball is near wall AND near mouse
+                if (nearAnyWall && nearMouse && distance > 0) {
+                    // Ball is trapped - apply escape force perpendicular to the trap
+                    let escapeX = 0;
+                    let escapeY = 0;
+
+                    // Determine escape direction based on which wall is closest
+                    if (nearLeftWall || nearRightWall) {
+                        // Escape up or down
+                        if (ball.position.y < containerHeight / 2) {
+                            escapeY = 0.008; // Shoot down
+                        } else {
+                            escapeY = -0.008; // Shoot up
+                        }
+                    }
+                    if (nearTopWall || nearBottomWall) {
+                        // Escape left or right
+                        if (ball.position.x < containerWidth / 2) {
+                            escapeX = 0.008; // Shoot right
+                        } else {
+                            escapeX = -0.008; // Shoot left
+                        }
+                    }
+
+                    // Apply strong escape impulse
+                    Body.applyForce(ball, ball.position, {
+                        x: escapeX,
+                        y: escapeY
+                    });
+                } else if (nearMouse && distance > 0) {
+                    // Normal repulsion when not trapped
+                    const forceMagnitude = 0.002 * (repulsionRadius - distance) / distance;
+
+                    Body.applyForce(ball, ball.position, {
+                        x: dx * forceMagnitude,
+                        y: dy * forceMagnitude
+                    });
+                }
+
+                // Keep balls strictly within bounds (gentle correction, not hard reset)
+                if (ball.position.x < padding) {
+                    Body.setPosition(ball, { x: padding, y: ball.position.y });
+                    Body.setVelocity(ball, { x: Math.abs(ball.velocity.x) * 0.5, y: ball.velocity.y });
+                }
+                if (ball.position.x > containerWidth - padding) {
+                    Body.setPosition(ball, { x: containerWidth - padding, y: ball.position.y });
+                    Body.setVelocity(ball, { x: -Math.abs(ball.velocity.x) * 0.5, y: ball.velocity.y });
+                }
+                if (ball.position.y < padding) {
+                    Body.setPosition(ball, { x: ball.position.x, y: padding });
+                    Body.setVelocity(ball, { x: ball.velocity.x, y: Math.abs(ball.velocity.y) * 0.5 });
+                }
+                if (ball.position.y > containerHeight - padding) {
+                    Body.setPosition(ball, { x: ball.position.x, y: containerHeight - padding });
+                    Body.setVelocity(ball, { x: ball.velocity.x, y: -Math.abs(ball.velocity.y) * 0.5 });
+                }
+
+                // Cap maximum velocity to prevent balls from getting too fast
+                const maxSpeed = 15;
+                const speed = Math.sqrt(ball.velocity.x ** 2 + ball.velocity.y ** 2);
+                if (speed > maxSpeed) {
+                    Body.setVelocity(ball, {
+                        x: (ball.velocity.x / speed) * maxSpeed,
+                        y: (ball.velocity.y / speed) * maxSpeed
+                    });
+                }
+            });
+        });
+
+        // Run the engine and renderer
+        Engine.run(engine);
+        Render.run(render);
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            const newWidth = container.offsetWidth;
+            const newHeight = container.offsetHeight;
+
+            render.canvas.width = newWidth;
+            render.canvas.height = newHeight;
+            render.options.width = newWidth;
+            render.options.height = newHeight;
+        });
+
+        // Handle form submission
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! (Form submission not yet implemented)');
+        });
+    </script>
+</body>
+</html>
