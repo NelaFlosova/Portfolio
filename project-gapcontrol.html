@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GapControl - Making complex security data easier to read</title>
+    <script>
+        // Immediately apply theme before page renders to prevent flash
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            }
+        })();
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 0;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 40px 80px;
+        }
+
+        /* 3-column grid: 300px + 150px + 300px + 150px + 300px = 1200px */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 300px 300px 300px;
+            column-gap: 150px;
+            row-gap: 80px;
+        }
+
+        /* Hero Section */
+        .project-hero {
+            grid-column: 1 / 4;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--tertiary-text);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-title {
+            font-size: clamp(48px, 8vw, 80px);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1;
+        }
+
+        /* Section Styles */
+        .section-label {
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--tertiary-text);
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 64px;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1;
+            grid-column: 1;
+        }
+
+        .section-content {
+            grid-column: 2 / 4;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .section-heading {
+            font-size: clamp(24px, 3vw, 32px);
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .section-text {
+            font-size: clamp(16px, 1.8vw, 18px);
+            line-height: 1.7;
+            color: var(--secondary-text);
+            font-weight: 300;
+        }
+
+        /* Project Details List */
+        .project-details {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .detail-label {
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--tertiary-text);
+        }
+
+        .detail-value {
+            font-size: 16px;
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        /* Image Container */
+        .image-container {
+            grid-column: 1 / 4;
+            width: 100%;
+            background-color: var(--placeholder-bg);
+            border-radius: 24px;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Sticky Scroll Section */
+        .sticky-scroll-section {
+            grid-column: 1 / 4;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            column-gap: 150px;
+            position: relative;
+        }
+
+        .sticky-text {
+            /* GSAP ScrollTrigger will handle pinning */
+            height: fit-content;
+        }
+
+        .sticky-text .section-label {
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--tertiary-text);
+            margin-bottom: 24px;
+        }
+
+        .sticky-text h2 {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+
+        .sticky-text p {
+            font-size: clamp(16px, 1.8vw, 18px);
+            line-height: 1.7;
+            color: var(--secondary-text);
+            font-weight: 300;
+        }
+
+        .project-characteristics {
+            grid-column: 1 / 4;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            margin: 40px 0 60px;
+        }
+
+        .characteristic-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .characteristic-label {
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--tertiary-text);
+        }
+
+        .characteristic-value {
+            font-size: 15px;
+            color: var(--text-color);
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .scroll-images {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            padding: 0;
+        }
+
+        .scroll-image {
+            width: 100%;
+            background-color: var(--placeholder-bg);
+            border-radius: 24px;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+        }
+
+        .scroll-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Next Project Link */
+        .next-project {
+            grid-column: 1 / 4;
+            margin-top: 60px;
+            padding: 60px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .next-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .next-link:hover {
+            transform: translateX(10px);
+        }
+
+        .next-label {
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--tertiary-text);
+            margin-bottom: 8px;
+        }
+
+        .next-title {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+
+        .next-arrow {
+            font-size: 48px;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+        }
+
+        .next-link:hover .next-arrow {
+            transform: translateX(10px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1280px) {
+            .container {
+                max-width: 100%;
+                padding: 100px 40px 60px;
+            }
+
+            .grid-layout {
+                grid-template-columns: 1fr 2fr;
+                column-gap: 80px;
+            }
+
+            .section-title {
+                grid-column: 1;
+            }
+
+            .section-content {
+                grid-column: 2;
+            }
+
+            .project-hero {
+                grid-column: 1 / 3;
+            }
+
+            .project-characteristics {
+                grid-column: 1 / 3;
+                gap: 40px;
+            }
+
+            .image-container {
+                grid-column: 1 / 3;
+            }
+
+            .sticky-scroll-section {
+                grid-column: 1 / 3;
+                grid-template-columns: 1fr 2fr;
+                column-gap: 60px;
+            }
+
+            .scroll-images {
+                gap: 40px;
+                padding: 80px 0;
+            }
+
+            .next-project {
+                grid-column: 1 / 3;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 80px 24px 40px;
+            }
+
+            .grid-layout {
+                grid-template-columns: 1fr;
+                row-gap: 40px;
+            }
+
+            .section-title {
+                grid-column: 1;
+                font-size: 48px;
+                margin-bottom: 20px;
+            }
+
+            .section-content {
+                grid-column: 1;
+            }
+
+            .project-hero {
+                grid-column: 1;
+            }
+
+            .project-characteristics {
+                grid-column: 1;
+                grid-template-columns: 1fr;
+                gap: 24px;
+                margin: 30px 0 40px;
+            }
+
+            .image-container {
+                grid-column: 1;
+            }
+
+            .sticky-scroll-section {
+                grid-column: 1;
+                grid-template-columns: 1fr;
+            }
+
+            .sticky-text {
+                margin-bottom: 40px;
+            }
+
+            .scroll-images {
+                gap: 30px;
+                padding: 0;
+            }
+
+            .next-project {
+                grid-column: 1;
+                margin-top: 40px;
+                padding: 40px 0;
+            }
+        }
+
+        /* Enhanced accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="nav-left">
+                <div class="nav-logo-icon">NF</div>
+                <div class="nav-logo-text">Nela Flosova</div>
+            </div>
+            <div class="nav-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M10 2V4M10 16V18M18 10H16M4 10H2M15.657 4.343L14.243 5.757M5.757 14.243L4.343 15.657M15.657 15.657L14.243 14.243M5.757 5.757L4.343 4.343" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <a href="about.html" class="nav-button primary">Let's Talk <span>•</span></a>
+                <div class="menu-wrapper">
+                    <button class="nav-button menu-toggle">Menu <span class="menu-dots">••</span></button>
+                    <div class="menu-dropdown">
+                        <a href="index.html">Work</a>
+                        <a href="about.html">About</a>
+                        <a href="for_fellas.html">For Fellas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        // Menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const menuWrapper = document.querySelector('.menu-wrapper');
+
+            menuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                menuWrapper.classList.toggle('active');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!menuWrapper.contains(e.target)) {
+                    menuWrapper.classList.remove('active');
+                }
+            });
+
+            // Close menu when clicking a link
+            const menuLinks = document.querySelectorAll('.menu-dropdown a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    menuWrapper.classList.remove('active');
+                });
+            });
+        });
+    </script>
+
+    <main class="container">
+        <div class="grid-layout">
+            <!-- Hero Section -->
+            <div class="project-hero">
+                <div class="project-meta">
+                    <span>GapControl</span>
+                    <span>•</span>
+                    <span>UX/UI Design · Data Visualization</span>
+                </div>
+                <h1 class="project-title">Making complex security data easier to read</h1>
+            </div>
+
+            <!-- Project Characteristics -->
+            <div class="project-characteristics">
+                <div class="characteristic-item">
+                    <div class="characteristic-label">Role</div>
+                    <div class="characteristic-value">UX/UI Designer</div>
+                </div>
+                <div class="characteristic-item">
+                    <div class="characteristic-label">Industry</div>
+                    <div class="characteristic-value">Cybersecurity</div>
+                </div>
+                <div class="characteristic-item">
+                    <div class="characteristic-label">Focus</div>
+                    <div class="characteristic-value">Data Visualization, Information Architecture</div>
+                </div>
+            </div>
+
+            <!-- Hero Image -->
+            <div class="image-container">
+                <!-- <img src="gapcontrol-hero.jpg" alt="GapControl dashboard overview" loading="lazy"> -->
+            </div>
+
+            <!-- Mission/Overview - Sticky Scroll Section -->
+            <div class="sticky-scroll-section">
+                <div class="sticky-text">
+                    <div class="section-label">Mission</div>
+                    <h2>Making security data understandable at a glance</h2>
+                    <p>
+                        GapControl is a security product that helps organizations understand their current cybersecurity posture.
+                        It aggregates vulnerability and web application scan results and translates them into insights that can be
+                        used both by security specialists and decision-makers. The goal was to reduce cognitive load and allow users to understand the state of their security
+                        within seconds. My role was to design an interface that presents complex security findings in a
+                        clear, structured, and easily digestible way — without forcing users to read long technical reports.
+                    </p>
+                </div>
+
+                <div class="scroll-images">
+                    <div class="scroll-image">
+                        <!-- <img src="gapcontrol-overview-1.jpg" alt="Security dashboard overview" loading="lazy"> -->
+                    </div>
+                    <div class="scroll-image">
+                        <!-- <img src="gapcontrol-overview-2.jpg" alt="Data aggregation process" loading="lazy"> -->
+                    </div>
+                    <div class="scroll-image">
+                        <!-- <img src="gapcontrol-overview-3.jpg" alt="User interface concepts" loading="lazy"> -->
+                    </div>
+                    <div class="scroll-image last-scroll-image">
+                        <!-- <img src="gapcontrol-overview-4.jpg" alt="Information hierarchy design" loading="lazy"> -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Approach Section -->
+            <h2 class="section-title">APPROACH</h2>
+
+            <div class="section-content">
+                <div>
+                    <h3 class="section-heading">Prioritizing information over volume</h3>
+                    <p class="section-text">
+                        Instead of displaying all available data at once, I focused on defining a clear information hierarchy.
+                        The most critical insights are always presented first, allowing users to quickly grasp the overall
+                        risk level before exploring details.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Approach Image -->
+            <div class="image-container">
+                <!-- <img src="gapcontrol-hierarchy.jpg" alt="Information hierarchy visualization" loading="lazy"> -->
+            </div>
+
+            <!-- Navigation Section -->
+            <h2 class="section-title">NAVIGATION</h2>
+
+            <div class="section-content">
+                <div>
+                    <h3 class="section-heading">Clear structure and navigation</h3>
+                    <p class="section-text">
+                        Consistent layouts and visual patterns across all views help users quickly understand the structure
+                        of the data, while a persistent navigation list on the left shows where they are within the analysis.
+                        This makes complex security information easier to follow and navigate.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Navigation Image -->
+            <div class="image-container">
+                <!-- <img src="gapcontrol-navigation.jpg" alt="Navigation structure and patterns" loading="lazy"> -->
+            </div>
+
+            <!-- Results Section -->
+            <h2 class="section-title">RESULTS</h2>
+
+            <div class="section-content">
+                <div>
+                    <div class="section-label">Impact</div>
+                    <h3 class="section-heading">From complexity to clarity</h3>
+                    <p class="section-text">
+                        The final design transforms complex security data into a clear and approachable overview.
+                        Users can quickly understand their current security posture, identify critical risks, and
+                        prioritize next steps without feeling overwhelmed by technical detail.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Final Results Image -->
+            <div class="image-container">
+                <!-- <img src="gapcontrol-final.jpg" alt="Final dashboard design" loading="lazy"> -->
+            </div>
+
+            <!-- Next Project -->
+            <div class="next-project">
+                <a href="projects_list.html" class="next-link">
+                    <div>
+                        <div class="next-label">Back to</div>
+                        <div class="next-title">All Projects</div>
+                    </div>
+                    <div class="next-arrow">→</div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- GSAP and ScrollTrigger -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="theme.js"></script>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Only apply sticky scroll on desktop (min-width: 769px)
+        ScrollTrigger.matchMedia({
+            // Desktop - pin the sticky text
+            "(min-width: 769px)": function() {
+                ScrollTrigger.create({
+                    trigger: ".sticky-text",
+                    start: "top 120px", // Account for fixed nav (120px from top)
+                    endTrigger: ".last-scroll-image",
+                    end: () => {
+                        // Unpin when bottom of last image aligns with bottom of sticky text
+                        const stickyText = document.querySelector('.sticky-text');
+                        const textHeight = stickyText.offsetHeight;
+                        const pinOffset = 120; // Where text is pinned from top
+                        return `bottom top+=${pinOffset + textHeight}px`;
+                    },
+                    pin: ".sticky-text",
+                    pinSpacing: false,
+                    invalidateOnRefresh: true // Recalculate on window resize
+                });
+            },
+
+            // Mobile - no pinning, normal scroll
+            "(max-width: 768px)": function() {
+                // Normal scroll behavior on mobile
+            }
+        });
+
+        // Refresh ScrollTrigger after all content loads
+        window.addEventListener('load', () => {
+            ScrollTrigger.refresh();
+        });
+    </script>
+</body>
+</html>
