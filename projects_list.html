@@ -447,21 +447,43 @@
         const filterBtns = document.querySelectorAll('.filter-btn');
         const projectCards = document.querySelectorAll('.project-card');
         const projectCountEl = document.querySelector('.project-count');
+        const allBtn = document.querySelector('[data-filter="all"]');
 
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const filter = btn.dataset.filter;
 
-                // Update active button
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+                if (filter === 'all') {
+                    // "All" button - deselect all others
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                } else {
+                    // Category button - toggle active state
+                    btn.classList.toggle('active');
+                    // Deactivate "all" if any category is selected
+                    allBtn.classList.remove('active');
+
+                    // If no categories selected, activate "all"
+                    const hasActiveCategories = Array.from(filterBtns)
+                        .some(b => b.dataset.filter !== 'all' && b.classList.contains('active'));
+                    if (!hasActiveCategories) {
+                        allBtn.classList.add('active');
+                    }
+                }
+
+                // Get all active filters (excluding "all")
+                const activeFilters = Array.from(filterBtns)
+                    .filter(b => b.classList.contains('active') && b.dataset.filter !== 'all')
+                    .map(b => b.dataset.filter);
 
                 // Filter projects
                 let visibleCount = 0;
                 projectCards.forEach(card => {
                     const categories = card.dataset.category;
 
-                    if (filter === 'all' || categories.includes(filter)) {
+                    // Show if "all" is active OR if card matches any active filter
+                    if (allBtn.classList.contains('active') ||
+                        activeFilters.some(filter => categories.includes(filter))) {
                         card.classList.remove('hidden');
                         visibleCount++;
                     } else {
