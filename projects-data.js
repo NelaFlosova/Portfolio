@@ -6,7 +6,7 @@ const projectsData = [
         titleWords: ["Making", "complex", "security", "data", "easier", "to", "read"],
         tags: ["UX/UI Design", "Data Visualization"],
         categories: ["ui-ux", "graphics"],
-        url: "#", // Add actual project page URL when ready
+        url: "project-gapcontrol.html",
         image: null, // Add image path when ready
         featured: true
     },
