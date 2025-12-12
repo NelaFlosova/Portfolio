@@ -29,38 +29,46 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
             padding: 120px 60px 80px;
             position: relative;
         }
 
         .hero-title-wrapper {
             display: flex;
-            align-items: center;
-            gap: 40px;
-            margin-bottom: 20px;
+            align-items: flex-start;
+            gap: 60px;
+            position: relative;
         }
 
         .hero-title {
-            font-size: clamp(80px, 12vw, 180px);
+            font-size: clamp(80px, 12vw, 200px);
             font-weight: 700;
             letter-spacing: -0.02em;
             line-height: 0.9;
             color: #1a1a1a;
         }
 
+        .hero-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 20px;
+            padding-top: 20px;
+        }
+
         .project-count {
             font-size: clamp(40px, 6vw, 80px);
             font-weight: 400;
             color: #1a1a1a;
-            align-self: flex-start;
+            line-height: 1;
         }
 
         .scroll-arrow {
-            font-size: clamp(50px, 8vw, 100px);
+            font-size: clamp(60px, 10vw, 120px);
             color: #1a1a1a;
-            margin-top: 60px;
+            line-height: 1;
             animation: bounce 2s ease-in-out infinite;
+            cursor: pointer;
         }
 
         @keyframes bounce {
@@ -188,17 +196,12 @@
 
         @media (max-width: 768px) {
             .hero-title-wrapper {
-                flex-direction: column;
-                gap: 20px;
-                align-items: flex-start;
+                gap: 30px;
             }
 
-            .project-count {
-                align-self: flex-end;
-            }
-
-            .scroll-arrow {
-                margin-top: 40px;
+            .hero-right {
+                gap: 15px;
+                padding-top: 10px;
             }
 
             .hero-section {
@@ -291,9 +294,11 @@
     <section class="hero-section">
         <div class="hero-title-wrapper">
             <h1 class="hero-title">PROJECTS</h1>
-            <div class="project-count">2</div>
+            <div class="hero-right">
+                <div class="project-count">2</div>
+                <div class="scroll-arrow">↘</div>
+            </div>
         </div>
-        <div class="scroll-arrow">↓</div>
     </section>
 
     <!-- Projects Grid -->
