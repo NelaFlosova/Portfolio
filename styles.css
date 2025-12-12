@@ -160,7 +160,7 @@ max-width: 1200px;
 }
 
 .section-title {
-    font-size: 64px;
+    font-size: clamp(36px, 6vw, 64px);
     font-weight: 400;
     letter-spacing: -0.02em;
     line-height: 1;
