@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -14,164 +16,362 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            background-color: #f5f5f5;
+            background-color: #e8e8e8;
             color: #1a1a1a;
             line-height: 1.6;
-            padding: 40px;
+            padding: 0;
+            overflow-x: hidden;
         }
 
-        .projects-wrapper {
-            max-width: 1200px;
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 120px 60px 80px;
+            position: relative;
+        }
+
+        .hero-title-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: clamp(80px, 12vw, 180px);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 0.9;
+            color: #1a1a1a;
+        }
+
+        .project-count {
+            font-size: clamp(40px, 6vw, 80px);
+            font-weight: 400;
+            color: #1a1a1a;
+            align-self: flex-start;
+        }
+
+        .scroll-arrow {
+            font-size: clamp(50px, 8vw, 100px);
+            color: #1a1a1a;
+            margin-top: 60px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(20px); }
+        }
+
+        /* Projects Grid */
+        .projects-container {
+            max-width: 1400px;
             margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 80px;
+            padding: 80px 60px;
         }
 
-        .project {
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+        }
+
+        /* Project Card */
+        .project-card {
+            text-decoration: none;
+            color: inherit;
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-tags {
+            font-size: 12px;
+            font-weight: 400;
+            color: #666;
+            text-transform: lowercase;
+            letter-spacing: 0.5px;
+        }
+
+        .project-title {
+            font-size: clamp(32px, 4vw, 56px);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1;
+            color: #1a1a1a;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .project-title .word {
+            display: inline-flex;
+            overflow: hidden;
+        }
+
+        .project-title .letter {
+            display: inline-block;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card:hover .project-title .letter {
+            transform: translateY(-5px);
+        }
+
+        .project-title .letter:nth-child(even) {
+            transition-delay: 0.05s;
         }
 
         .project-image {
-            position: relative;
             width: 100%;
-            border-radius: 16px;
+            aspect-ratio: 16 / 10;
+            background-color: #c8c8c8;
+            border-radius: 24px;
             overflow: hidden;
-            background-color: #d1d1d1;
-            aspect-ratio: 16 / 9;
+            position: relative;
         }
 
         .project-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .side {
-            position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            padding: 30px 0;
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
         }
 
-        .vertical-text {
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            font-size: 12px;
-            font-weight: 500;
-            color: #1a1a1a;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 80px;
+            }
 
-        .line {
-            width: 1px;
-            flex: 1;
-            background-color: #1a1a1a;
-        }
+            .hero-section {
+                padding: 100px 40px 60px;
+            }
 
-        .project-details {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .project-details h2 {
-            font-size: clamp(24px, 3vw, 32px);
-            font-weight: 500;
-            letter-spacing: -0.01em;
-            line-height: 1.2;
-        }
-
-        .project-description {
-            font-size: clamp(15px, 1.6vw, 17px);
-            line-height: 1.7;
-            color: #333;
-            font-weight: 300;
-        }
-
-        .btn-primary {
-            font-size: 15px;
-            font-weight: 500;
-            color: #1a1a1a;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            align-self: flex-start;
-            transition: gap 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            gap: 12px;
+            .projects-container {
+                padding: 60px 40px;
+            }
         }
 
         @media (max-width: 768px) {
-            body {
-                padding: 20px;
+            .hero-title-wrapper {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start;
             }
 
-            .projects-wrapper {
+            .project-count {
+                align-self: flex-end;
+            }
+
+            .scroll-arrow {
+                margin-top: 40px;
+            }
+
+            .hero-section {
+                padding: 80px 24px 40px;
+            }
+
+            .projects-container {
+                padding: 40px 24px;
+            }
+
+            .projects-grid {
                 gap: 60px;
             }
+        }
 
-            .project {
-                gap: 20px;
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #1a1a1a;
+                color: #f5f5f5;
             }
 
-            .side {
-                left: 10px;
-                padding: 20px 0;
-                gap: 10px;
+            .hero-title,
+            .project-count,
+            .scroll-arrow,
+            .project-title {
+                color: #f5f5f5;
             }
 
-            .vertical-text {
-                font-size: 10px;
+            .project-tags {
+                color: #999;
+            }
+
+            .project-image {
+                background-color: #2a2a2a;
             }
         }
     </style>
 </head>
 <body>
-    <div class="projects-wrapper">
-        <div class="project">
-            <div class="project-image">
-                <div class="side">
-                    <span class="vertical-text">Unity | 3D modeling | C# | Animation</span>
-                    <div class="line"></div>
-                </div>
-                <img src="game.jpg" alt="3D Unity Game">
+    <nav>
+        <div class="nav-container">
+            <div class="nav-left">
+                <div class="nav-logo-icon">NF</div>
+                <div class="nav-logo-text">Nela Flosova</div>
             </div>
-            <div class="project-details">
-                <h2>3D Unity game</h2>
-                <p class="project-description">My first bigger project – created everything from start to finish. 3D endless runner type game created in Unity using C#.</p>
-                <a href="https://nela-flosova.itch.io/secret-forest" target="_blank" class="btn-primary">→ view project</a>
+            <div class="nav-right">
+                <a href="about.html" class="nav-button primary">Let's Talk <span>•</span></a>
+                <div class="menu-wrapper">
+                    <button class="nav-button menu-toggle">Menu <span class="menu-dots">••</span></button>
+                    <div class="menu-dropdown">
+                        <a href="index.html">Work</a>
+                        <a href="about.html">About</a>
+                        <a href="for_fellas.html">For Fellas</a>
+                    </div>
+                </div>
             </div>
         </div>
+    </nav>
 
-        <div class="project">
-            <div class="project-image">
-                <div class="side">
-                    <span class="vertical-text">3D Modeling | Product</span>
-                    <div class="line"></div>
-                </div>
-                <img src="iphone.jpg" alt="iPhone render on white background">
-            </div>
-            <div class="project-details">
-                <h2>Product render</h2>
-                <p class="project-description">
-                    A detailed 3D model of the iPhone 15 Pro created in Blender. Focused on accurate geometry, realistic materials and proportions. Perfect for product visualization, design presentations, or promotional materials.
-                </p>
-                <a href="https://www.figma.com/proto/g9afPdbgVOH1twB0NP6P77/3D-iPhone-product-render?page-id=0%3A1&amp;node-id=1-5&amp;node-type=frame&amp;viewport=-24%2C-38%2C0.09&amp;t=jXDREYavExV5v32k-1&amp;scaling=contain&amp;content-scaling=fixed" target="_blank" class="btn-primary">→ view project</a>
-            </div>
+    <script>
+        // Menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const menuWrapper = document.querySelector('.menu-wrapper');
+
+            menuToggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                menuWrapper.classList.toggle('active');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function (e) {
+                if (!menuWrapper.contains(e.target)) {
+                    menuWrapper.classList.remove('active');
+                }
+            });
+
+            // Close menu when clicking a link
+            const menuLinks = document.querySelectorAll('.menu-dropdown a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    menuWrapper.classList.remove('active');
+                });
+            });
+        });
+    </script>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-title-wrapper">
+            <h1 class="hero-title">PROJECTS</h1>
+            <div class="project-count">2</div>
         </div>
-    </div>
+        <div class="scroll-arrow">↓</div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="projects-container">
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <a href="https://nela-flosova.itch.io/secret-forest" target="_blank" class="project-card">
+                <div class="project-tags">unity • 3d modeling • c# • animation</div>
+                <h2 class="project-title">
+                    <span class="word">
+                        <span class="letter">3</span><span class="letter">D</span>
+                    </span>
+                    <span class="word">
+                        <span class="letter">U</span><span class="letter">n</span><span class="letter">i</span><span class="letter">t</span><span class="letter">y</span>
+                    </span>
+                    <span class="word">
+                        <span class="letter">g</span><span class="letter">a</span><span class="letter">m</span><span class="letter">e</span>
+                    </span>
+                </h2>
+                <div class="project-image">
+                    <!-- <img src="game.jpg" alt="3D Unity Game"> -->
+                </div>
+            </a>
+
+            <!-- Project 2 -->
+            <a href="https://www.figma.com/proto/g9afPdbgVOH1twB0NP6P77/3D-iPhone-product-render?page-id=0%3A1&node-id=1-5&node-type=frame&viewport=-24%2C-38%2C0.09&t=jXDREYavExV5v32k-1&scaling=contain&content-scaling=fixed" target="_blank" class="project-card">
+                <div class="project-tags">3d modeling • product</div>
+                <h2 class="project-title">
+                    <span class="word">
+                        <span class="letter">P</span><span class="letter">r</span><span class="letter">o</span><span class="letter">d</span><span class="letter">u</span><span class="letter">c</span><span class="letter">t</span>
+                    </span>
+                    <span class="word">
+                        <span class="letter">r</span><span class="letter">e</span><span class="letter">n</span><span class="letter">d</span><span class="letter">e</span><span class="letter">r</span>
+                    </span>
+                </h2>
+                <div class="project-image">
+                    <!-- <img src="iphone.jpg" alt="iPhone render"> -->
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animate hero elements on load
+        gsap.from('.hero-title', {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            ease: 'power3.out'
+        });
+
+        gsap.from('.project-count', {
+            opacity: 0,
+            scale: 0.5,
+            duration: 0.8,
+            delay: 0.3,
+            ease: 'back.out(1.7)'
+        });
+
+        gsap.from('.scroll-arrow', {
+            opacity: 0,
+            y: -20,
+            duration: 0.8,
+            delay: 0.5,
+            ease: 'power2.out'
+        });
+
+        // Animate project cards on scroll
+        gsap.utils.toArray('.project-card').forEach((card, index) => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 80%',
+                    end: 'top 50%',
+                    toggleActions: 'play none none none'
+                },
+                opacity: 0,
+                y: 60,
+                duration: 0.8,
+                delay: index * 0.2,
+                ease: 'power3.out'
+            });
+        });
+
+        // Smooth scroll for arrow
+        document.querySelector('.scroll-arrow').addEventListener('click', () => {
+            gsap.to(window, {
+                scrollTo: '.projects-container',
+                duration: 1,
+                ease: 'power2.inOut'
+            });
+        });
+    </script>
 </body>
 </html>
