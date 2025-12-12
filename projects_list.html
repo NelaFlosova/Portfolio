@@ -113,6 +113,22 @@
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
+            position: relative;
+        }
+
+        .project-arrow {
+            position: absolute;
+            left: -40px;
+            top: 50%;
+            transform: translateY(-50%) translateX(-20px);
+            font-size: clamp(28px, 3vw, 40px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card:hover .project-arrow {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
         }
 
         .project-title .word {
@@ -289,6 +305,7 @@
                 </div>
                 <div class="project-tags">unity • 3d modeling • c# • animation</div>
                 <h2 class="project-title">
+                    <span class="project-arrow">→</span>
                     <span class="word">
                         <span class="letter">3</span><span class="letter">D</span>
                     </span>
@@ -308,6 +325,7 @@
                 </div>
                 <div class="project-tags">3d modeling • product</div>
                 <h2 class="project-title">
+                    <span class="project-arrow">→</span>
                     <span class="word">
                         <span class="letter">P</span><span class="letter">r</span><span class="letter">o</span><span class="letter">d</span><span class="letter">u</span><span class="letter">c</span><span class="letter">t</span>
                     </span>
