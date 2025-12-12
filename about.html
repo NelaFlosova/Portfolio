@@ -253,6 +253,184 @@
         </div>
     </main>
 
+    <!-- Footer -->
+    <footer class="dark-footer">
+        <div class="footer-container">
+            <div class="footer-name">
+                <h2 class="footer-title">NELA FLOSOVA</h2>
+            </div>
+
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-heading">Navigate</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Work</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="projects_list.html">Projects</a></li>
+                        <li><a href="for_fellas.html">For Fellas</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">Connect</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:nela.flosova@gmail.com">Email</a></li>
+                        <li><a href="https://linkedin.com/in/nela-flosova" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://github.com/nelaflosova" target="_blank">GitHub</a></li>
+                        <li><a href="https://dribbble.com" target="_blank">Dribbble</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">Location</h3>
+                    <p class="footer-text">Based in Czech Republic</p>
+                    <p class="footer-text">Available for freelance</p>
+                    <p class="footer-text">& collaborations</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 Nela Flosova. All rights reserved.</p>
+                <p>Designed & Developed with care</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .dark-footer {
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+            padding: 120px 60px 60px;
+            margin-top: 120px;
+        }
+
+        .footer-container {
+            max-width: 1320px;
+            margin: 0 auto;
+        }
+
+        .footer-name {
+            margin-bottom: 100px;
+        }
+
+        .footer-title {
+            font-size: clamp(60px, 10vw, 140px);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 0.9;
+            color: #f5f5f5;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            margin-bottom: 80px;
+            padding-bottom: 80px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .footer-heading {
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #999;
+            margin: 0;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: #f5f5f5;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+        }
+
+        .footer-links a::after {
+            content: '→';
+            position: absolute;
+            right: -25px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+            transform: translateX(5px);
+        }
+
+        .footer-links a:hover::after {
+            opacity: 1;
+            right: -30px;
+        }
+
+        .footer-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #d1d1d1;
+            margin: 0;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .dark-footer {
+                padding: 80px 24px 40px;
+                margin-top: 80px;
+            }
+
+            .footer-name {
+                margin-bottom: 60px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                margin-bottom: 60px;
+                padding-bottom: 60px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
     <script>
         // Form submission handling
         document.getElementById('contactForm').addEventListener('submit', function (e) {
@@ -291,6 +469,48 @@
                 });
             });
         }
+
+        // Footer animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animate footer title
+        gsap.from('.footer-title', {
+            scrollTrigger: {
+                trigger: '.footer-title',
+                start: 'top 80%',
+                toggleActions: 'play none none none'
+            },
+            y: 100,
+            opacity: 0,
+            duration: 1.2,
+            ease: 'power3.out'
+        });
+
+        // Animate footer sections
+        gsap.from('.footer-section', {
+            scrollTrigger: {
+                trigger: '.footer-content',
+                start: 'top 80%',
+                toggleActions: 'play none none none'
+            },
+            y: 60,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: 'power3.out'
+        });
+
+        // Animate footer bottom
+        gsap.from('.footer-bottom', {
+            scrollTrigger: {
+                trigger: '.footer-bottom',
+                start: 'top 90%',
+                toggleActions: 'play none none none'
+            },
+            opacity: 0,
+            duration: 0.8,
+            ease: 'power2.out'
+        });
     </script>
 </body>
 
