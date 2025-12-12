@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,31 +19,165 @@
             line-height: 1.6;
             padding: 0;
             overflow-x: hidden;
+            margin: 0 auto
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f5f5f5;
+            z-index: 1000;
+            padding: 30px 40px;
+        }
+
+        .nav-container {
+        max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-logo-icon {
+            width: 32px;
+            height: 32px;
+            background-color: #1a1a1a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 600;
+            color: #f5f5f5;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-logo-text {
+            font-size: 20px;
+            font-weight: 500;
+            color: #1a1a1a;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 12px;
+        }
+
+        .nav-button {
+            padding: 12px 28px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #1a1a1a;
+            background-color: transparent;
+            border: 1px solid #d1d1d1;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-button.primary {
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+            border-color: #1a1a1a;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-button.primary:hover {
+            background-color: #333;
+            border-color: #333;
+        }
+
+        .menu-dots {
+            font-size: 18px;
+            line-height: 1;
+        }
+
+        /* Dropdown Menu */
+        .menu-dropdown {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 16px;
+            padding: 8px;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-wrapper {
+            position: relative;
+        }
+
+        .menu-wrapper.active .menu-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .menu-dropdown a {
+            display: block;
+            padding: 12px 16px;
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            border-radius: 10px;
+            transition: background-color 0.2s ease;
+        }
+
+        .menu-dropdown a:hover {
+            background-color: #f5f5f5;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1320px;
             margin: 0 auto;
-            padding: 60px 120px;
+            padding: 120px 60px 80px;
+            /* Added top padding for fixed nav */
         }
 
-        .about-section {
+        
+        .grid-layout {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: start;
-            margin-bottom: 80px;
+            grid-template-columns: 1fr 1fr 1fr;
+            column-gap: clamp(40px, 5vw, 150px);
+            row-gap: 80px;
         }
 
-        .about-title {
-            font-size: clamp(48px, 8vw, 96px);
+        .section-title {
+            font-size: 64px;
             font-weight: 400;
             letter-spacing: -0.02em;
             line-height: 1;
-            margin-bottom: 0;
+            grid-column: 1;
         }
 
         .about-content {
+            grid-column: 2 / 4;
             display: flex;
             flex-direction: column;
             gap: 40px;
@@ -64,9 +199,8 @@
         }
 
         .image-container {
+            grid-column: 1 / 4;
             width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
             background-color: #d1d1d1;
             border-radius: 24px;
             aspect-ratio: 16 / 9;
@@ -80,34 +214,476 @@
             object-fit: cover;
         }
 
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .container {
-                padding: 50px 60px;
-            }
-
-            .about-section {
-                gap: 60px;
-            }
+        /* Services section */
+        .section-intro {
+            grid-column: 2 / 4;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
         }
+
+        .intro-heading {
+            font-size: clamp(24px, 3vw, 32px);
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+        }
+
+        .intro-text {
+            font-size: clamp(16px, 1.8vw, 18px);
+            line-height: 1.7;
+            color: #333;
+            font-weight: 300;
+        }
+
+        /* Services list */
+        .services-list {
+            grid-column: 2 / 4;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-item {
+            border-top: 1px solid #1a1a1a;
+            padding: 40px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-item:last-child {
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .service-item:hover {
+            padding: 60px 0;
+            margin: 0 -30px;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .service-name {
+            font-size: clamp(20px, 2.5vw, 28px);
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-item:hover .service-name {
+            transform: translateX(10px);
+        }
+
+        .service-details {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .service-description {
+            font-size: clamp(15px, 1.6vw, 17px);
+            line-height: 1.6;
+            color: #333;
+            font-weight: 300;
+            max-height: 60px;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-item:hover .service-description {
+            max-height: 300px;
+        }
+
+        .service-link {
+            font-size: 15px;
+            font-weight: 500;
+            color: #1a1a1a;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: 10px;
+        }
+
+        .service-item:hover .service-link {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-link:hover {
+            gap: 12px;
+        }
+
+        .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .service-link:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        /* Projects section */
+        .projects-intro {
+            grid-column: 2 / 4;
+            margin-bottom: 60px;
+        }
+
+        .projects-intro p {
+            font-size: clamp(16px, 1.8vw, 18px);
+            line-height: 1.7;
+            color: #333;
+            font-weight: 300;
+        }
+
+        .projects {
+            grid-column: 1 / 4;
+            position: relative;
+          
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .projects::-webkit-scrollbar {
+            display: none;
+        }
+
+        .projects-wrapper {
+            display: flex;
+            flex-direction: row;
+            gap: 24px;
+            width: 150vw;
+        }
+
+        .project {
+            position: relative;
+            display: flex;
+            width: 70vw;
+            max-width: 820px;
+            scroll-snap-align: start;
+            min-height: 400px;
+        }
+
+        .project-image {
+            display: flex;
+            gap: 12px;
+            width: 60%;
+            position: relative;
+        }
+
+        .project-image .image-placeholder {
+            width: 90%;
+            background-color: #d1d1d1;
+            border-radius: 16px;
+            min-height: 400px;
+        }
+
+        .project-details {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .project-details h2 {
+            font-size: clamp(24px, 3vw, 32px);
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+        }
+
+        .project-description {
+            font-size: clamp(15px, 1.6vw, 17px);
+            line-height: 1.7;
+            color: #333;
+            font-weight: 300;
+        }
+
+        .side {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .line {
+            background-color: #666;
+            width: 1.5px;
+            flex-grow: 1;
+        }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            font-size: 12px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            font-size: 15px;
+            font-weight: 500;
+            color: #1a1a1a;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            align-self: flex-start;
+            transition: gap 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            gap: 12px;
+        }
+
+        .scroll-indicator {
+            grid-column: 1 / 4;
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .scroll-arrow {
+            font-size: 48px;
+            color: #ff3333;
+            font-weight: 300;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .scroll-arrow:hover {
+            transform: scale(1.1);
+        }
+
+        .scroll-line {
+            flex: 1;
+            height: 2px;
+            background: repeating-linear-gradient(to right,
+                    #ff3333 0,
+                    #ff3333 10px,
+                    transparent 10px,
+                    transparent 20px);
+        }
+
+        /* Contact section */
+        .contact-content {
+            grid-column: 2 / 4;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .contact-intro {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Form Styles */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .form-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #1a1a1a;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 16px 20px;
+            font-size: 16px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            color: #1a1a1a;
+            background-color: #fff;
+            border: 1px solid #d1d1d1;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            border-color: #1a1a1a;
+            box-shadow: 0 0 0 3px rgba(26, 26, 26, 0.05);
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: #999;
+        }
+
+        .form-textarea {
+            min-height: 180px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            padding: 16px 40px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #f5f5f5;
+            background-color: #1a1a1a;
+            border: 1px solid #1a1a1a;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .form-submit:hover {
+            background-color: #333;
+            border-color: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-info {
+            grid-column: 2 / 4;
+            padding-top: 40px;
+            border-top: 1px solid #d1d1d1;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .info-heading {
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .info-item {
+            font-size: clamp(15px, 1.6vw, 17px);
+            line-height: 1.6;
+            color: #333;
+            font-weight: 300;
+        }
+
+        .info-item a {
+            color: #1a1a1a;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .info-item a:hover {
+            opacity: 0.6;
+        }
+
+        /* Responsive Design */
+       
 
         @media (max-width: 768px) {
             .container {
                 padding: 40px 24px;
             }
 
-            .about-section {
+            .grid-layout {
                 grid-template-columns: 1fr;
-                gap: 40px;
-                margin-bottom: 60px;
+                row-gap: 40px;
+            }
+
+            .section-title {
+                grid-column: 1;
+                margin-bottom: 20px;
             }
 
             .about-content {
+                grid-column: 1;
                 gap: 30px;
             }
 
-            .about-title {
-                margin-bottom: 40px;
+            .section-intro {
+                grid-column: 1;
+                gap: 20px;
+            }
+
+            .services-list {
+                grid-column: 1;
+            }
+
+            .service-item {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 30px 0;
+            }
+
+            .service-item:hover {
+                padding: 40px 0;
+                margin: 0 -20px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .projects-intro {
+                grid-column: 1;
+            }
+
+            .projects-container {
+                grid-column: 1;
+            }
+
+            .project {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .side {
+                left: 10px;
+                padding: 20px 0;
+                gap: 10px;
+            }
+
+            .vertical-text {
+                font-size: 10px;
+            }
+
+            .scroll-indicator {
+                margin-top: 30px;
+            }
+
+            .scroll-arrow {
+                font-size: 32px;
+            }
+
+            .contact-content {
+                grid-column: 1;
+            }
+
+            .contact-info {
+                grid-column: 1;
+            }
+
+            .image-container {
+                grid-column: 1;
             }
         }
 
@@ -116,9 +692,8 @@
                 padding: 30px 20px;
             }
 
-            .about-section {
-                gap: 30px;
-                margin-bottom: 40px;
+            .grid-layout {
+                row-gap: 30px;
             }
 
             .about-content {
@@ -147,20 +722,273 @@
                 color: #f5f5f5;
             }
 
-            .about-text {
+            nav {
+                background-color: #1a1a1a;
+            }
+
+            .nav-logo-icon {
+                background-color: #f5f5f5;
+                color: #1a1a1a;
+            }
+
+            .nav-logo-text {
+                color: #f5f5f5;
+            }
+
+            .nav-button {
+                color: #f5f5f5;
+                border-color: #4a4a4a;
+            }
+
+            .nav-button.primary {
+                background-color: #f5f5f5;
+                color: #1a1a1a;
+                border-color: #f5f5f5;
+            }
+
+            .menu-dropdown {
+                background-color: #2a2a2a;
+                border-color: #4a4a4a;
+            }
+
+            .menu-dropdown a {
+                color: #f5f5f5;
+            }
+
+            .menu-dropdown a:hover {
+                background-color: #3a3a3a;
+            }
+
+            .about-text,
+            .intro-text,
+            .service-description,
+            .info-item {
                 color: #d1d1d1;
+            }
+
+            .service-item {
+                border-color: #f5f5f5;
             }
 
             .image-container {
                 background-color: #2a2a2a;
             }
+
+            .project-image .image-placeholder {
+                background-color: #2a2a2a;
+            }
+
+            .projects-intro p {
+                color: #d1d1d1;
+            }
+
+            .project-details h2 {
+                color: #f5f5f5;
+            }
+
+            .project-description {
+                color: #d1d1d1;
+            }
+
+            .btn-primary {
+                background-color: #f5f5f5;
+                color: #1a1a1a;
+                border-color: #f5f5f5;
+            }
+
+            .btn-primary:hover {
+                background-color: #e0e0e0;
+                border-color: #e0e0e0;
+            }
+
+            .vertical-text {
+                color: #f5f5f5;
+            }
+
+            .line {
+                background-color: #f5f5f5;
+            }
+
+            .form-input,
+            .form-textarea {
+                background-color: #2a2a2a;
+                border-color: #4a4a4a;
+                color: #f5f5f5;
+            }
+
+            .form-input::placeholder,
+            .form-textarea::placeholder {
+                color: #666;
+            }
+
+            .form-submit {
+                background-color: #f5f5f5;
+                color: #1a1a1a;
+                border-color: #f5f5f5;
+            }
+
+            .form-submit:hover {
+                background-color: #e0e0e0;
+                border-color: #e0e0e0;
+            }
+
+            .contact-info {
+                border-color: #4a4a4a;
+            }
+
+            .info-item a {
+                color: #f5f5f5;
+            }
+
+
+            .projects {
+                position: relative;
+                grid-column: 1 / 4;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+            }
+
+
+            .projects-wrapper {
+                display: flex;
+                flex-direction: row;
+                gap: 24px;
+                width: 150vw;
+
+            }
+
+            .project {
+                position: relative;
+                display: flex;
+                width: 70vw;
+                max-width: 820px;
+                scroll-snap-align: start;
+                min-height: 400px;
+
+            }
+
+
+            .project-image {
+                display: flex;
+                gap: 12px;
+                width: 60%;
+            }
+
+            .project-image .image-placeholder {
+                width: 90%;
+                background-color: #d1d1d1;
+                border-radius: 16px;
+                min-height: 400px;
+            }
+
+
+            .project-details {
+                width: 40%;
+            }
+
+            @media (max-width: 960px) {
+                .project {
+                    flex-direction: column;
+                    gap: var(--mrgn-S);
+                    width: 80vw;
+                    min-width: 250px;
+                }
+
+                .project-image {
+                    width: 100%;
+                    height: 60%;
+                }
+
+                .project-details {
+                    width: 100%;
+                }
+
+                .projects-wrapper {
+                    gap: 24px;
+                    width: 190vw;
+
+                }
+            }
+
+            .side {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 6px;
+
+            }
+
+            .line {
+                background-color: var(--secondary-text);
+                width: 1.5px;
+                flex-grow: 1;
+
+            }
+
+            .vertical-text {
+                writing-mode: vertical-rl;
+                font-size: var(--fs-XS);
+                color: var(--secondary-text);
+                font-weight: 500;
+            }
         }
     </style>
 </head>
+
 <body>
+    <nav>
+        <div class="nav-container">
+            <div class="nav-left">
+                <div class="nav-logo-icon">NF</div>
+                <div class="nav-logo-text">Nela Flosova</div>
+            </div>
+            <div class="nav-right">
+                <a href="about.html" class="nav-button primary">Let's Talk <span>•</span></a>
+                <div class="menu-wrapper">
+                    <button class="nav-button menu-toggle">Menu <span class="menu-dots">••</span></button>
+                    <div class="menu-dropdown">
+                        <a href="index.html">Work</a>
+                        <a href="about.html">About</a>
+                        <a href="services.html">Services</a>
+                        <a href="for_fellas.html">For Fellas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        // Menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const menuWrapper = document.querySelector('.menu-wrapper');
+
+            menuToggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                menuWrapper.classList.toggle('active');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function (e) {
+                if (!menuWrapper.contains(e.target)) {
+                    menuWrapper.classList.remove('active');
+                }
+            });
+
+            // Close menu when clicking a link
+            const menuLinks = document.querySelectorAll('.menu-dropdown a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    menuWrapper.classList.remove('active');
+                });
+            });
+        });
+    </script>
+
     <main class="container">
-        <section class="about-section">
-            <h1 class="about-title">ABOUT</h1>
+        <div class="grid-layout">
+            <h1 class="section-title">ABOUT</h1>
 
             <div class="about-content">
                 <div>
@@ -176,12 +1004,222 @@
                     </p>
                 </div>
             </div>
-        </section>
 
-        <div class="image-container">
-            <!-- Placeholder for image - replace src with actual image path -->
-            <!-- <img src="your-image.jpg" alt="About me image" loading="lazy"> -->
+            <div class="image-container">
+                <!-- Placeholder for image - replace src with actual image path -->
+                <!-- <img src="your-image.jpg" alt="About me image" loading="lazy"> -->
+            </div>
         </div>
     </main>
+
+    <main class="container">
+        <div class="grid-layout">
+            <h1 class="section-title">SERVICES</h1>
+
+            <div class="section-intro">
+                <h2 class="intro-heading">What can I help with</h2>
+                <p class="intro-text">
+                    From concept to completion, I bring digital experiences to life. Whether you need a complete brand
+                    refresh,
+                    a high-converting website, or intuitive user interfaces, I combine strategic thinking with creative
+                    execution
+                    to deliver solutions that not only look exceptional but drive real results.
+                </p>
+            </div>
+
+            <div class="services-list">
+                <div class="service-item">
+                    <h3 class="service-name">UI/UX development</h3>
+                    <div class="service-details">
+                        <p class="service-description">
+                            I combine a background in business with a love for technology and design. Creating
+                            user-centered
+                            interfaces that are both beautiful and functional, with a focus on accessibility and
+                            seamless
+                            user experiences across all devices.
+                        </p>
+                        <a href="#ux-projects" class="service-link">
+                            View UX projects
+                            <span class="arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <h3 class="service-name">Web development</h3>
+                    <div class="service-details">
+                        <p class="service-description">
+                            Websites designed to convert. Building fast, responsive, and SEO-optimized websites using
+                            modern technologies. From landing pages to complex web applications, every project is
+                            crafted
+                            with performance and scalability in mind.
+                        </p>
+                        <a href="#web-projects" class="service-link">
+                            View web projects
+                            <span class="arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <h3 class="service-name">Brand identity</h3>
+                    <div class="service-details">
+                        <p class="service-description">
+                            Brands that resonate. Developing cohesive visual identities that tell your story and connect
+                            with your audience. From logo design to complete brand systems, creating memorable
+                            experiences
+                            that set you apart from the competition.
+                        </p>
+                        <a href="#branding-projects" class="service-link">
+                            View branding projects
+                            <span class="arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main class="container">
+        <div class="grid-layout">
+            <h1 class="section-title">PROJECTS</h1>
+
+            <div class="projects-intro">
+                <p>I collaborate with companies that prioritize thoughtful design, clear communication, and measurable
+                    impact — from ambitious startups to established industry leaders.</p>
+            </div>
+
+            <div class="projects">
+                <div class="projects-wrapper">
+
+                    <div class="project">
+                        <div class="project-image">
+                            <div class="side">
+                                <span class="vertical-text">Unity | 3D modeling | C# | Animation</span>
+                                <div class="line"></div>
+                            </div>
+                            <div class="image-placeholder"></div>
+                        </div>
+                        <div class="project-details">
+                            <h2>3D Unity game</h2>
+                            <p class="project-description">My first bigger project – created everything from start to
+                                finish. 3D
+                                endless
+                                runner type game created in Unity using C#.</p>
+                            <a href="https://nela-flosova.itch.io/secret-forest" target="_blank" class="btn-primary">→
+                                view
+                                project</a>
+                        </div>
+                    </div>
+
+                    <div class="project">
+                        <div class="project-image">
+                            <div class="side">
+                                <span class="vertical-text">3D Modeling | Product</span>
+                                <div class="line"></div>
+                            </div>
+                            <div class="image-placeholder"></div>
+                        </div>
+                        <div class="project-details">
+                            <h2>Product render</h2>
+                            <p class="project-description">
+                                A detailed 3D model of the iPhone 15 Pro created in Blender. Focused on accurate
+                                geometry, realistic materials and proportions.
+                                Perfect for product visualization, design presentations, or promotional materials. </p>
+                            <a href="https://www.figma.com/proto/g9afPdbgVOH1twB0NP6P77/3D-iPhone-product-render?page-id=0%3A1&node-id=1-5&node-type=frame&viewport=-24%2C-38%2C0.09&t=jXDREYavExV5v32k-1&scaling=contain&content-scaling=fixed"
+                                target="_blank" class="btn-primary">→ view project</a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <main class="container">
+        <div class="grid-layout">
+            <h1 class="section-title">CONTACT</h1>
+
+            <div class="contact-content">
+                <div class="contact-intro">
+                    <p class="intro-text">
+                        Have a project in mind? I'm just an email away. Let's create something unique and amazing
+                        together.
+                    </p>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="Type your email..."
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="message">Message</label>
+                        <textarea id="message" name="message" class="form-textarea" placeholder="Type your message..."
+                            required></textarea>
+                    </div>
+
+                    <button type="submit" class="form-submit">Send</button>
+                </form>
+            </div>
+
+            <div class="contact-info">
+                <div class="info-heading">Or reach me directly</div>
+                <div class="info-item">
+                    Email: <a href="mailto:nela.flosova@gmail.com">nela.flosova@gmail.com</a>
+                </div>
+                <div class="info-item">
+                    Based in Czech Republic
+                </div>
+                <div class="info-item">
+                    Available for freelance projects and collaborations
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Form submission handling
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // You can add actual form submission logic here
+            // For now, we'll just show a success message
+            alert('Thank you for your message! I will get back to you soon.');
+
+            // Reset form
+            this.reset();
+        });
+
+        // Horizontal scroll for projects
+        const projectsWrapper = document.getElementById('projectsWrapper');
+        const scrollArrows = document.querySelectorAll('.scroll-arrow');
+
+        if (projectsWrapper && scrollArrows.length === 2) {
+            const leftArrow = scrollArrows[0];
+            const rightArrow = scrollArrows[1];
+
+            leftArrow.addEventListener('click', () => {
+                projectsWrapper.scrollBy({
+                    left: -projectsWrapper.offsetWidth,
+                    behavior: 'smooth'
+                });
+            });
+
+            rightArrow.addEventListener('click', () => {
+                projectsWrapper.scrollBy({
+                    left: projectsWrapper.offsetWidth,
+                    behavior: 'smooth'
+                });
+            });
+        }
+    </script>
 </body>
+
 </html>
