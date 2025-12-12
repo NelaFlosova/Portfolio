@@ -113,22 +113,23 @@
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            position: relative;
+            align-items: center;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card:hover .project-title {
+            transform: translateX(50px);
         }
 
         .project-arrow {
-            position: absolute;
-            left: -40px;
-            top: 50%;
-            transform: translateY(-50%) translateX(-20px);
             font-size: clamp(28px, 3vw, 40px);
             opacity: 0;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-right: -8px;
         }
 
         .project-card:hover .project-arrow {
             opacity: 1;
-            transform: translateY(-50%) translateX(0);
         }
 
         .project-title .word {
