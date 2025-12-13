@@ -15,21 +15,7 @@
     </script>
     <link rel="stylesheet" href="styles.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            padding: 0;
-            overflow-x: hidden;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
+        /* Project-specific styles - global styles inherited from styles.css */
 
         .container {
             max-width: 1200px;
@@ -139,21 +125,9 @@
             font-weight: 400;
         }
 
-        /* Image Container */
+        /* Image Container - extends global styles */
         .image-container {
             grid-column: 1 / 4;
-            width: 100%;
-            background-color: var(--placeholder-bg);
-            border-radius: 24px;
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
         }
 
         /* Sticky Scroll Section */
@@ -392,15 +366,6 @@
                 grid-column: 1;
                 margin-top: 40px;
                 padding: 40px 0;
-            }
-        }
-
-        /* Enhanced accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
             }
         }
     </style>
