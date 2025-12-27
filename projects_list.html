@@ -19,135 +19,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="theme.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* Animation & Interaction Styles Only */
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            padding: 0;
-            overflow-x: hidden;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        /* Hero Section */
-        .hero-section {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 120px 60px 80px;
-            position: relative;
-            max-width: 1320px;
-            margin: 0 auto;
-        }
-
-        .hero-title-wrapper {
-            position: relative;
-            width: 100%;
-        }
-
-        .hero-title {
-            font-size: clamp(80px, 12vw, 200px);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            line-height: 0.9;
-            color: var(--text-color);
-            width: 100%;
-        }
-
-        .hero-right {
-            position: absolute;
-            top: 20px;
-            right: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 20px;
-        }
-
-        .project-count {
-            font-size: clamp(40px, 6vw, 80px);
-            font-weight: 400;
-            color: var(--text-color);
-            line-height: 1;
-        }
-
-        .scroll-arrow {
-            font-size: clamp(60px, 10vw, 120px);
-            color: var(--text-color);
-            line-height: 1;
-            animation: bounce 2s ease-in-out infinite;
-            cursor: pointer;
-        }
-
+        /* Bounce animation for scroll arrow */
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(20px); }
         }
 
-        /* Projects Grid */
-        .projects-container {
-            max-width: 1320px;
-            margin: 0 auto;
-            padding: 80px 60px;
+        .hero-scroll-arrow {
+            animation: bounce 2s ease-in-out infinite;
         }
 
-        /* Filter Buttons */
-        .filter-container {
-            margin-bottom: 60px;
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            padding: 12px 24px;
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--tertiary-text);
-            background-color: transparent;
-            border: 1px solid var(--border-color);
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: lowercase;
-        }
-
-        .filter-btn:hover {
-            color: var(--text-color);
-            border-color: var(--text-color);
-        }
-
-        .filter-btn.active {
-            color: var(--bg-color);
-            background-color: var(--text-color);
-            border-color: var(--text-color);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 60px;
-        }
-
+        /* Hidden state for filtered projects */
         .project-card.hidden {
             display: none;
         }
 
-        /* Project Card */
+        /* Hover transitions */
         .project-card {
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            cursor: pointer;
             transition: transform 0.3s ease;
         }
 
@@ -155,119 +45,36 @@
             transform: translateY(-10px);
         }
 
-        .project-tags {
-            font-size: 12px;
-            font-weight: 400;
-            color: var(--tertiary-text);
-            text-transform: lowercase;
-            letter-spacing: 0.5px;
-        }
-
-        .project-title {
-            font-size: clamp(32px, 4vw, 56px);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            line-height: 1;
-            color: var(--text-color);
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            align-items: center;
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .project-card:hover .project-title {
-            transform: translateX(50px);
-        }
-
         .project-arrow {
-            font-size: clamp(28px, 3vw, 40px);
             opacity: 0;
-            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            margin-right: -8px;
+            width: 0;
+            margin-right: 0;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                        opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                        margin-right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .project-card:hover .project-arrow {
             opacity: 1;
+            width: clamp(24px, 2.5vw, 32px);
+            margin-right: 8px;
         }
 
-        .project-title .word {
-            display: inline-flex;
-            overflow: hidden;
+        .project-title-text {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .project-title .letter {
-            display: inline-block;
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .project-card:hover .project-title .letter {
-            transform: translateY(-5px);
-        }
-
-        .project-title .letter:nth-child(even) {
-            transition-delay: 0.05s;
-        }
-
-        .project-image {
-            width: 100%;
-            aspect-ratio: 16 / 10;
-            background-color: var(--placeholder-bg);
-            border-radius: 24px;
-            overflow: hidden;
-            position: relative;
+        .project-card:hover .project-title-text {
+            transform: translateX(5px);
         }
 
         .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .project-card:hover .project-image img {
             transform: scale(1.05);
         }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 80px;
-            }
-
-            .hero-section {
-                padding: 100px 40px 60px;
-            }
-
-            .projects-container {
-                padding: 60px 40px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-title-wrapper {
-                gap: 30px;
-            }
-
-            .hero-right {
-                gap: 15px;
-                padding-top: 10px;
-            }
-
-            .hero-section {
-                padding: 80px 24px 40px;
-            }
-
-            .projects-container {
-                padding: 40px 24px;
-            }
-
-            .projects-grid {
-                gap: 60px;
-            }
-        }
-
     </style>
 </head>
 <body>
@@ -330,10 +137,10 @@
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-title-wrapper">
-            <h1 class="hero-title">PROJECTS</h1>
+            <h1 class="hero-title">SELECTED WORK</h1>
             <div class="hero-right">
                 <div class="project-count">0</div>
-                <div class="scroll-arrow">↘</div>
+                <div class="hero-scroll-arrow">↘</div>
             </div>
         </div>
     </section>
@@ -346,7 +153,6 @@
             <button class="filter-btn" data-filter="3d">3d & render</button>
             <button class="filter-btn" data-filter="game">game design</button>
             <button class="filter-btn" data-filter="ui-ux">ui/ux</button>
-            <button class="filter-btn" data-filter="web">web development</button>
             <button class="filter-btn" data-filter="graphics">graphics</button>
         </div>
 
@@ -356,16 +162,6 @@
     </section>
 
     <script>
-        // Function to split title into words and letters for animation
-        function createAnimatedTitle(titleWords) {
-            return titleWords.map(word => {
-                const letters = word.split('').map(letter =>
-                    `<span class="letter">${letter}</span>`
-                ).join('');
-                return `<span class="word">${letters}</span>`;
-            }).join(' ');
-        }
-
         // Function to render projects
         function renderProjects() {
             const projectsGrid = document.getElementById('projectsGrid');
@@ -374,7 +170,6 @@
             projectsGrid.innerHTML = projectsData.map(project => {
                 const categoriesStr = project.categories.join(' ');
                 const tagsStr = project.tags.join(' • ');
-                const animatedTitle = createAnimatedTitle(project.titleWords);
                 const imageHTML = project.image
                     ? `<img src="${project.image}" alt="${project.title}">`
                     : '';
@@ -387,7 +182,7 @@
                         <div class="project-tags">${tagsStr}</div>
                         <h2 class="project-title">
                             <span class="project-arrow">→</span>
-                            ${animatedTitle}
+                            <span class="project-title-text">${project.title}</span>
                         </h2>
                     </a>
                 `;
@@ -418,9 +213,8 @@
             ease: 'back.out(1.7)'
         });
 
-        gsap.from('.scroll-arrow', {
+        gsap.from('.hero-scroll-arrow', {
             opacity: 0,
-            y: -20,
             duration: 0.8,
             delay: 0.5,
             ease: 'power2.out'
@@ -444,7 +238,7 @@
         });
 
         // Smooth scroll for arrow
-        document.querySelector('.scroll-arrow').addEventListener('click', () => {
+        document.querySelector('.hero-scroll-arrow').addEventListener('click', () => {
             gsap.to(window, {
                 scrollTo: '.projects-container',
                 duration: 1,
@@ -487,7 +281,7 @@
 
                 // Filter projects
                 let visibleCount = 0;
-                projectCards.forEach(card => {
+                document.querySelectorAll('.project-card').forEach(card => {
                     const categories = card.dataset.category;
 
                     // Show if "all" is active OR if card matches any active filter

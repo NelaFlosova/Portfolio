@@ -2,32 +2,58 @@
 const projectsData = [
     {
         id: 1,
-        title: "Making complex security data easier to read",
-        titleWords: ["Making", "complex", "security", "data", "easier", "to", "read"],
+        title: "Security Data Dashboard",
         tags: ["UX/UI Design", "Data Visualization"],
-        categories: ["ui-ux", "graphics"],
+        categories: ["ui-ux"],
         url: "project-gapcontrol.html",
-        image: null, // Add image path when ready
-        featured: true
+        image: "gapcontrol_1.png"
     },
     {
         id: 2,
-        title: "3D Unity game",
-        titleWords: ["3D", "Unity", "game"],
-        tags: ["unity", "3d modeling", "c#", "animation"],
-        categories: ["3d", "game"],
-        url: "https://nela-flosova.itch.io/secret-forest",
-        image: null,
-        featured: true
+        title: "Security Tool Animation",
+        tags: ["Motion Design", "Animation"],
+        categories: ["graphics"],
+        url: "project-logcontrol.html",
+        image: "logcontrol_1.jpg"
     },
     {
         id: 3,
-        title: "Product render",
-        titleWords: ["Product", "render"],
-        tags: ["3d modeling", "product"],
+        title: "Conference Drink Design",
+        tags: ["Product Design", "Marketing"],
+        categories: ["graphics"],
+        url: "project-cyberrelax.html",
+        image: null
+    },
+    {
+        id: 4,
+        title: "Book Resale Bookmarks",
+        tags: ["Illustration", "Print Design"],
+        categories: ["graphics"],
+        url: "project-knihobot.html",
+        image: "knihobot_1.jpg"
+    },
+    {
+        id: 5,
+        title: "iPhone 3D Render",
+        tags: ["3D", "Visualization"],
         categories: ["3d"],
-        url: "https://www.figma.com/proto/g9afPdbgVOH1twB0NP6P77/3D-iPhone-product-render?page-id=0%3A1&node-id=1-5&node-type=frame&viewport=-24%2C-38%2C0.09&t=jXDREYavExV5v32k-1&scaling=contain&content-scaling=fixed",
-        image: null,
-        featured: true
+        url: "project-iphone.html",
+        image: "iphone_1.jpg"
+    },
+    {
+        id: 6,
+        title: "Coffee Pickup Wireframe",
+        tags: ["Wireframing", "UX Design"],
+        categories: ["ui-ux"],
+        url: "project-coffeeux.html",
+        image: "coffeeux_1.jpg"
+    },
+    {
+        id: 7,
+        title: "3D Unity Game",
+        tags: ["Unity", "3D Modeling", "C#"],
+        categories: ["3d", "game"],
+        url: "https://nela-flosova.itch.io/secret-forest",
+        image: null
     }
 ];
