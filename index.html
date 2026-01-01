@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Step Scroll Animations</title>
+    <title>Nela Flosova - Portfolio</title>
     <script>
-        // Immediately apply theme before page renders to prevent flash
         (function() {
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme) {
@@ -19,28 +18,20 @@
     <script src="theme.js"></script>
 
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            overflow-x: hidden;
-            transition: background-color 0.3s ease;
-        }
-
         .scroll-container {
             width: 100%;
-            height: 100vh; 
+            height: 100vh;
             position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        }
+
+        .nav-spacer {
+            height: 60px;
         }
 
         .sticky-wrapper {
             width: 100vw;
             height: 100vh;
-            position: relative; 
+            position: relative;
             overflow: hidden;
             display: flex;
             justify-content: center;
@@ -50,36 +41,152 @@
         .card {
             position: absolute;
             border-radius: 24px;
-            will-change: transform, top, left, width, height, border-radius, box-shadow;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            overflow: hidden; 
+            will-change: transform;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: none;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .card.hoverable:hover::after {
+            opacity: 1;
+        }
+
+        /* Dark overlay for text readability */
+        .card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.25) 100%);
+            opacity: 0;
+            transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .card.hoverable:hover .card-overlay {
+            opacity: 1;
+        }
+
+        /* Project title overlay on hover */
+        .card-label {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .card-label .title {
+            font-size: 14px;
+            font-weight: 500;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .card-label .arrow {
+            font-size: 18px;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .card.hoverable:hover .card-label {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card.hoverable:hover .card-label .arrow {
+            transform: translate(3px, -3px);
+        }
+
+        .c1::after { background-image: url('coffeeux_3.jpg'); }
+        .c2::after { background-image: url('logcontrol_5.jpg'); }
+        .c3::after { background-image: url('knihobot_2.jpg'); background-position: right; }
+        .c4::after { background-image: url('imrvere_4.jpg'); background-position: center; }
+        .c5::after { background-image: url('gapcontrol_end.png'); }
+        .c6::after { background-image: url('archviz_2.jpg'); }
+        .c7::after { background-image: url('gapcontrol_end.png'); }
+        .c8::after { background-image: url('iphone_3.jpg'); }
+
+        /* Hero Text Overlay - Before Phase 1 */
+        .hero-text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90vw;
+            max-width: 1400px;
+            z-index: 50;
+            pointer-events: none;
+        }
+
+        .hero-text-row {
+            display: block;
+            white-space: nowrap;
+            will-change: transform;
+            font-size: clamp(3rem, 9vw, 8rem);
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            color: var(--text-color);
+            line-height: 1.15;
+        }
+
+        .hero-text-row.row-1 {
+            padding-left: 5%;
+        }
+
+        .hero-text-row.row-2 {
+            padding-left: 15%;
+        }
+
+        .hero-text-row.row-3 {
+            padding-left: 0;
         }
 
         .text-layer {
             position: absolute;
-            top: 15%;      
+            top: 15%;
             left: 10%;
-            width: 80%;    
-            height: 70%;   
-            z-index: 100;  
+            width: 80%;
+            height: 70%;
+            z-index: 100;
             opacity: 0;
-            pointer-events: none; 
+            pointer-events: none;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; 
+            justify-content: space-between;
         }
 
         .text-layer h2 {
             color: white;
-            font-size: clamp(2rem, 4vw, 3.5rem); 
-            font-weight: 400; 
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 400;
             line-height: 1.1;
             margin: 0;
-            padding: 40px; 
+            padding: 40px;
             text-transform: uppercase;
             letter-spacing: -1px;
-            max-width: 70%; 
-            transform: translateY(30px);
+            max-width: 70%;
         }
 
         .text-layer p {
@@ -89,9 +196,8 @@
             margin: 0;
             padding: 40px;
             text-align: left;
-            align-self: flex-end; 
+            align-self: flex-end;
             max-width: 400px;
-            transform: translateY(30px);
         }
 
         .fixed-footer {
@@ -111,7 +217,7 @@
             color: var(--text-color);
             pointer-events: none;
         }
-        
+
         .footer-item {
             display: flex;
             align-items: center;
@@ -123,11 +229,14 @@
             font-weight: 300;
         }
 
-        .c1 { background-color: var(--placeholder-bg); opacity: 0.95; }
-        .c2 { background-color: var(--placeholder-bg); opacity: 0.85; }
-        .c3 { background-color: var(--placeholder-bg); opacity: 0.8; }
-        .c4 { background-color: var(--placeholder-bg); opacity: 0.9; }
-        .c5 { background-color: var(--placeholder-bg); opacity: 0.75; }
+        .c1 { background-color: var(--placeholder-bg); background-image: url('coffeeux_preview.png'); background-size: cover; background-position: top; }
+        .c2 { background-color: var(--placeholder-bg); background-image: url('logcontrol_preview.png'); background-size: cover; background-position: center; }
+        .c3 { background-color: var(--placeholder-bg); background-image: url('knihobot_preview.png'); background-size: cover; background-position: center; }
+        .c4 { background-color: var(--placeholder-bg); background-image: url('imrvere_2.jpg'); background-size: cover; background-position: left; }
+        .c5 { background-color: var(--placeholder-bg); background-image: url('gapcontrol_preview.png'); background-size: cover; background-position: center; }
+        .c6 { background-color: var(--placeholder-bg); background-image: url('architecture_preview.png'); background-size: cover; background-position: center; }
+        .c7 { background-color: var(--placeholder-bg); background-image: url('cyberrelax_preview.png'); background-size: cover; background-position: center; }
+        .c8 { background-color: var(--placeholder-bg); background-image: url('iphone_preview.png'); background-size: cover; background-position: center; }
 
         .content-below {
             position: relative;
@@ -147,6 +256,7 @@
                 <div class="nav-logo-text">Nela Flosova</div>
             </div>
             <div class="nav-right">
+                <!-- Theme toggle hidden for now
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
                     <svg class="sun-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.5"/>
@@ -156,9 +266,10 @@
                         <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
-                <a href="about.html" class="nav-button primary">Let's Talk <span>•</span></a>
+                -->
+                <a href="about.html" class="nav-button primary">Get in touch <span class="arrow">↘</span></a>
                 <div class="menu-wrapper">
-                    <button class="nav-button menu-toggle">Menu <span class="menu-dots">••</span></button>
+                    <button class="nav-button menu-toggle menu-icon-only" aria-label="Menu">☰</button>
                     <div class="menu-dropdown">
                         <a href="index.html">Work</a>
                         <a href="about.html">About</a>
@@ -169,7 +280,6 @@
     </nav>
 
     <script>
-        // Menu toggle functionality
         document.addEventListener('DOMContentLoaded', function () {
             const menuToggle = document.querySelector('.menu-toggle');
             const menuWrapper = document.querySelector('.menu-wrapper');
@@ -179,14 +289,12 @@
                 menuWrapper.classList.toggle('active');
             });
 
-            // Close menu when clicking outside
             document.addEventListener('click', function (e) {
                 if (!menuWrapper.contains(e.target)) {
                     menuWrapper.classList.remove('active');
                 }
             });
 
-            // Close menu when clicking a link
             const menuLinks = document.querySelectorAll('.menu-dropdown a');
             menuLinks.forEach(link => {
                 link.addEventListener('click', function () {
@@ -197,13 +305,47 @@
     </script>
 
     <div class="scroll-container">
-        
+        <div class="nav-spacer"></div>
         <div class="sticky-wrapper">
-            <div class="card c1"></div>
-            <div class="card c2"></div>
-            <div class="card c3"></div>
-            <div class="card c4"></div>
-            <div class="card c5"></div>
+            <!-- Hero Text Overlay -->
+            <div class="hero-text-overlay">
+                <div class="hero-text-row row-1">BLENDING</div>
+                <div class="hero-text-row row-2">AESTHETICS WITH</div>
+                <div class="hero-text-row row-3">FUNCTIONALITY.</div>
+            </div>
+
+            <div class="card c1" data-project="coffeeux" data-url="project-coffeeux.html">
+                <div class="card-overlay"></div>
+                <div class="card-label"><span class="title">Coffee UX</span><span class="arrow">↗</span></div>
+            </div>
+            <div class="card c2" data-project="logcontrol" data-url="project-logcontrol.html">
+                <div class="card-overlay"></div>
+                <div class="card-label"><span class="title">LogControl</span><span class="arrow">↗</span></div>
+            </div>
+            <div class="card c3" data-project="knihobot" data-url="project-knihobot.html">
+                <div class="card-overlay"></div>
+                <div class="card-label"><span class="title">Knihobot</span><span class="arrow">↗</span></div>
+            </div>
+            <div class="card c4" data-project="imrvere" data-url="project-imrvere.html">
+                <div class="card-overlay"></div>
+                <div class="card-label"><span class="title">Café Imrvere</span><span class="arrow">↗</span></div>
+            </div>
+            <div class="card c5" data-project="gapcontrol" data-url="project-gapcontrol.html">
+                <div class="card-overlay"></div>
+                <div class="card-label"><span class="title">GapControl</span><span class="arrow">↗</span></div>
+            </div>
+            <div class="card c6" data-project="architecture" data-url="project-architecture.html">
+                <div class="card-overlay"></div>
+                <div class="card-label"><span class="title">Architecture</span><span class="arrow">↗</span></div>
+            </div>
+            <div class="card c7" data-project="cyberrelax" data-url="project-cyberrelax.html">
+                <div class="card-overlay"></div>
+                <div class="card-label"><span class="title">Cyber Relax</span><span class="arrow">↗</span></div>
+            </div>
+            <div class="card c8" data-project="iphone" data-url="project-iphone.html">
+                <div class="card-overlay"></div>
+                <div class="card-label"><span class="title">iPhone App</span><span class="arrow">↗</span></div>
+            </div>
 
             <div class="text-layer">
                 <h2>I create powerful<br>web presentations<br>with impact.</h2>
@@ -218,219 +360,190 @@
                 <div class="footer-item">© 2025</div>
             </div>
         </div>
-
     </div>
 
     <div class="content-below">
-        <h2 style="font-size: 2rem; margin-bottom: 20px;">Další sekce webu</h2>
-        <p>Všimni si, že karty i spodní lišta odjely nahoru a uvolnily místo tomuto obsahu.</p>
+        <h2 style="font-size: 2rem; margin-bottom: 20px;">More Content</h2>
+        <p>The cards and footer have scrolled away to reveal this content.</p>
     </div>
 
     <script>
     gsap.registerPlugin(ScrollTrigger);
 
-    // 1) VÝCHOZÍ STAV KARET (stack uprostřed)
-    const initialWidth = "250px";
-    const initialHeight = "320px";
-
+    // Initial card positions - stacked in center with slight rotations
     gsap.set(".card", {
         top: "50%",
         left: "50%",
         xPercent: -50,
         yPercent: -50,
-        width: initialWidth,
-        height: initialHeight,
-        rotation: 0
+        width: "250px",
+        height: "320px"
     });
 
-    gsap.set(".c1", { rotation: -3, zIndex: 5 });
-    gsap.set(".c2", { rotation: 2, zIndex: 4 });
-    gsap.set(".c3", { rotation: -1, zIndex: 3 });
-    gsap.set(".c4", { rotation: 4, zIndex: 2 });
-    gsap.set(".c5", { rotation: -2, zIndex: 1 });
+    gsap.set(".c1", { rotation: -3, zIndex: 8});
+    gsap.set(".c2", { rotation: 2, zIndex: 7});
+    gsap.set(".c3", { rotation: -1, zIndex: 6});
+    gsap.set(".c4", { rotation: 4, zIndex: 5});
+    gsap.set(".c5", { rotation: -2, zIndex: 4 });
+    gsap.set(".c6", { rotation: 1, zIndex: 3 });
+    gsap.set(".c7", { rotation: -3, zIndex: 2});
+    gsap.set(".c8", { rotation: 2, zIndex: 1});
+    gsap.set(".text-layer h2", { y: 40, opacity: 0 });
+    gsap.set(".text-layer p", { y: 30, opacity: 0 });
 
-    // 2) HLAVNÍ TIMELINE – start (stack) → scatter → gather + text
-    const tl = gsap.timeline({ paused: true });
+    // Hero text overlay - initial positions
+    gsap.set(".hero-text-overlay", { opacity: 1 });
+    gsap.set(".row-1", { x: 0 });
+    gsap.set(".row-2", { x: 0 });
+    gsap.set(".row-3", { x: 0 });
 
-    tl.addLabel("start");
+    // Single master timeline with labeled phases
+    const master = gsap.timeline({ paused: true });
 
-    // FÁZE 1 – ROZLET (scatter) – 2% gap, větší karty
-    tl.to(".c1", {
-        top: "10%", left: "2%",
-        width: "35%", height: "40%",
-        rotation: 0, xPercent: 0, yPercent: 0,
-        duration: 1.2
-    }, 0);
+    // Phase 1: Scatter cards + Hero text slides out
+    master.addLabel("start", 0)
+          // Hero text slides out - row 1 left, row 2 right, row 3 left
+          .to(".row-1", { x: "-150%", ease: "power3.inOut", duration: 1.2 }, 0)
+          .to(".row-2", { x: "100%", ease: "power3.inOut", duration: 1.2 }, 0)
+          .to(".row-3", { x: "-120%", ease: "power3.inOut", duration: 1.2 }, 0)
+          .to(".hero-text-overlay", { opacity: 0, ease: "power2.inOut", duration: 0.3 }, 0.9)
+          // Cards scatter and fade in
+          .to(".c1", { top: "5%", left: "5%", width: "17%", height: "38%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
+          .to(".c2", { top: "3%", left: "26%", width: "22%", height: "36%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
+          .to(".c3", { top: "5%", left: "52%", width: "18%", height: "34%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
+          .to(".c4", { top: "3%", left: "74%", width: "22%", height: "40%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
+          .to(".c5", { top: "50%", left: "3%", width: "24%", height: "38%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
+          .to(".c6", { top: "46%", left: "30%", width: "22%", height: "42%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
+          .to(".c7", { top: "50%", left: "55%", width: "20%", height: "38%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
+          .to(".c8", { top: "48%", left: "78%", width: "18%", height: "40%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
+          .addLabel("phase1", 1.2)
 
-    tl.to(".c2", {
-        top: "10%", left: "39%",
-        width: "22%", height: "35%",
-        rotation: 0, xPercent: 0, yPercent: 0,
-        duration: 1.2
-    }, 0);
+    // Phase 2: Form grid (label at 1.2) - 8 cards grid (4x2)
+          .to(".c1", { top: "12%", left: "12%", width: "19%", height: "32%", borderRadius: "24px 0 0 0", boxShadow: "none", ease: "power2.inOut", duration: 0.8 }, 1.2)
+          .to(".c2", { top: "12%", left: "31%", width: "19%", height: "32%", borderRadius: "0", boxShadow: "none", ease: "power2.inOut", duration: 0.8 }, 1.2)
+          .to(".c3", { top: "12%", left: "50%", width: "19%", height: "32%", borderRadius: "0", boxShadow: "none", ease: "power2.inOut", duration: 0.8 }, 1.2)
+          .to(".c4", { top: "12%", left: "69%", width: "19%", height: "32%", borderRadius: "0 24px 0 0", boxShadow: "none", ease: "power2.inOut", duration: 0.8 }, 1.2)
+          .to(".c5", { top: "43.5%", left: "12%", width: "19%", height: "36.5%", borderRadius: "0 0 0 24px", boxShadow: "none", ease: "power2.inOut", duration: 0.8 }, 1.2)
+          .to(".c6", { top: "43.5%", left: "31%", width: "19%", height: "36.5%", borderRadius: "0", boxShadow: "none", ease: "power2.inOut", duration: 0.8 }, 1.2)
+          .to(".c7", { top: "43.5%", left: "50%", width: "19%", height: "36.5%", borderRadius: "0", boxShadow: "none", ease: "power2.inOut", duration: 0.8 }, 1.2)
+          .to(".c8", { top: "43.5%", left: "69%", width: "19%", height: "36.5%", borderRadius: "0 0 24px 0", boxShadow: "none", ease: "power2.inOut", duration: 0.8 }, 1.2)
+          .addLabel("phase2", 2.0)
 
-    tl.to(".c3", {
-        top: "10%", left: "63%",
-        width: "35%", height: "30%",
-        rotation: 0, xPercent: 0, yPercent: 0,
-        duration: 1.2
-    }, 0);
+    // Phase 3: Darken + Text reveal (label at 2.0) - all animations start together for synchronized reversal
+          .to(".card", { boxShadow: "inset 0 0 0 2000px rgba(50, 50, 50, 0.65)", ease: "power2.inOut", duration: 0.5 }, 2.0)
+          .to(".text-layer", { opacity: 1, ease: "power2.inOut", duration: 0.5 }, 2.0)
+          .to(".text-layer h2", { y: 0, opacity: 1, ease: "power2.inOut", duration: 0.5 }, 2.0)
+          .to(".text-layer p", { y: 0, opacity: 1, ease: "power2.inOut", duration: 0.5 }, 2.0)
+          .addLabel("phase3", 2.5);
 
-    tl.to(".c4", {
-        top: "53%", left: "2%",
-        width: "57%", height: "37%",
-        rotation: 0, xPercent: 0, yPercent: 0,
-        duration: 1.2
-    }, 0);
+    // Track current phase for tweenTo
+    let currentTarget = "start";
 
-    tl.to(".c5", {
-        top: "43%", left: "61%",
-        width: "35%", height: "47%",
-        rotation: 0, xPercent: 0, yPercent: 0,
-        duration: 1.2
-    }, 0);
-
-    tl.addLabel("scatter");
-
-    // FÁZE 2 – SPOJENÍ + ZTMAVENÍ
-    tl.to(".c1", {
-        top: "15%", left: "10%", width: "35%", height: "40%",
-        borderRadius: "24px 0 0 0", boxShadow: "none", duration: 1.2
-    }, ">"); 
-
-    tl.to(".c2", {
-        top: "15%", left: "45%", width: "20%", height: "40%",
-        borderRadius: "0 0 0 0", boxShadow: "none", duration: 1.2
-    }, "<"); 
-
-    tl.to(".c3", {
-        top: "15%", left: "65%", width: "25%", height: "30%",
-        borderRadius: "0 24px 0 0", boxShadow: "none", duration: 1.2
-    }, "<");
-
-    tl.to(".c4", {
-        top: "55%", left: "10%", width: "55%", height: "30%",
-        borderRadius: "0 0 0 24px", boxShadow: "none", duration: 1.2
-    }, "<");
-
-    tl.to(".c5", {
-        top: "45%", left: "65%", width: "25%", height: "40%",
-        borderRadius: "0 0 24px 0", boxShadow: "none", duration: 1.2
-    }, "<");
-
-    tl.to(".card", {
-        boxShadow: "inset 0 0 0 2000px rgba(80, 80, 80, 0.6)", 
-        duration: 1.2
-    }, "<");
-
-    // TEXT – po složení
-    tl.to(".text-layer", { opacity: 1, duration: 1, ease: "power2.out" });
-    tl.to(".text-layer h2", { y: 0, duration: 1, ease: "power2.out" }, "<");
-    tl.to(".text-layer p",  { y: 0, duration: 1, ease: "power2.out" }, "<");
-
-    tl.addLabel("gather");
-
-    // 3) STAVY PRO SCROLL – zóny, kde se má aktivovat který stav
-    const states = [
-        { name: "start",   from: 0.0, to: 0.2 },
-        { name: "scatter", from: 0.2, to: 0.6 },
-        { name: "gather",  from: 0.6, to: 1.01 }
-    ];
-
-    const stateOrder = ["start", "scatter", "gather"];
-
-    // progress, kam chceme scroll po dohrání daného stavu
-    const targetProgressAfter = {
-        start:   0.05,
-        scatter: 0.59, // těsně před gather zónou
-        gather:  0.99  // skoro na konci – další scroll už odpinne
-    };
-
-    function getStateByProgress(p) {
-        return states.find(s => p >= s.from && p < s.to) || states[states.length - 1];
-    }
-
-    let currentState = "start";
-    let lastProgress = 0;
-    let activeTween = null;
-    let scrollTween = null;
-    let isAutoScrolling = false;
-    let mainST;
-
-    // 4) SCROLLTRIGGER – max 1 krok nahoru/dolů na jeden update
-    mainST = ScrollTrigger.create({
+    // Single ScrollTrigger that triggers phase transitions
+    ScrollTrigger.create({
         trigger: ".scroll-container",
         start: "top top",
-        end: "+=200%",
+        end: "+=300%",
         pin: true,
+        anticipatePin: 1,
+        markers: false,
         onUpdate: (self) => {
-            if (isAutoScrolling) return;
+            const progress = self.progress;
+            let newTarget;
 
-            const p   = self.progress;
-            const delta = p - lastProgress;
-            const dir = delta > 0 ? 1 : (delta < 0 ? -1 : 0);
-            lastProgress = p;
-
-            if (!dir) return;
-
-            const desiredStateObj = getStateByProgress(p);
-            if (!desiredStateObj) return;
-
-            const desiredIndex = stateOrder.indexOf(desiredStateObj.name);
-            const currentIndex = stateOrder.indexOf(currentState);
-
-            // jsme už tam? nic nedělej
-            if (desiredIndex === currentIndex) return;
-
-            // dovol jen jeden krok dopředu/dozadu
-            let targetIndex;
-            if (desiredIndex > currentIndex) {
-                targetIndex = currentIndex + 1;
+            // Determine target based on scroll progress
+            if (progress < 0.10) {
+                newTarget = "start";
+            } else if (progress < 0.45) {
+                newTarget = "phase1";
+            } else if (progress < 0.75) {
+                newTarget = "phase2";
             } else {
-                targetIndex = currentIndex - 1;
+                newTarget = "phase3";
             }
 
-            targetIndex = Math.max(0, Math.min(stateOrder.length - 1, targetIndex));
-            const target = stateOrder[targetIndex];
-
-            currentState = target;
-
-            if (activeTween) activeTween.kill();
-
-            activeTween = tl.tweenTo(target, {
-                duration: 1.2,
-                ease: "power2.inOut",
-                onComplete: () => {
-                    const desiredProgress = targetProgressAfter[target];
-                    if (desiredProgress == null) return;
-
-                    const start = mainST.start;
-                    const end   = mainST.end;
-                    const targetScroll = start + desiredProgress * (end - start);
-
-                    // plynulé dotažení scrollbaru místo trhnutí
-                    if (scrollTween) scrollTween.kill();
-
-                    const proxy = { value: mainST.scroll() };
-
-                    isAutoScrolling = true;
-                    scrollTween = gsap.to(proxy, {
-                        value: targetScroll,
-                        duration: 0.8,
-                        ease: "power2.inOut",
-                        onUpdate: () => {
-                            mainST.scroll(proxy.value);
-                        },
-                        onComplete: () => {
-                            isAutoScrolling = false;
-                            scrollTween = null;
-                        }
-                    });
-                }
-            });
+            // Only animate if target changed
+            if (newTarget !== currentTarget) {
+                currentTarget = newTarget;
+                master.tweenTo(newTarget, { duration: 0.8, ease: "power2.inOut" });
+            }
         }
     });
-</script>
 
+    // Refresh on load
+    window.addEventListener('load', () => {
+        ScrollTrigger.refresh();
+    });
+
+    // Card hover and click interactions (only active in phase 1)
+    const cards = document.querySelectorAll('.card');
+
+    // Magnetic mouse-follow effect for stacked cards (only in "start" phase)
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    // Each card follows mouse with different depth for parallax effect
+    const cardDepths = [0.08, 0.07, 0.06, 0.05, 0.04, 0.035, 0.03, 0.025]; // c1 to c8
+
+    gsap.ticker.add(() => {
+        if (currentTarget !== 'start') return; // Only apply in start phase
+
+        cards.forEach((card, i) => {
+            const depth = cardDepths[i] || 0.03;
+            const rect = card.getBoundingClientRect();
+            const cardCenterX = rect.left + rect.width / 2;
+            const cardCenterY = rect.top + rect.height / 2;
+
+            const deltaX = (mouseX - cardCenterX) * depth;
+            const deltaY = (mouseY - cardCenterY) * depth;
+
+            gsap.to(card, {
+                x: deltaX,
+                y: deltaY,
+                duration: 0.8,
+                ease: 'power2.out',
+                overwrite: 'auto'
+            });
+        });
+    });
+
+    // Function to update hoverable state
+    function updateHoverableState() {
+        cards.forEach(card => {
+            if (currentTarget === 'phase1') {
+                card.classList.add('hoverable');
+            } else {
+                card.classList.remove('hoverable');
+            }
+        });
+    }
+
+    // Update on phase change - wrap the original onUpdate
+    const originalOnUpdate = ScrollTrigger.getById ? null : true;
+
+    // Watch for phase changes
+    let lastTarget = currentTarget;
+    setInterval(() => {
+        if (lastTarget !== currentTarget) {
+            lastTarget = currentTarget;
+            updateHoverableState();
+        }
+    }, 100);
+
+    // Click to navigate (only in phase 1)
+    cards.forEach(card => {
+        const url = card.dataset.url;
+        card.addEventListener('click', () => {
+            if (currentTarget === 'phase1' && url) {
+                window.location.href = url;
+            }
+        });
+    });
+    </script>
 </body>
 </html>
