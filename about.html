@@ -126,6 +126,13 @@
                             seamless
                             user experiences across all devices.
                         </p>
+                        <div class="service-tags">
+                            <span class="service-tag">User Research</span>
+                            <span class="service-tag">Wireframing</span>
+                            <span class="service-tag">Prototyping</span>
+                            <span class="service-tag">Usability Testing</span>
+                            <span class="service-tag">Design Systems</span>
+                        </div>
                         <a href="projects_list.html" class="service-link">
                             View UX projects
                             <span class="arrow">→</span>
@@ -142,6 +149,13 @@
                             crafted
                             with performance and scalability in mind.
                         </p>
+                        <div class="service-tags">
+                            <span class="service-tag">HTML & CSS</span>
+                            <span class="service-tag">JavaScript</span>
+                            <span class="service-tag">Vue</span>
+                            <span class="service-tag">Responsive Design</span>
+                            <span class="service-tag">Performance</span>
+                        </div>
                         <a href="projects_list.html" class="service-link">
                             View web projects
                             <span class="arrow">→</span>
@@ -158,6 +172,13 @@
                             experiences
                             that set you apart from the competition.
                         </p>
+                        <div class="service-tags">
+                            <span class="service-tag">Logo Design</span>
+                            <span class="service-tag">Visual Identity</span>
+                            <span class="service-tag">Brand Guidelines</span>
+                            <span class="service-tag">Typography</span>
+                            <span class="service-tag">Color Systems</span>
+                        </div>
                         <a href="projects_list.html" class="service-link">
                             View branding projects
                             <span class="arrow">→</span>
@@ -273,9 +294,11 @@
     <footer class="dark-footer">
         <div class="footer-container">
             <div class="footer-name">
-                <h2 class="footer-title">NELA FLOSOVA</h2>
+                <h2 class="footer-title">Nela Flosova</h2>
             </div>
+        </div>
 
+        <div class="footer-card">
             <div class="footer-content">
                 <div class="footer-section">
                     <h3 class="footer-heading">Navigate</h3>
@@ -303,11 +326,6 @@
                     <p class="footer-text">& collaborations</p>
                 </div>
             </div>
-
-            <div class="footer-bottom">
-                <p>© 2025 Nela Flosova. All rights reserved.</p>
-                <p>Designed & Developed with care</p>
-            </div>
         </div>
     </footer>
 
@@ -315,48 +333,46 @@
         .dark-footer {
             background-color: #1a1a1a;
             color: #f5f5f5;
-            padding: 120px 60px 60px;
             margin-top: 0;
-            border-radius: 60px 60px 0 0;
+            border-radius: 40px 40px 0 0;
             position: relative;
-        }
-
-        .dark-footer::before {
-            content: '';
-            position: absolute;
-            top: -60px;
-            left: 0;
-            right: 0;
-            height: 60px;
-            background-color: var(--bg-color, #f5f5f5);
         }
 
         .footer-container {
             max-width: 1320px;
             margin: 0 auto;
+            padding-bottom: 40px;
         }
 
         .footer-name {
-            margin-bottom: 100px;
+            padding: 40px 0;
         }
 
         .footer-title {
-            font-size: clamp(60px, 10vw, 140px);
-            font-weight: 700;
+            font-size: clamp(80px, 14vw, 240px);
+            font-weight: 400;
             letter-spacing: -0.02em;
-            line-height: 0.9;
-            color: #f5f5f5;
-            margin: 0;
+            line-height: 0.85;
+            color: #ffffff;
+            margin: 80px 60px;
             overflow: hidden;
+        }
+
+        .footer-card {
+            background-color: #2a2a2a;
+            border-radius: 30px 30px 0 0;
+            padding: 60px;
+            margin-top: -180px;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 60px;
-            margin-bottom: 80px;
-            padding-bottom: 80px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1320px;
+            margin: 0 auto;
         }
 
         .footer-section {
@@ -366,11 +382,11 @@
         }
 
         .footer-heading {
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 500;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #999;
+            letter-spacing: 3px;
+            color: #888;
             margin: 0;
         }
 
@@ -388,69 +404,67 @@
             text-decoration: none;
             font-size: 16px;
             font-weight: 400;
-            transition: all 0.3s ease;
+            transition: opacity 0.3s ease;
             display: inline-block;
-            position: relative;
-        }
-
-        .footer-links a::after {
-            content: '→';
-            position: absolute;
-            right: -25px;
-            opacity: 0;
-            transition: all 0.3s ease;
         }
 
         .footer-links a:hover {
-            color: #fff;
-            transform: translateX(5px);
-        }
-
-        .footer-links a:hover::after {
-            opacity: 1;
-            right: -30px;
+            opacity: 0.7;
         }
 
         .footer-text {
             font-size: 16px;
-            line-height: 1.6;
+            line-height: 1.8;
             color: #d1d1d1;
             margin: 0;
         }
 
-        .footer-bottom {
+        /* Service Tags - Hidden by default, visible on hover */
+        .service-tags {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
-            color: #999;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
         }
 
-        .footer-bottom p {
-            margin: 0;
+        .service-item:hover .service-tags {
+            max-height: 200px;
+            opacity: 1;
+        }
+
+        .service-tag {
+            display: inline-block;
+            padding: 6px 14px;
+            background-color: #f0f0f0;
+            color: #333;
+            font-size: 12px;
+            font-weight: 500;
+            border-radius: 20px;
+            letter-spacing: 0.02em;
         }
 
         @media (max-width: 768px) {
             .dark-footer {
-                padding: 80px 24px 40px;
-                margin-top: 80px;
+                padding: 60px 24px 0;
+                border-radius: 30px 30px 0 0;
             }
 
             .footer-name {
-                margin-bottom: 60px;
+                padding: 20px 0;
+            }
+
+            .footer-card {
+                padding: 40px 24px;
+                border-radius: 20px 20px 0 0;
             }
 
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 40px;
-                margin-bottom: 60px;
-                padding-bottom: 60px;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 12px;
-                text-align: center;
             }
         }
     </style>

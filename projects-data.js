@@ -55,5 +55,21 @@ const projectsData = [
         categories: ["3d", "game"],
         url: "https://nela-flosova.itch.io/secret-forest",
         image: null
+    },
+    {
+        id: 8,
+        title: "Architectural Visualization",
+        tags: ["3D Modeling", "Architectural Design"],
+        categories: ["3d"],
+        url: "project-architecture.html",
+        image: "architecture_1.jpg"
+    },
+    {
+        id: 9,
+        title: "Café Imervere Website",
+        tags: ["UI Design", "Web Presentation"],
+        categories: ["ui-ux"],
+        url: "project-imrvere.html",
+        image: "imrvere_1.jpg"
     }
 ];
