@@ -24,18 +24,22 @@
             position: relative;
         }
 
-        .nav-spacer {
-            height: 60px;
-        }
-
         .sticky-wrapper {
             width: 100vw;
-            height: calc(100vh - 60px);
+            height: 100vh;
             position: relative;
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        .cards-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
         .card {
@@ -65,15 +69,22 @@
         }
 
 
-        .c1::after { background-image: url('coffeeux_3.jpg'); }
-        .c2::after { background-image: url('logcontrol_5.jpg'); }
-        .c3::after { background-image: url('knihobot_2.jpg'); background-position: right; }
-        .c4::after { background-image: url('imrvere_4.jpg'); background-position: center; }
-        .c5::after { background-image: url('gapcontrol_end.png'); }
-        .c6::after { background-image: url('archviz_2.jpg'); }
-        .c7::after { background-image: url('iphone_3.jpg'); }
+      
 
-        /* Hero Text Overlay - Before Phase 1 */
+
+        .c1::after { background-image: url('knihobot_2.jpg'); background-position: right; }
+        .c2::after { background-image: url('logcontrol_5.jpg'); }
+        .c3::after { background-image: url('cyberrelax_cover.jpg'); }
+        .c4::after { background-image: url('archviz_2.jpg'); background-position: center; }
+        .c5::after { background-image: url('imrvere_4.jpg'); }
+        .c6::after { background-image: url('gapcontrol_end.png'); }
+        .c7::after { background-image: url('coffeeux_3.jpg'); }
+        .c8::after { background-image: url('pension_2.jpg'); }
+        .c9::after { background-image: url('iphone_cover_2.jpg'); }
+        .c10::after { background-image: url('secretforest_2.jpg'); }
+        .c11::after { background-image: url('pension_hover.jpg'); }
+
+        /* Hero Text Overlay */
         .hero-text-overlay {
             position: absolute;
             top: 50%;
@@ -95,48 +106,8 @@
             line-height: 1.2;
         }
 
-
          .hero-text-row.row-2 {
             padding-left: 10%;
-        }
-
-
-        .text-layer {
-            position: absolute;
-            top: 10%;
-            left: 16%;
-            width: 68%;
-            height: 75%;
-            z-index: 100;
-            opacity: 0;
-            pointer-events: none;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            box-sizing: border-box;
-        }
-
-        .text-layer h2 {
-            color: white;
-            font-size: clamp(2rem, 3.5vw, 3.5rem);
-            font-weight: 400;
-            line-height: 1.1;
-            margin: 0;
-            padding: 40px;
-            text-transform: uppercase;
-            letter-spacing: -1px;
-            max-width: 70%;
-        }
-
-        .text-layer p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 18px;
-            line-height: 1.4;
-            margin: 0;
-            padding: 40px;
-            text-align: left;
-            align-self: flex-end;
-            max-width: 550px;
         }
 
         .fixed-footer {
@@ -173,13 +144,17 @@
             order: -1;
         }
 
-        .c1 { background-color: var(--placeholder-bg); background-image: url('coffeeux_preview.png'); background-size: cover; background-position: top; }
+        .c1 { background-color: var(--placeholder-bg); background-image: url('knihobot_preview.png'); background-size: cover; background-position: center; }
         .c2 { background-color: var(--placeholder-bg); background-image: url('logcontrol_preview.png'); background-size: cover; background-position: center; }
-        .c3 { background-color: var(--placeholder-bg); background-image: url('knihobot_preview.png'); background-size: cover; background-position: center; }
-        .c4 { background-color: var(--placeholder-bg); background-image: url('imrvere_2.jpg'); background-size: cover; background-position: left; }
-        .c5 { background-color: var(--placeholder-bg); background-image: url('gapcontrol_preview.png'); background-size: cover; background-position: center; }
-        .c6 { background-color: var(--placeholder-bg); background-image: url('architecture_preview.png'); background-size: cover; background-position: center; }
-        .c7 { background-color: var(--placeholder-bg); background-image: url('iphone_preview.png'); background-size: cover; background-position: center; }
+        .c3 { background-color: var(--placeholder-bg); background-image: url('cyberrelax_1.jpg'); background-size: cover; background-position: center; }
+        .c4 { background-color: var(--placeholder-bg); background-image: url('archviz_1.jpg'); background-size: cover; background-position: center; }
+        .c5 { background-color: var(--placeholder-bg); background-image: url('imrvere_2.jpg'); background-size: cover; background-position: left; }
+        .c6 { background-color: var(--placeholder-bg); background-image: url('gapcontrol_preview.png'); background-size: cover; background-position: center; }
+        .c7 { background-color: var(--placeholder-bg); background-image: url('coffeeux_preview.png'); background-size: cover; background-position: top; }
+        .c8 { background-color: var(--placeholder-bg); background-image: url('pension_1.jpg'); background-size: cover; background-position: center; }
+        .c9 { background-color: var(--placeholder-bg); background-image: url('iphone_cover_1.jpg'); background-size: cover; background-position: center; }
+        .c10 { background-color: var(--placeholder-bg); background-image: url('secretforest_1.jpg'); background-size: cover; background-position: center; }
+        .c11 { background-color: var(--placeholder-bg); background-image: url('pension_3.jpg'); background-size: cover; background-position: center; }
 
         .content-below {
             position: relative;
@@ -189,6 +164,154 @@
             min-height: 100vh;
             text-align: center;
         }
+
+        /* Animated Button */
+        .swirl-button {
+            --duration: 7s;
+            --easing: linear;
+            --c-color-1: rgba(90, 88, 96, 0.6);
+            --c-color-2: rgba(29, 29, 29, 0.7);
+            --c-color-3: rgba(63, 63, 72, 0.6);
+            --c-color-4: rgba(134, 134, 147, 0.5);
+            --c-radial-inner: #2a2a2a;
+            --c-radial-outer: #1a1a1a;
+            --c-color: #fff;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-appearance: none;
+            appearance: none;
+            outline: none;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            position: relative;
+            border-radius: 28px;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            font-family: var(--font-family);
+            font-weight: 500;
+            font-size: 15px;
+            letter-spacing: 0.01em;
+            line-height: 1.5;
+            color: var(--c-color);
+            background: var(--c-radial-outer);
+            box-shadow: none;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+
+        .swirl-button:before {
+            content: "";
+            pointer-events: none;
+            position: absolute;
+            z-index: 3;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 28px;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+        }
+
+        .swirl-button .wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 28px;
+            min-width: 110px;
+            padding: 10px 20px;
+            background: radial-gradient(circle, var(--c-radial-inner), var(--c-radial-outer) 80%);
+        }
+
+        .swirl-button .wrapper span {
+            display: inline-block;
+            position: relative;
+            letter-spacing: 3%;
+            font-weight: 300;
+            z-index: 1;
+        }
+
+        .swirl-button .wrapper .arrow {
+            display: inline-block;
+            margin-left: 8px;
+            font-size: 14px;
+            transition: transform 0.3s ease;
+        }
+
+        .swirl-button:hover {
+            --duration: 2s;
+            transform: translateY(-1px);
+        }
+
+        .swirl-button:hover .arrow {
+            transform: translate(2px, 2px);
+        }
+
+        .swirl-button .wrapper .circle {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            filter: blur(var(--blur, 8px));
+            background: var(--background, transparent);
+            transform: translate(var(--x, 0), var(--y, 0)) translateZ(0);
+            animation: var(--animation, none) var(--duration) var(--easing) infinite;
+        }
+
+        .swirl-button .wrapper .circle.circle-1,
+        .swirl-button .wrapper .circle.circle-9,
+        .swirl-button .wrapper .circle.circle-10 {
+            --background: var(--c-color-4);
+        }
+
+        .swirl-button .wrapper .circle.circle-3,
+        .swirl-button .wrapper .circle.circle-4 {
+            --background: var(--c-color-2);
+            --blur: 14px;
+        }
+
+        .swirl-button .wrapper .circle.circle-5,
+        .swirl-button .wrapper .circle.circle-6 {
+            --background: var(--c-color-3);
+            --blur: 16px;
+        }
+
+        .swirl-button .wrapper .circle.circle-2,
+        .swirl-button .wrapper .circle.circle-7,
+        .swirl-button .wrapper .circle.circle-8,
+        .swirl-button .wrapper .circle.circle-11,
+        .swirl-button .wrapper .circle.circle-12 {
+            --background: var(--c-color-1);
+            --blur: 12px;
+        }
+
+        .swirl-button .wrapper .circle.circle-1 { --x: 0; --y: -40px; --animation: circle-1; }
+        .swirl-button .wrapper .circle.circle-2 { --x: 92px; --y: 8px; --animation: circle-2; }
+        .swirl-button .wrapper .circle.circle-3 { --x: -12px; --y: -12px; --animation: circle-3; }
+        .swirl-button .wrapper .circle.circle-4 { --x: 80px; --y: -12px; --animation: circle-4; }
+        .swirl-button .wrapper .circle.circle-5 { --x: 12px; --y: -4px; --animation: circle-5; }
+        .swirl-button .wrapper .circle.circle-6 { --x: 56px; --y: 16px; --animation: circle-6; }
+        .swirl-button .wrapper .circle.circle-7 { --x: 8px; --y: 28px; --animation: circle-7; }
+        .swirl-button .wrapper .circle.circle-8 { --x: 28px; --y: -4px; --animation: circle-8; }
+        .swirl-button .wrapper .circle.circle-9 { --x: 20px; --y: -12px; --animation: circle-9; }
+        .swirl-button .wrapper .circle.circle-10 { --x: 64px; --y: 16px; --animation: circle-10; }
+        .swirl-button .wrapper .circle.circle-11 { --x: 4px; --y: 4px; --animation: circle-11; }
+        .swirl-button .wrapper .circle.circle-12 { --blur: 14px; --x: 52px; --y: 4px; --animation: circle-12; }
+
+        @keyframes circle-1 { 33% { transform: translate(0px, 16px) translateZ(0); } 66% { transform: translate(12px, 64px) translateZ(0); } }
+        @keyframes circle-2 { 33% { transform: translate(80px, -10px) translateZ(0); } 66% { transform: translate(72px, -48px) translateZ(0); } }
+        @keyframes circle-3 { 33% { transform: translate(20px, 12px) translateZ(0); } 66% { transform: translate(12px, 4px) translateZ(0); } }
+        @keyframes circle-4 { 33% { transform: translate(76px, -12px) translateZ(0); } 66% { transform: translate(112px, -8px) translateZ(0); } }
+        @keyframes circle-5 { 33% { transform: translate(84px, 28px) translateZ(0); } 66% { transform: translate(40px, -32px) translateZ(0); } }
+        @keyframes circle-6 { 33% { transform: translate(28px, -16px) translateZ(0); } 66% { transform: translate(76px, -56px) translateZ(0); } }
+        @keyframes circle-7 { 33% { transform: translate(8px, 28px) translateZ(0); } 66% { transform: translate(20px, -60px) translateZ(0); } }
+        @keyframes circle-8 { 33% { transform: translate(32px, -4px) translateZ(0); } 66% { transform: translate(56px, -20px) translateZ(0); } }
+        @keyframes circle-9 { 33% { transform: translate(20px, -12px) translateZ(0); } 66% { transform: translate(80px, -8px) translateZ(0); } }
+        @keyframes circle-10 { 33% { transform: translate(68px, 20px) translateZ(0); } 66% { transform: translate(100px, 28px) translateZ(0); } }
+        @keyframes circle-11 { 33% { transform: translate(4px, 4px) translateZ(0); } 66% { transform: translate(68px, 20px) translateZ(0); } }
+        @keyframes circle-12 { 33% { transform: translate(56px, 0px) translateZ(0); } 66% { transform: translate(60px, -32px) translateZ(0); } }
     </style>
 </head>
 <body>
@@ -210,7 +333,24 @@
                     </svg>
                 </button>
                 -->
-                <a href="about.html" class="nav-button primary">Get in touch <span class="arrow">↘</span></a>
+                <a href="about.html" class="swirl-button">
+                    <div class="wrapper">
+                        <span>Contact</span>
+                        <span class="arrow">↘</span>
+                        <div class="circle circle-1"></div>
+                        <div class="circle circle-2"></div>
+                        <div class="circle circle-3"></div>
+                        <div class="circle circle-4"></div>
+                        <div class="circle circle-5"></div>
+                        <div class="circle circle-6"></div>
+                        <div class="circle circle-7"></div>
+                        <div class="circle circle-8"></div>
+                        <div class="circle circle-9"></div>
+                        <div class="circle circle-10"></div>
+                        <div class="circle circle-11"></div>
+                        <div class="circle circle-12"></div>
+                    </div>
+                </a>
                 <div class="menu-wrapper">
                     <button class="nav-button menu-toggle menu-icon-only" aria-label="Menu">☰</button>
                     <div class="menu-dropdown">
@@ -248,7 +388,6 @@
     </script>
 
     <div class="scroll-container">
-        <div class="nav-spacer"></div>
         <div class="sticky-wrapper">
             <!-- Hero Text Overlay -->
             <div class="hero-text-overlay">
@@ -256,17 +395,18 @@
                 <div class="hero-text-row row-2">BUILT TO PERFORM</div>
             </div>
 
-            <div class="card c1" data-project="coffeeux" data-url="project-coffeeux.html"></div>
-            <div class="card c2" data-project="logcontrol" data-url="project-logcontrol.html"></div>
-            <div class="card c3" data-project="knihobot" data-url="project-knihobot.html"></div>
-            <div class="card c4" data-project="imrvere" data-url="project-imrvere.html"></div>
-            <div class="card c5" data-project="gapcontrol" data-url="project-gapcontrol.html"></div>
-            <div class="card c6" data-project="architecture" data-url="project-architecture.html"></div>
-            <div class="card c7" data-project="iphone" data-url="project-iphone.html"></div>
-
-            <div class="text-layer">
-                <h2>I create powerful<br>digital experiences<br>with impact.</h2>
-                <p>I help modern brands communicate through clear design solutions that are both beautiful and functional.</p>
+            <div class="cards-container">
+                <div class="card c1" data-project="knihobot" data-url="project-knihobot.html"></div>
+                <div class="card c2" data-project="logcontrol" data-url="project-logcontrol.html"></div>
+                <div class="card c3" data-project="cyberrelax" data-url="project-cyberrelax.html"></div>
+                <div class="card c4" data-project="architecture" data-url="project-architecture.html"></div>
+                <div class="card c5" data-project="imrvere" data-url="project-imrvere.html"></div>
+                <div class="card c6" data-project="gapcontrol" data-url="project-gapcontrol.html"></div>
+                <div class="card c7" data-project="coffeeux" data-url="project-coffeeux.html"></div>
+                <div class="card c8" data-project="pension" data-url="project-pension.html"></div>
+                <div class="card c9" data-project="iphone" data-url="project-iphone.html"></div>
+                <div class="card c10" data-project="secretforest" data-url="project-secretforest.html"></div>
+                <div class="card c11" data-project="pension" data-url="project-pension.html"></div>
             </div>
 
             <div class="fixed-footer">
@@ -307,8 +447,10 @@
     gsap.set(".c5", { rotation: -2, zIndex: 4, opacity: 1 });
     gsap.set(".c6", { rotation: 1, zIndex: 3, opacity: 1 });
     gsap.set(".c7", { rotation: 2, zIndex: 2, opacity: 1 });
-    gsap.set(".text-layer h2", { y: 40, opacity: 0 });
-    gsap.set(".text-layer p", { y: 30, opacity: 0 });
+    gsap.set(".c8", { rotation: -1, zIndex: 1, opacity: 1 });
+    gsap.set(".c9", { rotation: 3, zIndex: 1, opacity: 1 });
+    gsap.set(".c10", { rotation: -2, zIndex: 1, opacity: 1 });
+    gsap.set(".c11", { rotation: 1, zIndex: 1, opacity: 1 });
 
     // Hero text overlay - initial positions
     gsap.set(".hero-text-overlay", { opacity: 1 });
@@ -321,33 +463,19 @@
     // Phase 1: Scatter cards around the edges (hero text stays visible in center)
     master.addLabel("start", 0)
           // Cards scatter to edges - matching reference layout
-          .to(".c1", { top: "18%", left: "4%", width: "10%", height: "24%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
-          .to(".c2", { top: "10%", left: "24%", width: "16%", height: "20%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
-          .to(".c3", { top: "6%", left: "54%", width: "10%", height: "26%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
-          .to(".c4", { top: "14%", left: "76%", width: "20%", height: "26%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
-          .to(".c5", { top: "50%", left: "8%", width: "16%", height: "36%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
-          .to(".c6", { top: "68%", left: "44%", width: "16%", height: "22%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
-          .to(".c7", { top: "56%", left: "82%", width: "14%", height: "32%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
-          .addLabel("phase1", 1.2)
-
-    // Phase 2: Form grid + Hero text slides out + Darken + Text reveal (all together)
-          // Hero text slides out - row 1 left, row 2 right
-          .to(".row-1", { x: "-120%", ease: "power3.inOut", duration: 0.8 }, 1.2)
-          .to(".row-2", { x: "100%", ease: "power3.inOut", duration: 0.8 }, 1.2)
-          .to(".hero-text-overlay", { opacity: 0, ease: "power2.inOut", duration: 0.2 }, 1.8)
-          // Cards form grid (4 top + 3 bottom)
-          .to(".c1", { top: "10%", left: "16%", width: "17%", height: "34%", borderRadius: "24px 0 0 0", boxShadow: "inset 0 0 0 2000px rgba(50, 50, 50, 0.65)", ease: "power2.inOut", duration: 0.8 }, 1.2)
-          .to(".c2", { top: "10%", left: "33%", width: "17%", height: "34%", borderRadius: "0", boxShadow: "inset 0 0 0 2000px rgba(50, 50, 50, 0.65)", ease: "power2.inOut", duration: 0.8 }, 1.2)
-          .to(".c3", { top: "10%", left: "50%", width: "17%", height: "34%", borderRadius: "0", boxShadow: "inset 0 0 0 2000px rgba(50, 50, 50, 0.65)", ease: "power2.inOut", duration: 0.8 }, 1.2)
-          .to(".c4", { top: "10%", left: "67%", width: "17%", height: "34%", borderRadius: "0 24px 0 0", boxShadow: "inset 0 0 0 2000px rgba(50, 50, 50, 0.65)", ease: "power2.inOut", duration: 0.8 }, 1.2)
-          .to(".c5", { top: "44%", left: "16%", width: "26%", height: "41%", borderRadius: "0 0 0 24px", boxShadow: "inset 0 0 0 2000px rgba(50, 50, 50, 0.65)", ease: "power2.inOut", duration: 0.8 }, 1.2)
-          .to(".c6", { top: "44%", left: "42%", width: "21%", height: "41%", borderRadius: "0", boxShadow: "inset 0 0 0 2000px rgba(50, 50, 50, 0.65)", ease: "power2.inOut", duration: 0.8 }, 1.2)
-          .to(".c7", { top: "44%", left: "63%", width: "21%", height: "41%", borderRadius: "0 0 24px 0", boxShadow: "inset 0 0 0 2000px rgba(50, 50, 50, 0.65)", ease: "power2.inOut", duration: 0.8 }, 1.2)
-          // Text layer reveals
-          .to(".text-layer", { opacity: 1, ease: "power2.inOut", duration: 0.5 }, 1.5)
-          .to(".text-layer h2", { y: 0, opacity: 1, ease: "power2.inOut", duration: 0.5 }, 1.5)
-          .to(".text-layer p", { y: 0, opacity: 1, ease: "power2.inOut", duration: 0.5 }, 1.6)
-          .addLabel("phase2", 2.0);
+          .to(".c1", { top: "8%", left: "-4%", width: "14%", height: "34%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
+          .to(".c2", { top: "12%", left: "20%", width: "18%", height: "24%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
+          .to(".c3", { top: "-8%", left: "48%", width: "16%", height: "36%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
+          .to(".c4", { top: "20%", left: "74%", width: "18%", height: "24%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
+          .to(".c5", { top: "52%", left: "10%", width: "18%", height: "36%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
+          .to(".c6", { top: "70%", left: "34%", width: "24%", height: "28%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
+          .to(".c7", { top: "64%", left: "66%", width: "16%", height: "34%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
+          // Edge cards - partially outside viewport
+          .to(".c8", { top: "-22%", left: "12%", width: "20%", height: "24%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
+          .to(".c9", { top: "75%", left: "-12%", width: "16%", height: "36%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
+          .to(".c10", { top: "-18%", left: "82%", width: "26%", height: "28%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
+          .to(".c11", { top: "54%", left: "88%", width: "24%", height: "30%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
+          .addLabel("phase1", 1.2);
 
     // Track current phase for tweenTo
     let currentTarget = "start";
@@ -356,7 +484,7 @@
     ScrollTrigger.create({
         trigger: ".scroll-container",
         start: "top top",
-        end: "+=300%",
+        end: "+=200%",
         pin: true,
         anticipatePin: 1,
         markers: false,
@@ -365,12 +493,10 @@
             let newTarget;
 
             // Determine target based on scroll progress
-            if (progress < 0.15) {
+            if (progress < 0.25) {
                 newTarget = "start";
-            } else if (progress < 0.50) {
-                newTarget = "phase1";
             } else {
-                newTarget = "phase2";
+                newTarget = "phase1";
             }
 
             // Only animate if target changed
@@ -386,10 +512,11 @@
         ScrollTrigger.refresh();
     });
 
-    // Card hover and click interactions (only active in phase 1)
+    // Card hover and click interactions
     const cards = document.querySelectorAll('.card');
+    const cardsContainer = document.querySelector('.cards-container');
 
-    // Magnetic mouse-follow effect for stacked cards (only in "start" phase)
+    // Mouse position tracking
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
 
@@ -398,32 +525,58 @@
         mouseY = e.clientY;
     });
 
-    // Each card follows mouse with different depth for parallax effect
-    const cardDepths = [0.15, 0.14, 0.12, 0.10, 0.08, 0.07, 0.06]; // c1 to c7 - stronger parallax
+    // Move cards based on mouse position
+    const maxMoveStacked = 70; // Max movement in stacked phase (per card)
+    const maxMoveScattered = 200; // Max movement in scattered phase (container)
+
+    // Parallax multipliers for stacked phase - higher z-index (top) = more movement
+    const parallaxMultipliers = [0.85, 1, 0.75, 0.65, 0.55, 0.45, 0.35, 0.25, 0.25, 0.25, 0.25]; // c1-c11
 
     gsap.ticker.add(() => {
-        if (currentTarget !== 'start') return; // Only apply in start phase
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
 
-        cards.forEach((card, i) => {
-            const depth = cardDepths[i] || 0.03;
-            const rect = card.getBoundingClientRect();
-            const cardCenterX = rect.left + rect.width / 2;
-            const cardCenterY = rect.top + rect.height / 2;
+        // Calculate offset from center (normalized -1 to 1)
+        const offsetX = (mouseX - centerX) / centerX;
+        const offsetY = (mouseY - centerY) / centerY;
 
-            const deltaX = (mouseX - cardCenterX) * depth;
-            const deltaY = (mouseY - cardCenterY) * depth;
+        if (currentTarget === 'start') {
+            // Stacked phase: move individual cards with different amounts
+            gsap.to(cardsContainer, { x: 0, y: 0, duration: 0.5, overwrite: 'auto' });
 
-            gsap.to(card, {
+            cards.forEach((card, i) => {
+                const multiplier = parallaxMultipliers[i];
+                const deltaX = offsetX * maxMoveStacked * multiplier;
+                const deltaY = offsetY * maxMoveStacked * multiplier;
+
+                gsap.to(card, {
+                    x: deltaX,
+                    y: deltaY,
+                    duration: 1.5,
+                    ease: 'power3.out',
+                    overwrite: 'auto'
+                });
+            });
+        } else {
+            // Scattered phase: move container opposite to mouse
+            cards.forEach(card => {
+                gsap.to(card, { x: 0, y: 0, duration: 0.5, overwrite: 'auto' });
+            });
+
+            const deltaX = -offsetX * maxMoveScattered;
+            const deltaY = -offsetY * maxMoveScattered;
+
+            gsap.to(cardsContainer, {
                 x: deltaX,
                 y: deltaY,
-                duration: 0.8,
-                ease: 'power2.out',
+                duration: 1.5,
+                ease: 'power3.out',
                 overwrite: 'auto'
             });
-        });
+        }
     });
 
-    // Function to update hoverable state
+    // Function to update hoverable state (for image swap on hover)
     function updateHoverableState() {
         cards.forEach(card => {
             if (currentTarget === 'phase1') {
@@ -433,9 +586,6 @@
             }
         });
     }
-
-    // Update on phase change - wrap the original onUpdate
-    const originalOnUpdate = ScrollTrigger.getById ? null : true;
 
     // Watch for phase changes
     let lastTarget = currentTarget;
@@ -453,6 +603,31 @@
             if (currentTarget === 'phase1' && url) {
                 window.location.href = url;
             }
+        });
+    });
+
+    // Hover scale effect for all cards using GSAP (to avoid CSS/GSAP transform conflicts)
+    const originalZIndex = [7, 8, 6, 5, 4, 3, 2, 1, 1, 1, 1]; // c1-c11 original zIndex values
+
+    cards.forEach((card, i) => {
+        card.addEventListener('mouseenter', () => {
+            if (currentTarget === 'phase1') {
+                gsap.to(card, {
+                    scale: 1.25,
+                    zIndex: 100,
+                    duration: 0.4,
+                    ease: 'power2.out'
+                });
+            }
+        });
+
+        card.addEventListener('mouseleave', () => {
+            gsap.to(card, {
+                scale: 1,
+                zIndex: originalZIndex[i],
+                duration: 0.4,
+                ease: 'power2.out'
+            });
         });
     });
     </script>

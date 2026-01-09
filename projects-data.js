@@ -22,7 +22,7 @@ const projectsData = [
         tags: ["Product Design", "Marketing"],
         categories: ["graphics"],
         url: "project-cyberrelax.html",
-        image: null
+        image: "cyberrelax_3.jpg"
     },
     {
         id: 4,
@@ -54,7 +54,7 @@ const projectsData = [
         tags: ["Unity", "3D Modeling", "C#"],
         categories: ["3d", "game"],
         url: "https://nela-flosova.itch.io/secret-forest",
-        image: null
+        image: "secretforest_1.jpg"
     },
     {
         id: 8,
@@ -62,7 +62,7 @@ const projectsData = [
         tags: ["3D Modeling", "Architectural Design"],
         categories: ["3d"],
         url: "project-architecture.html",
-        image: "architecture_1.jpg"
+        image: "archviz_3.jpg"
     },
     {
         id: 9,
@@ -71,5 +71,13 @@ const projectsData = [
         categories: ["ui-ux"],
         url: "project-imrvere.html",
         image: "imrvere_1.jpg"
+    },
+    {
+        id: 10,
+        title: "Mountain Guesthouse Brand",
+        tags: ["Brand Identity", "Visual Design"],
+        categories: ["graphics"],
+        url: "project-pension.html",
+        image: "pension_3.jpg"
     }
 ];

@@ -96,7 +96,7 @@
                     </svg>
                 </button>
                 -->
-                <a href="about.html" class="nav-button primary">Let's Talk <span>•</span></a>
+                <a href="about.html" class="nav-button primary">Contact</a>
                 <div class="menu-wrapper">
                     <button class="nav-button menu-toggle menu-icon-only" aria-label="Menu">☰</button>
                     <div class="menu-dropdown">
@@ -159,43 +159,112 @@
         </div>
 
         <div class="projects-grid" id="projectsGrid">
-            <!-- Projects will be dynamically inserted here -->
+            <a href="project-gapcontrol.html" class="project-card" data-category="ui-ux">
+                <div class="project-image">
+                    <img src="gapcontrol_1.png" alt="Security Data Dashboard">
+                </div>
+                <div class="project-tags">UX/UI Design • Data Visualization</div>
+                <h2 class="project-title">
+                    <span class="project-arrow">→</span>
+                    <span class="project-title-text">Security Data Dashboard</span>
+                </h2>
+            </a>
+            <a href="project-logcontrol.html" class="project-card" data-category="graphics">
+                <div class="project-image">
+                    <img src="logcontrol_1.jpg" alt="Security Tool Animation">
+                </div>
+                <div class="project-tags">Motion Design • Animation</div>
+                <h2 class="project-title">
+                    <span class="project-arrow">→</span>
+                    <span class="project-title-text">Security Tool Animation</span>
+                </h2>
+            </a>
+            <a href="project-cyberrelax.html" class="project-card" data-category="graphics">
+                <div class="project-image">
+                    <img src="cyberrelax_3.jpg" alt="Conference Drink Design">
+                </div>
+                <div class="project-tags">Product Design • Marketing</div>
+                <h2 class="project-title">
+                    <span class="project-arrow">→</span>
+                    <span class="project-title-text">Conference Drink Design</span>
+                </h2>
+            </a>
+            <a href="project-knihobot.html" class="project-card" data-category="graphics">
+                <div class="project-image">
+                    <img src="knihobot_1.jpg" alt="Book Resale Bookmarks">
+                </div>
+                <div class="project-tags">Illustration • Print Design</div>
+                <h2 class="project-title">
+                    <span class="project-arrow">→</span>
+                    <span class="project-title-text">Book Resale Bookmarks</span>
+                </h2>
+            </a>
+            <a href="project-iphone.html" class="project-card" data-category="3d">
+                <div class="project-image">
+                    <img src="iphone_1.jpg" alt="iPhone 3D Render">
+                </div>
+                <div class="project-tags">3D • Visualization</div>
+                <h2 class="project-title">
+                    <span class="project-arrow">→</span>
+                    <span class="project-title-text">iPhone 3D Render</span>
+                </h2>
+            </a>
+            <a href="project-coffeeux.html" class="project-card" data-category="ui-ux">
+                <div class="project-image">
+                    <img src="coffeeux_1.jpg" alt="Coffee Pickup Wireframe">
+                </div>
+                <div class="project-tags">Wireframing • UX Design</div>
+                <h2 class="project-title">
+                    <span class="project-arrow">→</span>
+                    <span class="project-title-text">Coffee Pickup Wireframe</span>
+                </h2>
+            </a>
+            <a href="https://nela-flosova.itch.io/secret-forest" target="_blank" class="project-card" data-category="3d game">
+                <div class="project-image">
+                    <img src="secretforest_1.jpg" alt="3D Unity Game">
+                </div>
+                <div class="project-tags">Unity • 3D Modeling • C#</div>
+                <h2 class="project-title">
+                    <span class="project-arrow">→</span>
+                    <span class="project-title-text">3D Unity Game</span>
+                </h2>
+            </a>
+            <a href="project-architecture.html" class="project-card" data-category="3d">
+                <div class="project-image">
+                    <img src="archviz_2.jpg" alt="Architectural Visualization">
+                </div>
+                <div class="project-tags">3D Modeling • Architectural Design</div>
+                <h2 class="project-title">
+                    <span class="project-arrow">→</span>
+                    <span class="project-title-text">Architectural Visualization</span>
+                </h2>
+            </a>
+            <a href="project-imrvere.html" class="project-card" data-category="ui-ux">
+                <div class="project-image">
+                    <img src="imrvere_1.jpg" alt="Café Imervere Website">
+                </div>
+                <div class="project-tags">UI Design • Web Presentation</div>
+                <h2 class="project-title">
+                    <span class="project-arrow">→</span>
+                    <span class="project-title-text">Café Imervere Website</span>
+                </h2>
+            </a>
+            <a href="project-pension.html" class="project-card" data-category="graphics">
+                <div class="project-image">
+                    <img src="pension_3.jpg" alt="Mountain Guesthouse Brand">
+                </div>
+                <div class="project-tags">Brand Identity • Visual Design</div>
+                <h2 class="project-title">
+                    <span class="project-arrow">→</span>
+                    <span class="project-title-text">Mountain Guesthouse Brand</span>
+                </h2>
+            </a>
         </div>
     </section>
 
     <script>
-        // Function to render projects
-        function renderProjects() {
-            const projectsGrid = document.getElementById('projectsGrid');
-            const projectCountEl = document.querySelector('.project-count');
-
-            projectsGrid.innerHTML = projectsData.map(project => {
-                const categoriesStr = project.categories.join(' ');
-                const tagsStr = project.tags.join(' • ');
-                const imageHTML = project.image
-                    ? `<img src="${project.image}" alt="${project.title}">`
-                    : '';
-
-                return `
-                    <a href="${project.url}" ${project.url.startsWith('http') ? 'target="_blank"' : ''} class="project-card" data-category="${categoriesStr}">
-                        <div class="project-image">
-                            ${imageHTML}
-                        </div>
-                        <div class="project-tags">${tagsStr}</div>
-                        <h2 class="project-title">
-                            <span class="project-arrow">→</span>
-                            <span class="project-title-text">${project.title}</span>
-                        </h2>
-                    </a>
-                `;
-            }).join('');
-
-            // Update project count
-            projectCountEl.textContent = projectsData.length;
-        }
-
-        // Render projects on page load
-        renderProjects();
+        // Update project count
+        document.querySelector('.project-count').textContent = document.querySelectorAll('.project-card').length;
 
         gsap.registerPlugin(ScrollTrigger);
 
