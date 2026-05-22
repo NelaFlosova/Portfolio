@@ -1,37 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nela Flosova - Portfolio</title>
+    <title>Nela Flosova - UX/UI Designer Portfolio</title>
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Nela Flosova - UX/UI Designer Portfolio">
+    <meta name="description" content="UX/UI Designer specializing in user experience design, interface design, and digital product development. View my portfolio of mobile apps, web applications, and design systems.">
+    <meta name="keywords" content="UX Designer, UI Designer, Product Designer, User Experience, Interface Design, Portfolio, Mobile App Design, Web Design, Figma, Design Systems">
+    <meta name="author" content="Nela Flosova">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://nela-flosova.cz/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="favicon.svg">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nela-flosova.cz/">
+    <meta property="og:title" content="Nela Flosova - UX/UI Designer Portfolio">
+    <meta property="og:description" content="UX/UI Designer specializing in user experience design, interface design, and digital product development. View my portfolio of mobile apps, web applications, and design systems.">
+    <meta property="og:image" content="https://nela-flosova.cz/mobile_hero.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Nela Flosova Portfolio">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://nela-flosova.cz/">
+    <meta name="twitter:title" content="Nela Flosova - UX/UI Designer Portfolio">
+    <meta name="twitter:description" content="UX/UI Designer specializing in user experience design, interface design, and digital product development.">
+    <meta name="twitter:image" content="https://nela-flosova.cz/mobile_hero.png">
+
+    <!-- AI Search Optimization -->
+    <meta name="classification" content="Portfolio, Design, UX/UI">
+    <meta name="topic" content="UX Design, UI Design, Product Design, Digital Design">
+    <meta name="coverage" content="Worldwide">
+    <meta name="distribution" content="Global">
+    <meta name="rating" content="General">
+    <meta name="revisit-after" content="7 days">
+
+    <!-- JSON-LD Structured Data for AI and Search Engines -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Nela Flosova",
+        "url": "https://nela-flosova.cz",
+        "image": "https://nela-flosova.cz/mobile_hero.png",
+        "jobTitle": "UX/UI Designer",
+        "description": "UX/UI Designer specializing in user experience design, interface design, and digital product development.",
+        "knowsAbout": ["UX Design", "UI Design", "Product Design", "User Research", "Wireframing", "Prototyping", "Figma", "Design Systems", "Mobile App Design", "Web Design"],
+        "sameAs": [],
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://nela-flosova.cz"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Nela Flosova Portfolio",
+        "url": "https://nela-flosova.cz",
+        "description": "Portfolio website of Nela Flosova, UX/UI Designer",
+        "publisher": {
+            "@type": "Person",
+            "name": "Nela Flosova"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Design Portfolio",
+        "description": "Collection of UX/UI design projects",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Mobile App Design Projects",
+                "description": "User-centered mobile application designs"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Web Application Design Projects",
+                "description": "Responsive web application interfaces"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Design System Projects",
+                "description": "Scalable design systems and component libraries"
+            }
+        ]
+    }
+    </script>
+
     <script>
-        (function() {
+        (function () {
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme) {
                 document.documentElement.setAttribute('data-theme', savedTheme);
             }
         })();
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
     <script src="theme.js"></script>
 
     <style>
+        /* Override grid gap for index page only */
+        .grid-layout {
+            row-gap: 8px;
+        }
+
+        /* Projects section - 1fr 2fr grid matching intro section */
+        .projects-section .grid-layout {
+            grid-template-columns: 1fr 2fr;
+            column-gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .projects-section .section-title {
+            grid-column: 1;
+        }
+
+        .projects-section .projects-intro {
+            grid-column: 2;
+        }
+
+        .projects-section .projects {
+            grid-column: 1 / 3;
+        }
+
+        .projects-section .scrollbar-track {
+            grid-column: 1 / 3;
+        }
+
+        @media (max-width: 768px) {
+            .projects-section .grid-layout {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .projects-section .section-title,
+            .projects-section .projects-intro,
+            .projects-section .projects,
+            .projects-section .scrollbar-track {
+                grid-column: 1;
+            }
+        }
+
         .scroll-container {
             width: 100%;
-            height: 100vh;
+            height: 95vh;
             position: relative;
+            z-index: 1;
+            margin-bottom: 40px;
         }
 
         .sticky-wrapper {
             width: 100vw;
-            height: 100vh;
+            height: 95vh;
             position: relative;
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
+            background-color: #0e0e10;
         }
 
         .cards-container {
@@ -69,20 +222,54 @@
         }
 
 
-      
 
 
-        .c1::after { background-image: url('knihobot_2.jpg'); background-position: right; }
-        .c2::after { background-image: url('logcontrol_5.jpg'); }
-        .c3::after { background-image: url('cyberrelax_cover.jpg'); }
-        .c4::after { background-image: url('archviz_2.jpg'); background-position: center; }
-        .c5::after { background-image: url('imrvere_4.jpg'); }
-        .c6::after { background-image: url('gapcontrol_end.png'); }
-        .c7::after { background-image: url('coffeeux_3.jpg'); }
-        .c8::after { background-image: url('pension_2.jpg'); }
-        .c9::after { background-image: url('iphone_cover_2.jpg'); }
-        .c10::after { background-image: url('secretforest_2.jpg'); }
-        .c11::after { background-image: url('pension_hover.jpg'); }
+
+        .c1::after {
+            background-image: url('knihobot_2.jpg');
+            background-position: right;
+        }
+
+        .c2::after {
+            background-image: url('logcontrol_5.jpg');
+        }
+
+        .c3::after {
+            background-image: url('cyberrelax_cover.jpg');
+        }
+
+        .c4::after {
+            background-image: url('archviz_2.jpg');
+            background-position: center;
+        }
+
+        .c5::after {
+            background-image: url('imrvere_4.jpg');
+        }
+
+        .c6::after {
+            background-image: url('gapcontrol_end.png');
+        }
+
+        .c7::after {
+            background-image: url('coffeeux_3.jpg');
+        }
+
+        .c8::after {
+            background-image: url('bracelet_3.jpg');
+        }
+
+        .c9::after {
+            background-image: url('iphone_cover_2.jpg');
+        }
+
+        .c10::after {
+            background-image: url('secretforest_2.jpg');
+        }
+
+        .c11::after {
+            background-image: url('pension_hover.jpg');
+        }
 
         /* Hero Text Overlay */
         .hero-text-overlay {
@@ -98,35 +285,59 @@
             display: block;
             white-space: nowrap;
             will-change: transform;
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            font-weight: 300;
+            font-family: 'Funnel Display', var(--font-family);
+            font-size: 84px;
+            font-weight: 400;
             text-transform: uppercase;
-            letter-spacing: -0.02em;
-            color: var(--text-color);
-            line-height: 1.2;
+            letter-spacing: -0.04em;
+            color: #ffffff;
+            line-height: 0.95;
         }
 
-         .hero-text-row.row-2 {
-            padding-left: 10%;
+        .hero-text-row.row-2 {
+            padding-left: 18%;
+            margin-top: 64px;
         }
 
-        .fixed-footer {
-            position: absolute;
-            bottom: 40px;
-            left: 0;
-            right: 0;
+        .hero-prefix {
+            display: inline-block;
+            font-family: var(--font-family);
+            font-size: 24px;
+            font-weight: 400;
+            letter-spacing: 0;
+            text-transform: none;
+            vertical-align: top;
+            margin-right: 0.5em;
+            line-height: 1;
+            transform: translateY(0.4em);
+        }
+
+        .footer-content {
             width: 100%;
-            height: auto;
+            max-width: 1320px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 max(40px, calc((100vw - 1200px) / 2 + 40px));
+
+
+        }
+
+        .fixed-footer {
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: auto;
+            display: flex;
+            
+            padding: 0 40px;
             box-sizing: border-box;
-            z-index: 200;
             font-size: 14px;
             font-weight: 400;
             color: var(--text-color);
-            pointer-events: none;
+            z-index: 200;
+            background-color: white;
         }
 
         .footer-item {
@@ -144,25 +355,873 @@
             order: -1;
         }
 
-        .c1 { background-color: var(--placeholder-bg); background-image: url('knihobot_preview.png'); background-size: cover; background-position: center; }
-        .c2 { background-color: var(--placeholder-bg); background-image: url('logcontrol_preview.png'); background-size: cover; background-position: center; }
-        .c3 { background-color: var(--placeholder-bg); background-image: url('cyberrelax_1.jpg'); background-size: cover; background-position: center; }
-        .c4 { background-color: var(--placeholder-bg); background-image: url('archviz_1.jpg'); background-size: cover; background-position: center; }
-        .c5 { background-color: var(--placeholder-bg); background-image: url('imrvere_2.jpg'); background-size: cover; background-position: left; }
-        .c6 { background-color: var(--placeholder-bg); background-image: url('gapcontrol_preview.png'); background-size: cover; background-position: center; }
-        .c7 { background-color: var(--placeholder-bg); background-image: url('coffeeux_preview.png'); background-size: cover; background-position: top; }
-        .c8 { background-color: var(--placeholder-bg); background-image: url('pension_1.jpg'); background-size: cover; background-position: center; }
-        .c9 { background-color: var(--placeholder-bg); background-image: url('iphone_cover_1.jpg'); background-size: cover; background-position: center; }
-        .c10 { background-color: var(--placeholder-bg); background-image: url('secretforest_1.jpg'); background-size: cover; background-position: center; }
-        .c11 { background-color: var(--placeholder-bg); background-image: url('pension_3.jpg'); background-size: cover; background-position: center; }
+        .c1 {
+            background-color: var(--placeholder-bg);
+            background-image: url('knihobot_preview.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .c2 {
+            background-color: var(--placeholder-bg);
+            background-image: url('logcontrol_preview.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .c3 {
+            background-color: var(--placeholder-bg);
+            background-image: url('cyberrelax_1.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .c4 {
+            background-color: var(--placeholder-bg);
+            background-image: url('archviz_1.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .c5 {
+            background-color: var(--placeholder-bg);
+            background-image: url('imrvere_2.jpg');
+            background-size: cover;
+            background-position: left;
+        }
+
+        .c6 {
+            background-color: var(--placeholder-bg);
+            background-image: url('gapcontrol_preview.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .c7 {
+            background-color: var(--placeholder-bg);
+            background-image: url('coffeeux_preview.png');
+            background-size: cover;
+            background-position: top;
+        }
+
+        .c8 {
+            background-color: var(--placeholder-bg);
+            background-image: url('bracelet_1.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .c9 {
+            background-color: var(--placeholder-bg);
+            background-image: url('iphone_cover_1.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .c10 {
+            background-color: var(--placeholder-bg);
+            background-image: url('secretforest_1.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .c11 {
+            background-color: var(--placeholder-bg);
+            background-image: url('pension_3.jpg');
+            background-size: cover;
+            background-position: center;
+        }
 
         .content-below {
             position: relative;
             background: var(--bg-color);
-            padding: 150px 50px;
-            z-index: 20;
-            min-height: 100vh;
+            padding: 0;
+            z-index: 100;
+        }
+
+        /* Footer Styles */
+        .dark-footer {
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+            margin-top: 0;
+            border-radius: 40px 40px 0 0;
+            position: relative;
+        }
+
+        .footer-container {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding-bottom: 40px;
+        }
+
+        .footer-name {
+            padding: 40px 0;
+        }
+
+        .footer-title {
+            font-size: clamp(80px, 14vw, 225px);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 0.85;
+            color: #ffffff;
+            margin: 80px 60px;
+            overflow: hidden;
+        }
+
+        .footer-card {
+            background-color: #2a2a2a;
+            border-radius: 30px 30px 0 0;
+            padding: 60px;
+            margin-top: -180px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .footer-heading {
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #888;
+            margin: 0;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: #f5f5f5;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 400;
+            transition: opacity 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.7;
+        }
+
+        .footer-text {
+            font-size: 16px;
+            color: #d1d1d1;
+            margin: 0;
+        }
+
+        /* Scroll indicator band */
+        .scroll-indicator-band {
+            width: 100%;
+            padding: 6px 60px;
+            background-color: var(--background-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+        }
+
+        .scroll-indicator-band .marker {
+            font-size: 16px;
+            color: var(--secondary-text);
+            font-weight: 300;
+        }
+
+        .scroll-indicator-band .scroll-text {
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--secondary-text);
+        }
+
+        /* Text Animation Styles */
+        .animate-text {
+            opacity: 0;
+        }
+
+        .animate-text .line {
+            display: block;
+            overflow: hidden;
+        }
+
+        .animate-text .line-inner {
+            display: block;
+            transform: translateY(100%);
+        }
+
+        .animate-fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .animate-stagger {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Letter reveal animation */
+        .letter-reveal .word {
+            display: inline;
+            white-space: nowrap;
+        }
+
+        .letter-reveal .char {
+            display: inline;
+            opacity: 0;
+        }
+
+        .letter-reveal .space {
+            display: inline;
+        }
+
+        .letter-reveal .space::before {
+            content: ' ';
+        }
+
+        /* Intro Section */
+        .intro-section {
+            padding: 120px 60px 80px;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .intro-arrow {
+            grid-column: 1;
+            width: 100px;
+            height: 100px;
+        }
+
+        .intro-arrow svg {
+            width: 100%;
+            height: 100%;
+            stroke: var(--text-color);
+            stroke-width: 3;
+            stroke-linecap: round;
+            fill: none;
+        }
+
+        .intro-statement {
+            grid-column: 2;
+            font-size: clamp(32px, 5vw, 45px);
+            font-weight: 500;
+            line-height: 1.4;
+            letter-spacing: -0.02em;
+            color: var(--text-color);
+            margin: 0;
+        }
+
+        /* CTA Section */
+        .cta-section.container {
+            padding: 120px 60px 80px;
+        }
+
+        .cta-statement {
+            grid-column: 1 / 3;
+            font-size: clamp(32px, 5vw, 45px);
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: var(--text-color);
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .cta-button-wrapper {
+            grid-column: 1 / 3;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .cta-arrow {
+            grid-column: 3;
+            grid-row: 1 / 3;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-end;
+        }
+
+        .cta-arrow svg {
+            width: clamp(60px, 8vw, 100px);
+            height: clamp(60px, 8vw, 100px);
+            stroke: var(--text-color);
+            stroke-width: 3;
+            stroke-linecap: round;
+            fill: none;
+        }
+
+        .copy-email-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            padding: 14px 28px;
+            border-radius: 30px;
+            border: 1px solid #1a1a1a;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 400;
+            font-family: inherit;
+            letter-spacing: 0.01em;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .copy-email-btn:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        .copy-popup {
+            opacity: 0;
+            background-color: #f5f5f5;
+            color: #1a1a1a;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 400;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .copy-popup.show {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .cta-section.container {
+                padding: 80px 24px 60px;
+            }
+
+            .cta-statement {
+                grid-column: 1;
+            }
+
+            .cta-button-wrapper {
+                grid-column: 1;
+            }
+
+            .cta-arrow {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .intro-section {
+                padding: 80px 24px 60px;
+            }
+
+            .intro-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .intro-arrow {
+                grid-column: 1;
+                width: 60px;
+                height: 60px;
+            }
+
+            .intro-statement {
+                grid-column: 1;
+            }
+        }
+
+        /* Services Section - Dark Theme */
+        .services-section {
+            background-color: #1a1a1a;
+            padding: 120px 60px 80px;
+            border-radius: 40px;
+            margin: 80px 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-title {
+            grid-column: 1;
+            font-size: clamp(28px, 4vw, 36px);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .services-list {
+            grid-column: 2;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding: 48px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            cursor: pointer;
+        }
+
+        .service-item:last-child {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .service-name {
+            font-size: clamp(20px, 2.5vw, 26px);
+            font-weight: 400;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+            margin: 0;
+        }
+
+        .service-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-description {
+            font-size: 15px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0;
+            max-height: 78px;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-item:hover .service-description {
+            max-height: 200px;
+        }
+
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                        opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        margin-top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-item:hover .service-tags {
+            max-height: 200px;
+            opacity: 1;
+            margin-top: 24px;
+        }
+
+        .service-tag {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 30px;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            align-self: flex-start;
+            width: fit-content;
+            gap: 8px;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 30px;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                        opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        margin-top 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                        background-color 0.3s ease,
+                        transform 0.3s ease;
+        }
+
+        .service-item:hover .service-link {
+            max-height: 50px;
+            opacity: 1;
+            margin-top: 24px;
+        }
+
+        .service-link:hover {
+            background-color: #e5e5e5;
+            transform: translateY(-2px);
+        }
+
+        .service-link .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .service-link:hover .arrow {
+            transform: translate(2px, 2px);
+        }
+
+        /* Projects horizontal tags */
+        .project-tags-horizontal {
+            font-size: 13px;
+            font-weight: 400;
+              color: rgb(57, 57, 57);
+            letter-spacing: 0.5px;
+            padding: 6px 0;
+        }
+
+        /* Projects section button */
+        .projects .btn-primary {
+            display: inline-block;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 1px solid #1a1a1a;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .projects .btn-primary:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        /* Projects section description */
+        .projects .project-description {
+            font-size: 14px;
+        }
+
+        /* Archive link at end of projects scroll */
+        .archive-link-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 280px;
+            padding: 0 60px;
+            margin-left: 40px;
+        }
+
+        .archive-link {
+            display: inline-block;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .archive-link:hover {
+            background-color: #333;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 900px) {
+            .services-section {
+                padding: 80px 24px 60px;
+                border-radius: 30px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .services-title {
+                grid-column: 1;
+            }
+
+            .services-list {
+                grid-column: 1;
+            }
+
+            .service-item {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+
+        /* Mobile Hero - under 800px */
+        .mobile-hero-image {
+            display: none;
+        }
+
+        @media (max-width: 800px) {
+            /* Hide desktop cards, show mobile hero */
+            .cards-container {
+                display: none !important;
+            }
+
+            .mobile-hero-image {
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 66vh;
+                object-fit: cover;
+                object-position: center;
+                border-radius: 20px;
+            }
+
+            .sticky-wrapper {
+                height: 66vh;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .scroll-container {
+                height: auto;
+                min-height: 66vh;
+            }
+
+            .hero-text-overlay {
+                position: relative;
+                top: auto;
+                left: auto;
+                transform: none;
+                text-align: center;
+                z-index: 10;
+                padding: 0 20px;
+            }
+
+            .hero-text-row {
+                font-size: clamp(1.8rem, 8vw, 3rem);
+            }
+
+            .hero-text-row.row-2 {
+                padding-left: 0;
+            }
+
+            /* Services section on mobile - match intro section padding */
+            .services-section {
+                padding: 40px 24px;
+                margin: 40px 0;
+                border-radius: 20px;
+            }
+
+            .scroll-indicator-band {
+                position: relative;
+                margin-top: 20px;
+            }
+        }
+
+
+        /* Contact Section */
+        .contact-section {
+            padding: 120px 60px;
+            background: linear-gradient(180deg, var(--bg-color) 0%, #f8f8f8 100%);
+        }
+
+        .contact-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
             text-align: center;
+        }
+
+        .contact-header {
+            margin-bottom: 60px;
+        }
+
+        .contact-label {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--secondary-text);
+            margin-bottom: 20px;
+        }
+
+        .contact-heading {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            color: var(--text-color);
+        }
+
+        .contact-email-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            padding: 24px 48px;
+            margin-bottom: 60px;
+            background: var(--text-color);
+            color: var(--bg-color);
+            text-decoration: none;
+            border-radius: 60px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .contact-email-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .email-text {
+            font-size: clamp(16px, 2vw, 20px);
+            font-weight: 500;
+            letter-spacing: -0.01em;
+        }
+
+        .email-arrow {
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-email-link:hover .email-arrow {
+            transform: translateX(8px);
+        }
+
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            margin-bottom: 60px;
+        }
+
+        .contact-detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .detail-label {
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--secondary-text);
+        }
+
+        .detail-value {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--text-color);
+        }
+
+        .contact-social {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .social-link {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-color);
+            text-decoration: none;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .social-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--text-color);
+            transition: width 0.3s ease;
+        }
+
+        .social-link:hover::after {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .contact-section {
+                padding: 80px 24px;
+            }
+
+            .contact-header {
+                margin-bottom: 40px;
+            }
+
+            .contact-email-link {
+                padding: 20px 32px;
+                margin-bottom: 40px;
+            }
+
+            .contact-details {
+                flex-direction: column;
+                gap: 24px;
+                margin-bottom: 40px;
+            }
+
+            .contact-social {
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dark-footer {
+                padding: 60px 24px 0;
+                border-radius: 30px 30px 0 0;
+            }
+
+            .footer-name {
+                padding: 20px 0;
+            }
+
+            .footer-card {
+                padding: 40px 24px;
+                border-radius: 20px 20px 0 0;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
         }
 
         /* Animated Button */
@@ -211,7 +1270,7 @@
             right: 0;
             bottom: 0;
             border-radius: 28px;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
         }
 
         .swirl-button .wrapper {
@@ -287,39 +1346,206 @@
             --blur: 12px;
         }
 
-        .swirl-button .wrapper .circle.circle-1 { --x: 0; --y: -40px; --animation: circle-1; }
-        .swirl-button .wrapper .circle.circle-2 { --x: 92px; --y: 8px; --animation: circle-2; }
-        .swirl-button .wrapper .circle.circle-3 { --x: -12px; --y: -12px; --animation: circle-3; }
-        .swirl-button .wrapper .circle.circle-4 { --x: 80px; --y: -12px; --animation: circle-4; }
-        .swirl-button .wrapper .circle.circle-5 { --x: 12px; --y: -4px; --animation: circle-5; }
-        .swirl-button .wrapper .circle.circle-6 { --x: 56px; --y: 16px; --animation: circle-6; }
-        .swirl-button .wrapper .circle.circle-7 { --x: 8px; --y: 28px; --animation: circle-7; }
-        .swirl-button .wrapper .circle.circle-8 { --x: 28px; --y: -4px; --animation: circle-8; }
-        .swirl-button .wrapper .circle.circle-9 { --x: 20px; --y: -12px; --animation: circle-9; }
-        .swirl-button .wrapper .circle.circle-10 { --x: 64px; --y: 16px; --animation: circle-10; }
-        .swirl-button .wrapper .circle.circle-11 { --x: 4px; --y: 4px; --animation: circle-11; }
-        .swirl-button .wrapper .circle.circle-12 { --blur: 14px; --x: 52px; --y: 4px; --animation: circle-12; }
+        .swirl-button .wrapper .circle.circle-1 {
+            --x: 0;
+            --y: -40px;
+            --animation: circle-1;
+        }
 
-        @keyframes circle-1 { 33% { transform: translate(0px, 16px) translateZ(0); } 66% { transform: translate(12px, 64px) translateZ(0); } }
-        @keyframes circle-2 { 33% { transform: translate(80px, -10px) translateZ(0); } 66% { transform: translate(72px, -48px) translateZ(0); } }
-        @keyframes circle-3 { 33% { transform: translate(20px, 12px) translateZ(0); } 66% { transform: translate(12px, 4px) translateZ(0); } }
-        @keyframes circle-4 { 33% { transform: translate(76px, -12px) translateZ(0); } 66% { transform: translate(112px, -8px) translateZ(0); } }
-        @keyframes circle-5 { 33% { transform: translate(84px, 28px) translateZ(0); } 66% { transform: translate(40px, -32px) translateZ(0); } }
-        @keyframes circle-6 { 33% { transform: translate(28px, -16px) translateZ(0); } 66% { transform: translate(76px, -56px) translateZ(0); } }
-        @keyframes circle-7 { 33% { transform: translate(8px, 28px) translateZ(0); } 66% { transform: translate(20px, -60px) translateZ(0); } }
-        @keyframes circle-8 { 33% { transform: translate(32px, -4px) translateZ(0); } 66% { transform: translate(56px, -20px) translateZ(0); } }
-        @keyframes circle-9 { 33% { transform: translate(20px, -12px) translateZ(0); } 66% { transform: translate(80px, -8px) translateZ(0); } }
-        @keyframes circle-10 { 33% { transform: translate(68px, 20px) translateZ(0); } 66% { transform: translate(100px, 28px) translateZ(0); } }
-        @keyframes circle-11 { 33% { transform: translate(4px, 4px) translateZ(0); } 66% { transform: translate(68px, 20px) translateZ(0); } }
-        @keyframes circle-12 { 33% { transform: translate(56px, 0px) translateZ(0); } 66% { transform: translate(60px, -32px) translateZ(0); } }
+        .swirl-button .wrapper .circle.circle-2 {
+            --x: 92px;
+            --y: 8px;
+            --animation: circle-2;
+        }
+
+        .swirl-button .wrapper .circle.circle-3 {
+            --x: -12px;
+            --y: -12px;
+            --animation: circle-3;
+        }
+
+        .swirl-button .wrapper .circle.circle-4 {
+            --x: 80px;
+            --y: -12px;
+            --animation: circle-4;
+        }
+
+        .swirl-button .wrapper .circle.circle-5 {
+            --x: 12px;
+            --y: -4px;
+            --animation: circle-5;
+        }
+
+        .swirl-button .wrapper .circle.circle-6 {
+            --x: 56px;
+            --y: 16px;
+            --animation: circle-6;
+        }
+
+        .swirl-button .wrapper .circle.circle-7 {
+            --x: 8px;
+            --y: 28px;
+            --animation: circle-7;
+        }
+
+        .swirl-button .wrapper .circle.circle-8 {
+            --x: 28px;
+            --y: -4px;
+            --animation: circle-8;
+        }
+
+        .swirl-button .wrapper .circle.circle-9 {
+            --x: 20px;
+            --y: -12px;
+            --animation: circle-9;
+        }
+
+        .swirl-button .wrapper .circle.circle-10 {
+            --x: 64px;
+            --y: 16px;
+            --animation: circle-10;
+        }
+
+        .swirl-button .wrapper .circle.circle-11 {
+            --x: 4px;
+            --y: 4px;
+            --animation: circle-11;
+        }
+
+        .swirl-button .wrapper .circle.circle-12 {
+            --blur: 14px;
+            --x: 52px;
+            --y: 4px;
+            --animation: circle-12;
+        }
+
+        @keyframes circle-1 {
+            33% {
+                transform: translate(0px, 16px) translateZ(0);
+            }
+
+            66% {
+                transform: translate(12px, 64px) translateZ(0);
+            }
+        }
+
+        @keyframes circle-2 {
+            33% {
+                transform: translate(80px, -10px) translateZ(0);
+            }
+
+            66% {
+                transform: translate(72px, -48px) translateZ(0);
+            }
+        }
+
+        @keyframes circle-3 {
+            33% {
+                transform: translate(20px, 12px) translateZ(0);
+            }
+
+            66% {
+                transform: translate(12px, 4px) translateZ(0);
+            }
+        }
+
+        @keyframes circle-4 {
+            33% {
+                transform: translate(76px, -12px) translateZ(0);
+            }
+
+            66% {
+                transform: translate(112px, -8px) translateZ(0);
+            }
+        }
+
+        @keyframes circle-5 {
+            33% {
+                transform: translate(84px, 28px) translateZ(0);
+            }
+
+            66% {
+                transform: translate(40px, -32px) translateZ(0);
+            }
+        }
+
+        @keyframes circle-6 {
+            33% {
+                transform: translate(28px, -16px) translateZ(0);
+            }
+
+            66% {
+                transform: translate(76px, -56px) translateZ(0);
+            }
+        }
+
+        @keyframes circle-7 {
+            33% {
+                transform: translate(8px, 28px) translateZ(0);
+            }
+
+            66% {
+                transform: translate(20px, -60px) translateZ(0);
+            }
+        }
+
+        @keyframes circle-8 {
+            33% {
+                transform: translate(32px, -4px) translateZ(0);
+            }
+
+            66% {
+                transform: translate(56px, -20px) translateZ(0);
+            }
+        }
+
+        @keyframes circle-9 {
+            33% {
+                transform: translate(20px, -12px) translateZ(0);
+            }
+
+            66% {
+                transform: translate(80px, -8px) translateZ(0);
+            }
+        }
+
+        @keyframes circle-10 {
+            33% {
+                transform: translate(68px, 20px) translateZ(0);
+            }
+
+            66% {
+                transform: translate(100px, 28px) translateZ(0);
+            }
+        }
+
+        @keyframes circle-11 {
+            33% {
+                transform: translate(4px, 4px) translateZ(0);
+            }
+
+            66% {
+                transform: translate(68px, 20px) translateZ(0);
+            }
+        }
+
+        @keyframes circle-12 {
+            33% {
+                transform: translate(56px, 0px) translateZ(0);
+            }
+
+            66% {
+                transform: translate(60px, -32px) translateZ(0);
+            }
+        }
     </style>
 </head>
+
 <body>
     <nav>
         <div class="nav-container">
             <div class="nav-left">
-                <div class="nav-logo-icon">NF</div>
-                <div class="nav-logo-text">Nela Flosova</div>
+                <a href="index.html"><img src="logo.svg" alt="Nela Flosova" class="nav-logo" style="height: 30px;"></a>
             </div>
             <div class="nav-right">
                 <!-- Theme toggle hidden for now
@@ -333,7 +1559,7 @@
                     </svg>
                 </button>
                 -->
-                <a href="about.html" class="swirl-button">
+                <a href="#contact-section" class="swirl-button">
                     <div class="wrapper">
                         <span>Contact</span>
                         <span class="arrow">↘</span>
@@ -354,8 +1580,9 @@
                 <div class="menu-wrapper">
                     <button class="nav-button menu-toggle menu-icon-only" aria-label="Menu">☰</button>
                     <div class="menu-dropdown">
-                        <a href="index.html">Work</a>
-                        <a href="about.html">About</a>
+                        <a href="projects_list.html">Projects</a>
+                        <a href="#intro-section">About</a>
+                        <a href="#services-section">Services</a>
                     </div>
                 </div>
             </div>
@@ -384,15 +1611,33 @@
                     menuWrapper.classList.remove('active');
                 });
             });
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        gsap.to(window, {
+                            scrollTo: { y: target, offsetY: 80 },
+                            duration: 1,
+                            ease: 'power2.inOut'
+                        });
+                    }
+                });
+            });
         });
     </script>
 
     <div class="scroll-container">
         <div class="sticky-wrapper">
+            <!-- Mobile Hero Image (shown only on mobile) -->
+            <img src="mobile_hero.png" alt="Portfolio Hero" class="mobile-hero-image">
+
             <!-- Hero Text Overlay -->
             <div class="hero-text-overlay">
-                <div class="hero-text-row row-1">MODERN DESIGN</div>
-                <div class="hero-text-row row-2">BUILT TO PERFORM</div>
+                <div class="hero-text-row row-1"><span class="hero-prefix">(tvořím)</span>Design, který</div>
+                <div class="hero-text-row row-2">posouvá značky.</div>
             </div>
 
             <div class="cards-container">
@@ -403,233 +1648,687 @@
                 <div class="card c5" data-project="imrvere" data-url="project-imrvere.html"></div>
                 <div class="card c6" data-project="gapcontrol" data-url="project-gapcontrol.html"></div>
                 <div class="card c7" data-project="coffeeux" data-url="project-coffeeux.html"></div>
-                <div class="card c8" data-project="pension" data-url="project-pension.html"></div>
+                <div class="card c8" data-project="bracelet" data-url="project-bracelet.html"></div>
                 <div class="card c9" data-project="iphone" data-url="project-iphone.html"></div>
                 <div class="card c10" data-project="secretforest" data-url="project-secretforest.html"></div>
                 <div class="card c11" data-project="pension" data-url="project-pension.html"></div>
             </div>
 
-            <div class="fixed-footer">
-                <div class="footer-item left">
-                    <span class="arrow-icon">↓</span>
-                    <span>Open to work</span>
-                </div>
-                <div class="footer-item right">
-                    <span>UX, Web & Brand Designer</span>
-                    <span class="arrow-icon">↓</span>
-                </div>
-            </div>
+            
         </div>
+        <!-- <div class="fixed-footer">
+                <div class="footer-content">
+                    <div class="footer-item left">
+                        <span class="arrow-icon">↓</span>
+                        <span>Open to work</span>
+                    </div>
+                    <div class="footer-item right">
+                        <span>UX, Web & Brand Designer</span>
+                        <span class="arrow-icon">↓</span>
+                    </div>
+                </div>
+
+            </div> -->
+    
+
+    <!-- Scroll Indicator Band -->
+    <div class="scroll-indicator-band">
+        <span class="marker">+</span>
+        <span class="marker">+</span>
+        <span class="scroll-text">Scroll to explore</span>
+        <span class="marker">+</span>
+        <span class="marker">+</span>
     </div>
+     </div>
 
     <div class="content-below">
-        <h2 style="font-size: 2rem; margin-bottom: 20px;">More Content</h2>
-        <p>The cards and footer have scrolled away to reveal this content.</p>
+        <!-- Intro Section -->
+        <section class="intro-section" id="intro-section">
+            <div class="intro-grid">
+                <div class="intro-arrow animate-fade-up">
+                    <svg viewBox="0 0 100 100">
+                        <line x1="10" y1="10" x2="90" y2="90" />
+                        <line x1="90" y1="90" x2="90" y2="40" />
+                        <line x1="90" y1="90" x2="40" y2="90" />
+                    </svg>
+                </div>
+                <p class="intro-statement letter-reveal">Hi, I am Nela. I help modern brands communicate through clear design solutions. Focusing on Web and UI/UX, I don't just design for aesthetics — I build for impact.</p>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services-section" id="services-section">
+            <div class="services-grid">
+                <h1 class="services-title animate-fade-up">Services</h1>
+
+                <div class="services-list">
+                    <div class="service-item animate-stagger">
+                        <h3 class="service-name">UI/UX Design</h3>
+                        <div class="service-details">
+                            <p class="service-description">User-centered interfaces that blend beauty with function. I build accessible, seamless experiences that look great on every device.</p>
+                            <div class="service-tags">
+                                <span class="service-tag">User Research</span>
+                                <span class="service-tag">Wireframing</span>
+                                <span class="service-tag">Prototyping</span>
+                                <span class="service-tag">Design Systems</span>
+                            </div>
+                            <a href="projects_list.html?filter=ui-ux" class="service-link">View UX projects <span class="arrow">↘</span></a>
+                        </div>
+                    </div>
+
+                    <div class="service-item animate-stagger">
+                        <h3 class="service-name">Web Development</h3>
+                        <div class="service-details">
+                            <p class="service-description">Fast, responsive websites designed to convert. Using modern tech, I design and build solutions focused on performance.</p>
+                            <div class="service-tags">
+                                <span class="service-tag">HTML & CSS</span>
+                                <span class="service-tag">JavaScript</span>
+                                <span class="service-tag">Vue</span>
+                                <span class="service-tag">Responsive Design</span>
+                            </div>
+                            <a href="projects_list.html?filter=ui-ux" class="service-link">View web projects <span class="arrow">↘</span></a>
+                        </div>
+                    </div>
+
+                    <div class="service-item animate-stagger">
+                        <h3 class="service-name">Brand Identity</h3>
+                        <div class="service-details">
+                            <p class="service-description">Cohesive visual systems that tell your story. From logos to full brand guidelines, I create distinct identities that set you apart.</p>
+                            <div class="service-tags">
+                                <span class="service-tag">Logo Design</span>
+                                <span class="service-tag">Visual Identity</span>
+                                <span class="service-tag">Brand Guidelines</span>
+                                <span class="service-tag">Typography</span>
+                            </div>
+                            <a href="projects_list.html?filter=graphics" class="service-link">View branding projects <span class="arrow">↘</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="container projects-section">
+            <div class="grid-layout">
+                <h1 class="section-title animate-fade-up">PROJECTS</h1>
+
+                <div class="projects-intro animate-fade-up">
+                    <p>I collaborate with companies that prioritize thoughtful design, clear communication, and measurable
+                        impact — from ambitious startups to established industry leaders.</p>
+                </div>
+
+                <div class="projects">
+                    <div class="projects-wrapper">
+
+                        <div class="project">
+                            <div class="project-image">
+                                <div class="image-placeholder" style="background-image: url('gapcontrol_cover.png'); background-size: cover; background-position: left;"></div>
+                                <span class="project-tags-horizontal">UX/UI Design • Data Visualization</span>
+                            </div>
+                            <div class="project-details">
+                                <h2>Security Data Dashboard</h2>
+                                <p class="project-description">A comprehensive security monitoring dashboard designed to visualize complex data in an intuitive and actionable way.</p>
+                                <a href="project-gapcontrol.html" class="btn-primary">view project</a>
+                            </div>
+                        </div>
+
+                        <div class="project">
+                            <div class="project-image">
+                                <div class="image-placeholder" style="background-image: url('cyberrelax_3.jpg'); background-size: cover; background-position: center;"></div>
+                                <span class="project-tags-horizontal">Product Design • Branding • Marketing</span>
+                            </div>
+                            <div class="project-details">
+                                <h2>Conference Drink Design</h2>
+                                <p class="project-description">A custom branded drink design created for a cybersecurity conference, combining product design with marketing strategy.</p>
+                                <a href="project-cyberrelax.html" class="btn-primary">view project</a>
+                            </div>
+                        </div>
+
+                        <div class="project">
+                            <div class="project-image">
+                                <div class="image-placeholder" style="background-image: url('coffeeux_1.jpg'); background-size: cover; background-position: center;"></div>
+                                <span class="project-tags-horizontal">Wireframing • UX Design</span>
+                            </div>
+                            <div class="project-details">
+                                <h2>Coffee Pickup Wireframe</h2>
+                                <p class="project-description">UX wireframes for a coffee pickup app, focusing on streamlined user flows and intuitive ordering experience.</p>
+                                <a href="project-coffeeux.html" class="btn-primary">view project</a>
+                            </div>
+                        </div>
+
+                        <div class="archive-link-wrapper">
+                            <a href="projects_list.html" class="archive-link">view full archive ↘</a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="scrollbar-track">
+                    <div class="scrollbar-track-inner">
+                        <div class="scrollbar-thumb"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            // Custom scrollbar sync
+            (function() {
+                const projects = document.querySelector('.projects');
+                const thumb = document.querySelector('.scrollbar-thumb');
+                const track = document.querySelector('.scrollbar-track-inner');
+
+                if (!projects || !thumb || !track) return;
+
+                function updateThumb() {
+                    const scrollWidth = projects.scrollWidth - projects.clientWidth;
+                    const scrollPercent = scrollWidth > 0 ? projects.scrollLeft / scrollWidth : 0;
+                    const trackWidth = track.clientWidth;
+                    const thumbWidth = Math.max(trackWidth * (projects.clientWidth / projects.scrollWidth), 40);
+                    const thumbPosition = scrollPercent * (trackWidth - thumbWidth);
+
+                    thumb.style.width = thumbWidth + 'px';
+                    thumb.style.left = thumbPosition + 'px';
+                }
+
+                projects.addEventListener('scroll', updateThumb);
+                window.addEventListener('resize', updateThumb);
+                updateThumb();
+
+                // Drag functionality
+                let isDragging = false;
+                let startX, startScrollLeft;
+
+                thumb.addEventListener('mousedown', (e) => {
+                    isDragging = true;
+                    startX = e.clientX;
+                    startScrollLeft = projects.scrollLeft;
+                    document.body.style.userSelect = 'none';
+                });
+
+                document.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    const trackWidth = track.clientWidth;
+                    const thumbWidth = thumb.clientWidth;
+                    const scrollWidth = projects.scrollWidth - projects.clientWidth;
+                    const deltaX = e.clientX - startX;
+                    const scrollDelta = (deltaX / (trackWidth - thumbWidth)) * scrollWidth;
+                    projects.scrollLeft = startScrollLeft + scrollDelta;
+                });
+
+                document.addEventListener('mouseup', () => {
+                    isDragging = false;
+                    document.body.style.userSelect = '';
+                });
+
+                // Click on track to scroll
+                track.addEventListener('click', (e) => {
+                    if (e.target === thumb) return;
+                    const rect = track.getBoundingClientRect();
+                    const clickX = e.clientX - rect.left;
+                    const trackWidth = track.clientWidth;
+                    const scrollWidth = projects.scrollWidth - projects.clientWidth;
+                    projects.scrollLeft = (clickX / trackWidth) * scrollWidth;
+                });
+            })();
+        </script>
+
+        <!-- CTA Section -->
+        <section class="cta-section container" id="contact-section">
+            <div class="grid-layout">
+                <p class="cta-statement letter-reveal">Have a project in mind? I'm just an email away. From full rebrands to custom websites, I'm ready to make it happen. Let's create something bold.</p>
+                <div class="cta-button-wrapper animate-fade-up">
+                    <button class="copy-email-btn" onclick="copyEmail()">
+                        nela.flosova@email.cz ↘
+                    </button>
+                    <span class="copy-popup" id="copyPopup">email copied</span>
+                </div>
+                <div class="cta-arrow animate-fade-up">
+                    <svg viewBox="0 0 100 100">
+                        <line x1="90" y1="10" x2="10" y2="90" />
+                        <line x1="10" y1="90" x2="10" y2="40" />
+                        <line x1="10" y1="90" x2="60" y2="90" />
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            function copyEmail() {
+                navigator.clipboard.writeText('nela.flosova@email.cz').then(function() {
+                    const popup = document.getElementById('copyPopup');
+                    popup.classList.add('show');
+                    setTimeout(function() {
+                        popup.classList.remove('show');
+                    }, 1200);
+                });
+            }
+
+            function copyFooterEmail() {
+                navigator.clipboard.writeText('nela.flosova@email.cz').then(function() {
+                    const link = event.target;
+                    const originalText = link.textContent;
+                    link.textContent = 'Copied!';
+                    setTimeout(function() {
+                        link.textContent = originalText;
+                    }, 1200);
+                });
+            }
+        </script>
+
+        <!-- Footer -->
+        <footer class="dark-footer">
+            <div class="footer-container">
+                <div class="footer-name">
+                    <h2 class="footer-title letter-reveal">Nela Flosova</h2>
+                </div>
+            </div>
+
+            <div class="footer-card">
+                <div class="footer-content">
+                    <div class="footer-section animate-stagger">
+                        <h3 class="footer-heading">Navigate</h3>
+                        <ul class="footer-links">
+                            <li><a href="projects_list.html">Projects</a></li>
+                            <li><a href="#intro-section">About</a></li>
+                            <li><a href="#services-section">Services</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section animate-stagger">
+                        <h3 class="footer-heading">Connect</h3>
+                        <ul class="footer-links">
+                            <li><a href="javascript:void(0)" onclick="copyFooterEmail()">nela.flosova@email.cz</a></li>
+                            <li><a href="https://www.linkedin.com/in/nela-flosova" target="_blank">LinkedIn</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section animate-stagger">
+                        <h3 class="footer-heading">Location</h3>
+                        <p class="footer-text">Prague, Czech Republic</p>
+                        <p class="footer-text">Available for projects</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 
     <script>
-    gsap.registerPlugin(ScrollTrigger);
+        gsap.registerPlugin(ScrollTrigger);
 
-    // Initial card positions - stacked in center with slight rotations
-    gsap.set(".card", {
-        top: "50%",
-        left: "50%",
-        xPercent: -50,
-        yPercent: -50,
-        width: "250px",
-        height: "320px"
-    });
+        // Initial card positions - stacked in center with slight rotations
+        gsap.set(".card", {
+            top: "50%",
+            left: "50%",
+            xPercent: -50,
+            yPercent: -50,
+            width: "160px",
+            height: "210px"
+        });
 
-    gsap.set(".c1", { rotation: -3, zIndex: 7, opacity: 1 });
-    gsap.set(".c2", { rotation: 2, zIndex: 8, opacity: 1 });
-    gsap.set(".c3", { rotation: -1, zIndex: 6, opacity: 1 });
-    gsap.set(".c4", { rotation: 4, zIndex: 5, opacity: 1 });
-    gsap.set(".c5", { rotation: -2, zIndex: 4, opacity: 1 });
-    gsap.set(".c6", { rotation: 1, zIndex: 3, opacity: 1 });
-    gsap.set(".c7", { rotation: 2, zIndex: 2, opacity: 1 });
-    gsap.set(".c8", { rotation: -1, zIndex: 1, opacity: 1 });
-    gsap.set(".c9", { rotation: 3, zIndex: 1, opacity: 1 });
-    gsap.set(".c10", { rotation: -2, zIndex: 1, opacity: 1 });
-    gsap.set(".c11", { rotation: 1, zIndex: 1, opacity: 1 });
+        gsap.set(".c1", { rotation: -3, zIndex: 7, opacity: 1 });
+        gsap.set(".c2", { rotation: 2, zIndex: 8, opacity: 1 });
+        gsap.set(".c3", { rotation: -1, zIndex: 6, opacity: 1 });
+        gsap.set(".c4", { rotation: 4, zIndex: 9, opacity: 1 });
+        gsap.set(".c5", { rotation: -2, zIndex: 4, opacity: 1 });
+        gsap.set(".c6", { rotation: 1, zIndex: 3, opacity: 1 });
+        gsap.set(".c7", { rotation: 2, zIndex: 2, opacity: 1 });
+        gsap.set(".c8", { rotation: -1, zIndex: 1, opacity: 1 });
+        gsap.set(".c9", { rotation: 3, zIndex: 1, opacity: 1 });
+        gsap.set(".c10", { rotation: -2, zIndex: 1, opacity: 1 });
+        gsap.set(".c11", { rotation: 1, zIndex: 1, opacity: 1 });
 
-    // Hero text overlay - initial positions
-    gsap.set(".hero-text-overlay", { opacity: 1 });
-    gsap.set(".row-1", { x: 0 });
-    gsap.set(".row-2", { x: 0 });
+        // Hero text overlay - initial positions
+        gsap.set(".hero-text-overlay", { opacity: 1 });
+        gsap.set(".row-1", { x: 0 });
+        gsap.set(".row-2", { x: 0 });
 
-    // Single master timeline with labeled phases
-    const master = gsap.timeline({ paused: true });
+        // Single master timeline with labeled phases
+        const master = gsap.timeline({ paused: true });
 
-    // Phase 1: Scatter cards around the edges (hero text stays visible in center)
-    master.addLabel("start", 0)
-          // Cards scatter to edges - matching reference layout
-          .to(".c1", { top: "8%", left: "-4%", width: "14%", height: "34%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
-          .to(".c2", { top: "12%", left: "20%", width: "18%", height: "24%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
-          .to(".c3", { top: "-8%", left: "48%", width: "16%", height: "36%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
-          .to(".c4", { top: "20%", left: "74%", width: "18%", height: "24%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
-          .to(".c5", { top: "52%", left: "10%", width: "18%", height: "36%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
-          .to(".c6", { top: "70%", left: "34%", width: "24%", height: "28%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
-          .to(".c7", { top: "64%", left: "66%", width: "16%", height: "34%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
-          // Edge cards - partially outside viewport
-          .to(".c8", { top: "-22%", left: "12%", width: "20%", height: "24%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
-          .to(".c9", { top: "75%", left: "-12%", width: "16%", height: "36%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
-          .to(".c10", { top: "-18%", left: "82%", width: "26%", height: "28%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
-          .to(".c11", { top: "54%", left: "88%", width: "24%", height: "30%", rotation: 0, opacity: 1, xPercent: 0, yPercent: 0, ease: "power2.inOut", duration: 1.2 }, 0)
-          .addLabel("phase1", 1.2);
+        // Phase 1: Scatter cards around the edges (hero text stays visible in center)
+        master.addLabel("start", 0)
+            // Cards scatter to edges - matching reference layout with proper z-index for scattered state (sizes reduced by 2%)
+            .to(".c1", { top: "10%", left: "-4%", width: "10%", height: "30%", rotation: 0, opacity: 1, x: 0, y: 0, xPercent: 0, yPercent: 0, zIndex: 3, ease: "power2.inOut", duration: 1.2 }, 0)
+            .to(".c2", { top: "12%", left: "20%", width: "14%", height: "20%", rotation: 0, opacity: 1, x: 0, y: 0, xPercent: 0, yPercent: 0, zIndex: 5, ease: "power2.inOut", duration: 1.2 }, 0)
+            .to(".c3", { top: "-6%", left: "48%", width: "12%", height: "32%", rotation: 0, opacity: 1, x: 0, y: 0, xPercent: 0, yPercent: 0, zIndex: 2, ease: "power2.inOut", duration: 1.2 }, 0)
+            .to(".c4", { top: "22%", left: "74%", width: "14%", height: "20%", rotation: 0, opacity: 1, x: 0, y: 0, xPercent: 0, yPercent: 0, zIndex: 4, ease: "power2.inOut", duration: 1.2 }, 0)
+            .to(".c5", { top: "54%", left: "10%", width: "14%", height: "32%", rotation: 0, opacity: 1, x: 0, y: 0, xPercent: 0, yPercent: 0, zIndex: 6, ease: "power2.inOut", duration: 1.2 }, 0)
+            .to(".c6", { top: "76%", left: "34%", width: "20%", height: "24%", rotation: 0, opacity: 1, x: 0, y: 0, xPercent: 0, yPercent: 0, zIndex: 7, ease: "power2.inOut", duration: 1.2 }, 0)
+            .to(".c7", { top: "68%", left: "66%", width: "12%", height: "30%", rotation: 0, opacity: 1, x: 0, y: 0, xPercent: 0, yPercent: 0, zIndex: 8, ease: "power2.inOut", duration: 1.2 }, 0)
+            // Edge cards - partially outside viewport
+            .to(".c8", { top: "-20%", left: "12%", width: "16%", height: "20%", rotation: 0, opacity: 1, x: 0, y: 0, xPercent: 0, yPercent: 0, zIndex: 1, ease: "power2.inOut", duration: 1.2 }, 0)
+            .to(".c9", { top: "78%", left: "-12%", width: "12%", height: "32%", rotation: 0, opacity: 1, x: 0, y: 0, xPercent: 0, yPercent: 0, zIndex: 1, ease: "power2.inOut", duration: 1.2 }, 0)
+            .to(".c10", { top: "-16%", left: "82%", width: "22%", height: "24%", rotation: 0, opacity: 1, x: 0, y: 0, xPercent: 0, yPercent: 0, zIndex: 1, ease: "power2.inOut", duration: 1.2 }, 0)
+            .to(".c11", { top: "56%", left: "88%", width: "20%", height: "26%", rotation: 0, opacity: 1, x: 0, y: 0, xPercent: 0, yPercent: 0, zIndex: 1, ease: "power2.inOut", duration: 1.2 }, 0)
+            .addLabel("phase1", 1.2);
 
-    // Track current phase for tweenTo
-    let currentTarget = "start";
+        // Track current phase for tweenTo
+        let currentTarget = "start";
 
-    // Single ScrollTrigger that triggers phase transitions
-    ScrollTrigger.create({
-        trigger: ".scroll-container",
-        start: "top top",
-        end: "+=200%",
-        pin: true,
-        anticipatePin: 1,
-        markers: false,
-        onUpdate: (self) => {
-            const progress = self.progress;
-            let newTarget;
+        // Only enable scroll animation on desktop (> 800px)
+        if (window.innerWidth > 800) {
+            // Single ScrollTrigger that triggers phase transitions
+            ScrollTrigger.create({
+                trigger: ".scroll-container",
+                start: "top top",
+                end: "+=100%",
+                pin: true,
+                anticipatePin: 1,
+                markers: false,
+                onUpdate: (self) => {
+                    const progress = self.progress;
+                    let newTarget;
 
-            // Determine target based on scroll progress
-            if (progress < 0.25) {
-                newTarget = "start";
-            } else {
-                newTarget = "phase1";
-            }
+                    // Determine target based on scroll progress
+                    if (progress < 0.25) {
+                        newTarget = "start";
+                    } else {
+                        newTarget = "phase1";
+                    }
 
-            // Only animate if target changed
-            if (newTarget !== currentTarget) {
-                currentTarget = newTarget;
-                master.tweenTo(newTarget, { duration: 0.8, ease: "power2.inOut" });
-            }
+                    // Only animate if target changed
+                    if (newTarget !== currentTarget) {
+                        currentTarget = newTarget;
+                        master.tweenTo(newTarget, { duration: 0.8, ease: "power2.inOut" });
+                    }
+                }
+            });
         }
-    });
 
-    // Refresh on load
-    window.addEventListener('load', () => {
-        ScrollTrigger.refresh();
-    });
+        // Refresh on load
+        window.addEventListener('load', () => {
+            ScrollTrigger.refresh();
+        });
 
-    // Card hover and click interactions
-    const cards = document.querySelectorAll('.card');
-    const cardsContainer = document.querySelector('.cards-container');
+        // Card hover and click interactions (desktop only)
+        if (window.innerWidth > 800) {
+        const cards = document.querySelectorAll('.card');
+        const cardsContainer = document.querySelector('.cards-container');
 
-    // Mouse position tracking
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
+        // Mouse position tracking with smoothing
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let targetX = 0;
+        let targetY = 0;
+        let currentX = 0;
+        let currentY = 0;
 
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
+        // Move cards based on mouse position
+        const maxMoveStacked = 70;
+        const maxMoveScatteredX = 160;
+        const maxMoveScatteredY = 140;
 
-    // Move cards based on mouse position
-    const maxMoveStacked = 70; // Max movement in stacked phase (per card)
-    const maxMoveScattered = 200; // Max movement in scattered phase (container)
+        // Parallax multipliers for stacked phase
+        const parallaxMultipliers = [0.85, 1, 0.75, 0.65, 0.55, 0.45, 0.35, 0.25, 0.25, 0.25, 0.25];
 
-    // Parallax multipliers for stacked phase - higher z-index (top) = more movement
-    const parallaxMultipliers = [0.85, 1, 0.75, 0.65, 0.55, 0.45, 0.35, 0.25, 0.25, 0.25, 0.25]; // c1-c11
+        // Create quickTo functions for smooth container movement
+        const containerXTo = gsap.quickTo(cardsContainer, "x", { duration: 0.8, ease: "power2.out" });
+        const containerYTo = gsap.quickTo(cardsContainer, "y", { duration: 0.8, ease: "power2.out" });
 
-    gsap.ticker.add(() => {
-        const centerX = window.innerWidth / 2;
-        const centerY = window.innerHeight / 2;
+        // Create quickTo functions for each card
+        const cardXTo = [];
+        const cardYTo = [];
+        cards.forEach((card) => {
+            cardXTo.push(gsap.quickTo(card, "x", { duration: 0.8, ease: "power2.out" }));
+            cardYTo.push(gsap.quickTo(card, "y", { duration: 0.8, ease: "power2.out" }));
+        });
 
-        // Calculate offset from center (normalized -1 to 1)
-        const offsetX = (mouseX - centerX) / centerX;
-        const offsetY = (mouseY - centerY) / centerY;
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
 
-        if (currentTarget === 'start') {
-            // Stacked phase: move individual cards with different amounts
-            gsap.to(cardsContainer, { x: 0, y: 0, duration: 0.5, overwrite: 'auto' });
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            const offsetX = (mouseX - centerX) / centerX;
+            const offsetY = (mouseY - centerY) / centerY;
 
-            cards.forEach((card, i) => {
-                const multiplier = parallaxMultipliers[i];
-                const deltaX = offsetX * maxMoveStacked * multiplier;
-                const deltaY = offsetY * maxMoveStacked * multiplier;
+            if (currentTarget === 'start') {
+                // Stacked phase: move individual cards
+                containerXTo(0);
+                containerYTo(0);
 
-                gsap.to(card, {
-                    x: deltaX,
-                    y: deltaY,
-                    duration: 1.5,
-                    ease: 'power3.out',
-                    overwrite: 'auto'
+                cards.forEach((card, i) => {
+                    const multiplier = parallaxMultipliers[i];
+                    cardXTo[i](offsetX * maxMoveStacked * multiplier);
+                    cardYTo[i](offsetY * maxMoveStacked * multiplier);
                 });
-            });
-        } else {
-            // Scattered phase: move container opposite to mouse
-            cards.forEach(card => {
-                gsap.to(card, { x: 0, y: 0, duration: 0.5, overwrite: 'auto' });
-            });
-
-            const deltaX = -offsetX * maxMoveScattered;
-            const deltaY = -offsetY * maxMoveScattered;
-
-            gsap.to(cardsContainer, {
-                x: deltaX,
-                y: deltaY,
-                duration: 1.5,
-                ease: 'power3.out',
-                overwrite: 'auto'
-            });
-        }
-    });
-
-    // Function to update hoverable state (for image swap on hover)
-    function updateHoverableState() {
-        cards.forEach(card => {
-            if (currentTarget === 'phase1') {
-                card.classList.add('hoverable');
             } else {
-                card.classList.remove('hoverable');
+                // Scattered phase: move container, reset card offsets
+                containerXTo(-offsetX * maxMoveScatteredX);
+                containerYTo(-offsetY * maxMoveScatteredY);
             }
         });
-    }
 
-    // Watch for phase changes
-    let lastTarget = currentTarget;
-    setInterval(() => {
-        if (lastTarget !== currentTarget) {
-            lastTarget = currentTarget;
-            updateHoverableState();
+        // Function to update hoverable state
+        function updateHoverableState() {
+            cards.forEach(card => {
+                if (currentTarget === 'phase1') {
+                    card.classList.add('hoverable');
+                } else {
+                    card.classList.remove('hoverable');
+                }
+            });
         }
-    }, 100);
 
-    // Click to navigate (only in phase 1)
-    cards.forEach(card => {
-        const url = card.dataset.url;
-        card.addEventListener('click', () => {
-            if (currentTarget === 'phase1' && url) {
-                window.location.href = url;
+        // Watch for phase changes
+        let lastTarget = currentTarget;
+        setInterval(() => {
+            if (lastTarget !== currentTarget) {
+                lastTarget = currentTarget;
+                updateHoverableState();
+
+                // Reset card positions when switching to scattered phase
+                if (currentTarget === 'phase1') {
+                    cards.forEach((card, i) => {
+                        cardXTo[i](0);
+                        cardYTo[i](0);
+                    });
+                }
             }
+        }, 100);
+
+        // Click to navigate (only in phase 1)
+        cards.forEach(card => {
+            const url = card.dataset.url;
+            card.addEventListener('click', () => {
+                if (currentTarget === 'phase1' && url) {
+                    window.location.href = url;
+                }
+            });
         });
-    });
 
-    // Hover scale effect for all cards using GSAP (to avoid CSS/GSAP transform conflicts)
-    const originalZIndex = [7, 8, 6, 5, 4, 3, 2, 1, 1, 1, 1]; // c1-c11 original zIndex values
+        // Hover scale effect for all cards using GSAP (to avoid CSS/GSAP transform conflicts)
+        const originalZIndex = [7, 8, 6, 5, 4, 3, 2, 1, 1, 1, 1]; // c1-c11 original zIndex values
 
-    cards.forEach((card, i) => {
-        card.addEventListener('mouseenter', () => {
-            if (currentTarget === 'phase1') {
+        cards.forEach((card, i) => {
+            card.addEventListener('mouseenter', () => {
+                if (currentTarget === 'phase1') {
+                    gsap.to(card, {
+                        scale: 1.25,
+                        zIndex: 100,
+                        duration: 0.4,
+                        ease: 'power2.out'
+                    });
+                }
+            });
+
+            card.addEventListener('mouseleave', () => {
                 gsap.to(card, {
-                    scale: 1.25,
-                    zIndex: 100,
+                    scale: 1,
+                    zIndex: originalZIndex[i],
                     duration: 0.4,
                     ease: 'power2.out'
                 });
-            }
-        });
-
-        card.addEventListener('mouseleave', () => {
-            gsap.to(card, {
-                scale: 1,
-                zIndex: originalZIndex[i],
-                duration: 0.4,
-                ease: 'power2.out'
             });
         });
-    });
+        } // End desktop-only card interactions
+
+        // Text animations - subtle, award-winning style
+
+        // Split text into words, then characters (keeps words together)
+        function splitTextIntoChars(element) {
+            const text = element.textContent;
+            const words = text.split(' ');
+            element.innerHTML = '';
+
+            words.forEach((word, wordIndex) => {
+                // Create word wrapper to keep characters together
+                const wordSpan = document.createElement('span');
+                wordSpan.className = 'word';
+
+                // Add each character
+                for (let i = 0; i < word.length; i++) {
+                    const charSpan = document.createElement('span');
+                    charSpan.className = 'char';
+                    charSpan.textContent = word[i];
+                    wordSpan.appendChild(charSpan);
+                }
+
+                element.appendChild(wordSpan);
+
+                // Add space between words (except after last word)
+                if (wordIndex < words.length - 1) {
+                    const spaceSpan = document.createElement('span');
+                    spaceSpan.className = 'space';
+                    element.appendChild(spaceSpan);
+                }
+            });
+        }
+
+        // Apply letter split to all letter-reveal elements
+        document.querySelectorAll('.letter-reveal').forEach(splitTextIntoChars);
+
+        // Intro section - arrow fade up
+        gsap.to('.intro-arrow.animate-fade-up', {
+            scrollTrigger: {
+                trigger: '.intro-section',
+                start: 'top 90%',
+                toggleActions: 'play none none none'
+            },
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            ease: 'power2.out'
+        });
+
+        // Intro statement - letter reveal (fast scan)
+        gsap.to('.intro-statement .char', {
+            scrollTrigger: {
+                trigger: '.intro-section',
+                start: 'top 90%',
+                toggleActions: 'play none none none'
+            },
+            opacity: 1,
+            duration: 0.25,
+            stagger: 0.004,
+            ease: 'power1.out'
+        });
+
+        // Services section animations
+        gsap.to('.services-title.animate-fade-up', {
+            scrollTrigger: {
+                trigger: '.services-section',
+                start: 'top 90%',
+                toggleActions: 'play none none none'
+            },
+            opacity: 1,
+            y: 0,
+            duration: 0.4,
+            ease: 'power2.out'
+        });
+
+        gsap.to('.services-list .animate-stagger', {
+            scrollTrigger: {
+                trigger: '.services-list',
+                start: 'top 90%',
+                toggleActions: 'play none none none'
+            },
+            opacity: 1,
+            y: 0,
+            duration: 0.4,
+            stagger: 0.06,
+            ease: 'power2.out'
+        });
+
+        // Projects section animations
+        gsap.to('.section-title.animate-fade-up', {
+            scrollTrigger: {
+                trigger: '.section-title',
+                start: 'top 90%',
+                toggleActions: 'play none none none'
+            },
+            opacity: 1,
+            y: 0,
+            duration: 0.4,
+            ease: 'power2.out'
+        });
+
+        gsap.to('.projects-intro.animate-fade-up', {
+            scrollTrigger: {
+                trigger: '.projects-intro',
+                start: 'top 90%',
+                toggleActions: 'play none none none'
+            },
+            opacity: 1,
+            y: 0,
+            duration: 0.4,
+            ease: 'power2.out'
+        });
+
+        // CTA section - letter reveal (fast scan)
+        gsap.to('.cta-statement .char', {
+            scrollTrigger: {
+                trigger: '.cta-section',
+                start: 'top 90%',
+                toggleActions: 'play none none none'
+            },
+            opacity: 1,
+            duration: 0.25,
+            stagger: 0.004,
+            ease: 'power1.out'
+        });
+
+        // CTA section - fade up for button and arrow
+        gsap.to('.cta-button-wrapper.animate-fade-up, .cta-arrow.animate-fade-up', {
+            scrollTrigger: {
+                trigger: '.cta-section',
+                start: 'top 85%',
+                toggleActions: 'play none none none'
+            },
+            opacity: 1,
+            y: 0,
+            duration: 0.4,
+            stagger: 0.05,
+            ease: 'power2.out'
+        });
+
+        // Footer title - letter reveal (fast)
+        gsap.to('.footer-title .char', {
+            scrollTrigger: {
+                trigger: '.footer-title',
+                start: 'top 95%',
+                toggleActions: 'play none none none'
+            },
+            opacity: 1,
+            duration: 0.3,
+            stagger: 0.015,
+            ease: 'power1.out'
+        });
+
+        gsap.to('.footer-section.animate-stagger', {
+            scrollTrigger: {
+                trigger: '.footer-content',
+                start: 'top 90%',
+                toggleActions: 'play none none none'
+            },
+            opacity: 1,
+            y: 0,
+            duration: 0.4,
+            stagger: 0.05,
+            ease: 'power2.out'
+        });
     </script>
 </body>
+
 </html>

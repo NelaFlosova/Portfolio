@@ -3,7 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects - Portfolio</title>
+    <title>Projects - Nela Flosova UX/UI Designer</title>
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Projects - Nela Flosova UX/UI Designer">
+    <meta name="description" content="Browse my UX/UI design portfolio featuring mobile apps, web applications, and design systems. Case studies include user research, wireframes, and final designs.">
+    <meta name="keywords" content="UX Design Projects, UI Design Portfolio, Case Studies, Mobile App Design, Web Design, Design Systems, User Research">
+    <meta name="author" content="Nela Flosova">
+    <meta name="robots" content="index, follow">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://nela-flosova.cz/projects_list.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nela-flosova.cz/projects_list.html">
+    <meta property="og:title" content="Projects - Nela Flosova UX/UI Designer">
+    <meta property="og:description" content="Browse my UX/UI design portfolio featuring mobile apps, web applications, and design systems.">
+    <meta property="og:image" content="https://nela-flosova.cz/mobile_hero.png">
+    <meta property="og:site_name" content="Nela Flosova Portfolio">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Projects - Nela Flosova UX/UI Designer">
+    <meta name="twitter:description" content="Browse my UX/UI design portfolio featuring mobile apps, web applications, and design systems.">
+    <meta name="twitter:image" content="https://nela-flosova.cz/mobile_hero.png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Design Projects",
+        "description": "Portfolio of UX/UI design projects by Nela Flosova",
+        "url": "https://nela-flosova.cz/projects_list.html",
+        "author": {
+            "@type": "Person",
+            "name": "Nela Flosova"
+        }
+    }
+    </script>
+
     <script>
         // Immediately apply theme before page renders to prevent flash
         (function() {
@@ -34,6 +77,20 @@
         /* Hidden state for filtered projects */
         .project-card.hidden {
             display: none;
+        }
+
+        /* Single row: origin chips left, category chips right */
+        .filter-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .filter-row .filter-container {
+            margin-bottom: 0;
         }
 
         /* Hover transitions */
@@ -75,33 +132,186 @@
         .project-card:hover .project-image img {
             transform: scale(1.05);
         }
+
+        /* Animated Button */
+        .swirl-button {
+            --duration: 7s;
+            --easing: linear;
+            --c-color-1: rgba(90, 88, 96, 0.6);
+            --c-color-2: rgba(29, 29, 29, 0.7);
+            --c-color-3: rgba(63, 63, 72, 0.6);
+            --c-color-4: rgba(134, 134, 147, 0.5);
+            --c-radial-inner: #2a2a2a;
+            --c-radial-outer: #1a1a1a;
+            --c-color: #fff;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-appearance: none;
+            appearance: none;
+            outline: none;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            position: relative;
+            border-radius: 28px;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            font-family: var(--font-family);
+            font-weight: 500;
+            font-size: 15px;
+            letter-spacing: 0.01em;
+            line-height: 1.5;
+            color: var(--c-color);
+            background: var(--c-radial-outer);
+            text-decoration: none;
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+
+        .swirl-button:before {
+            content: "";
+            pointer-events: none;
+            position: absolute;
+            z-index: 3;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 28px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        .swirl-button .wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 28px;
+            min-width: 110px;
+            padding: 10px 20px;
+            background: radial-gradient(circle, var(--c-radial-inner), var(--c-radial-outer) 80%);
+        }
+
+        .swirl-button .wrapper span {
+            display: inline-block;
+            position: relative;
+            letter-spacing: 3%;
+            font-weight: 300;
+            z-index: 1;
+        }
+
+        .swirl-button .wrapper .arrow {
+            display: inline-block;
+            margin-left: 8px;
+            font-size: 14px;
+            transition: transform 0.3s ease;
+        }
+
+        .swirl-button:hover {
+            --duration: 2s;
+            transform: translateY(-1px);
+        }
+
+        .swirl-button:hover .arrow {
+            transform: translate(2px, 2px);
+        }
+
+        .swirl-button .wrapper .circle {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            filter: blur(var(--blur, 8px));
+            background: var(--background, transparent);
+            transform: translate(var(--x, 0), var(--y, 0)) translateZ(0);
+            animation: var(--animation, none) var(--duration) var(--easing) infinite;
+        }
+
+        .swirl-button .wrapper .circle.circle-1,
+        .swirl-button .wrapper .circle.circle-9,
+        .swirl-button .wrapper .circle.circle-10 {
+            --background: var(--c-color-4);
+        }
+
+        .swirl-button .wrapper .circle.circle-3,
+        .swirl-button .wrapper .circle.circle-4 {
+            --background: var(--c-color-2);
+            --blur: 14px;
+        }
+
+        .swirl-button .wrapper .circle.circle-5,
+        .swirl-button .wrapper .circle.circle-6 {
+            --background: var(--c-color-3);
+            --blur: 16px;
+        }
+
+        .swirl-button .wrapper .circle.circle-2,
+        .swirl-button .wrapper .circle.circle-7,
+        .swirl-button .wrapper .circle.circle-8,
+        .swirl-button .wrapper .circle.circle-11,
+        .swirl-button .wrapper .circle.circle-12 {
+            --background: var(--c-color-1);
+            --blur: 12px;
+        }
+
+        .swirl-button .wrapper .circle.circle-1 { --x: 0; --y: -40px; --animation: circle-1; }
+        .swirl-button .wrapper .circle.circle-2 { --x: 92px; --y: 8px; --animation: circle-2; }
+        .swirl-button .wrapper .circle.circle-3 { --x: -12px; --y: -12px; --animation: circle-3; }
+        .swirl-button .wrapper .circle.circle-4 { --x: 80px; --y: -12px; --animation: circle-4; }
+        .swirl-button .wrapper .circle.circle-5 { --x: 12px; --y: -4px; --animation: circle-5; }
+        .swirl-button .wrapper .circle.circle-6 { --x: 56px; --y: 16px; --animation: circle-6; }
+        .swirl-button .wrapper .circle.circle-7 { --x: 8px; --y: 28px; --animation: circle-7; }
+        .swirl-button .wrapper .circle.circle-8 { --x: 28px; --y: -4px; --animation: circle-8; }
+        .swirl-button .wrapper .circle.circle-9 { --x: 20px; --y: -12px; --animation: circle-9; }
+        .swirl-button .wrapper .circle.circle-10 { --x: 64px; --y: 16px; --animation: circle-10; }
+        .swirl-button .wrapper .circle.circle-11 { --x: 4px; --y: 4px; --animation: circle-11; }
+        .swirl-button .wrapper .circle.circle-12 { --blur: 14px; --x: 52px; --y: 4px; --animation: circle-12; }
+
+        @keyframes circle-1 { 33% { transform: translate(0px, 16px) translateZ(0); } 66% { transform: translate(12px, 64px) translateZ(0); } }
+        @keyframes circle-2 { 33% { transform: translate(80px, -10px) translateZ(0); } 66% { transform: translate(72px, -48px) translateZ(0); } }
+        @keyframes circle-3 { 33% { transform: translate(20px, 12px) translateZ(0); } 66% { transform: translate(12px, 4px) translateZ(0); } }
+        @keyframes circle-4 { 33% { transform: translate(76px, -12px) translateZ(0); } 66% { transform: translate(112px, -8px) translateZ(0); } }
+        @keyframes circle-5 { 33% { transform: translate(84px, 28px) translateZ(0); } 66% { transform: translate(40px, -32px) translateZ(0); } }
+        @keyframes circle-6 { 33% { transform: translate(28px, -16px) translateZ(0); } 66% { transform: translate(76px, -56px) translateZ(0); } }
+        @keyframes circle-7 { 33% { transform: translate(8px, 28px) translateZ(0); } 66% { transform: translate(20px, -60px) translateZ(0); } }
+        @keyframes circle-8 { 33% { transform: translate(32px, -4px) translateZ(0); } 66% { transform: translate(56px, -20px) translateZ(0); } }
+        @keyframes circle-9 { 33% { transform: translate(20px, -12px) translateZ(0); } 66% { transform: translate(80px, -8px) translateZ(0); } }
+        @keyframes circle-10 { 33% { transform: translate(68px, 20px) translateZ(0); } 66% { transform: translate(100px, 28px) translateZ(0); } }
+        @keyframes circle-11 { 33% { transform: translate(4px, 4px) translateZ(0); } 66% { transform: translate(68px, 20px) translateZ(0); } }
+        @keyframes circle-12 { 33% { transform: translate(56px, 0px) translateZ(0); } 66% { transform: translate(60px, -32px) translateZ(0); } }
     </style>
 </head>
 <body>
     <nav>
         <div class="nav-container">
             <div class="nav-left">
-                <div class="nav-logo-icon">NF</div>
-                <div class="nav-logo-text">Nela Flosova</div>
+                <a href="index.html"><img src="logo.svg" alt="Nela Flosova" class="nav-logo" style="height: 30px;"></a>
             </div>
             <div class="nav-right">
-                <!-- Theme toggle hidden for now
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M10 2V4M10 16V18M18 10H16M4 10H2M15.657 4.343L14.243 5.757M5.757 14.243L4.343 15.657M15.657 15.657L14.243 14.243M5.757 5.757L4.343 4.343" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
-                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-                -->
-                <a href="about.html" class="nav-button primary">Contact</a>
+                <a href="index.html#contact-section" class="swirl-button">
+                    <div class="wrapper">
+                        <span>Contact</span>
+                        <span class="arrow">↘</span>
+                        <div class="circle circle-1"></div>
+                        <div class="circle circle-2"></div>
+                        <div class="circle circle-3"></div>
+                        <div class="circle circle-4"></div>
+                        <div class="circle circle-5"></div>
+                        <div class="circle circle-6"></div>
+                        <div class="circle circle-7"></div>
+                        <div class="circle circle-8"></div>
+                        <div class="circle circle-9"></div>
+                        <div class="circle circle-10"></div>
+                        <div class="circle circle-11"></div>
+                        <div class="circle circle-12"></div>
+                    </div>
+                </a>
                 <div class="menu-wrapper">
                     <button class="nav-button menu-toggle menu-icon-only" aria-label="Menu">☰</button>
                     <div class="menu-dropdown">
-                        <a href="index.html">Work</a>
-                        <a href="about.html">About</a>
+                        <a href="projects_list.html">Projects</a>
+                        <a href="index.html#intro-section">About</a>
+                        <a href="index.html#services-section">Services</a>
                     </div>
                 </div>
             </div>
@@ -150,113 +360,128 @@
     <!-- Projects Grid -->
     <section class="projects-container">
         <!-- Filter Buttons -->
-        <div class="filter-container">
-            <button class="filter-btn active" data-filter="all">all</button>
-            <button class="filter-btn" data-filter="3d">3d & render</button>
-            <button class="filter-btn" data-filter="game">game design</button>
-            <button class="filter-btn" data-filter="ui-ux">ui/ux</button>
-            <button class="filter-btn" data-filter="graphics">graphics</button>
+        <div class="filter-row">
+            <div class="filter-container" data-group="origin">
+                <button class="filter-btn" data-origin="school">školní</button>
+                <button class="filter-btn" data-origin="work">pracovní</button>
+            </div>
+            <div class="filter-container" data-group="category">
+                <button class="filter-btn" data-filter="3d">3d & render</button>
+                <button class="filter-btn" data-filter="game">game design</button>
+                <button class="filter-btn" data-filter="ui-ux">ui/ux</button>
+                <button class="filter-btn" data-filter="graphics">graphics</button>
+            </div>
         </div>
 
         <div class="projects-grid" id="projectsGrid">
-            <a href="project-gapcontrol.html" class="project-card" data-category="ui-ux">
+            <a href="project-gapcontrol.html" class="project-card" data-origin="work" data-category="ui-ux">
                 <div class="project-image">
-                    <img src="gapcontrol_1.png" alt="Security Data Dashboard">
+                    <img src="gapcontrol_1.png" alt="Security Data Dashboard" loading="eager" decoding="async">
                 </div>
                 <div class="project-tags">UX/UI Design • Data Visualization</div>
                 <h2 class="project-title">
-                    <span class="project-arrow">→</span>
+                    <span class="project-arrow">↘</span>
                     <span class="project-title-text">Security Data Dashboard</span>
                 </h2>
             </a>
-            <a href="project-logcontrol.html" class="project-card" data-category="graphics">
+            <a href="project-logcontrol.html" class="project-card" data-origin="work" data-category="graphics">
                 <div class="project-image">
-                    <img src="logcontrol_1.jpg" alt="Security Tool Animation">
+                    <img src="logcontrol_1.jpg" alt="Security Tool Animation" loading="eager" decoding="async">
                 </div>
                 <div class="project-tags">Motion Design • Animation</div>
                 <h2 class="project-title">
-                    <span class="project-arrow">→</span>
+                    <span class="project-arrow">↘</span>
                     <span class="project-title-text">Security Tool Animation</span>
                 </h2>
             </a>
-            <a href="project-cyberrelax.html" class="project-card" data-category="graphics">
+            <a href="project-cyberrelax.html" class="project-card" data-origin="work" data-category="graphics">
                 <div class="project-image">
-                    <img src="cyberrelax_3.jpg" alt="Conference Drink Design">
+                    <img src="cyberrelax_3.jpg" alt="Conference Drink Design" loading="lazy" decoding="async">
                 </div>
                 <div class="project-tags">Product Design • Marketing</div>
                 <h2 class="project-title">
-                    <span class="project-arrow">→</span>
+                    <span class="project-arrow">↘</span>
                     <span class="project-title-text">Conference Drink Design</span>
                 </h2>
             </a>
-            <a href="project-knihobot.html" class="project-card" data-category="graphics">
+            <a href="project-knihobot.html" class="project-card" data-origin="work" data-category="graphics">
                 <div class="project-image">
-                    <img src="knihobot_1.jpg" alt="Book Resale Bookmarks">
+                    <img src="knihobot_1.jpg" alt="Book Resale Bookmarks" loading="lazy" decoding="async">
                 </div>
                 <div class="project-tags">Illustration • Print Design</div>
                 <h2 class="project-title">
-                    <span class="project-arrow">→</span>
+                    <span class="project-arrow">↘</span>
                     <span class="project-title-text">Book Resale Bookmarks</span>
                 </h2>
             </a>
-            <a href="project-iphone.html" class="project-card" data-category="3d">
+            <a href="project-iphone.html" class="project-card" data-origin="work" data-category="3d">
                 <div class="project-image">
-                    <img src="iphone_1.jpg" alt="iPhone 3D Render">
+                    <img src="iphone_1.jpg" alt="iPhone 3D Render" loading="lazy" decoding="async">
                 </div>
                 <div class="project-tags">3D • Visualization</div>
                 <h2 class="project-title">
-                    <span class="project-arrow">→</span>
+                    <span class="project-arrow">↘</span>
                     <span class="project-title-text">iPhone 3D Render</span>
                 </h2>
             </a>
-            <a href="project-coffeeux.html" class="project-card" data-category="ui-ux">
+            <a href="project-coffeeux.html" class="project-card" data-origin="work" data-category="ui-ux">
                 <div class="project-image">
-                    <img src="coffeeux_1.jpg" alt="Coffee Pickup Wireframe">
+                    <img src="coffeeux_1.jpg" alt="Coffee Pickup Wireframe" loading="lazy" decoding="async">
                 </div>
                 <div class="project-tags">Wireframing • UX Design</div>
                 <h2 class="project-title">
-                    <span class="project-arrow">→</span>
+                    <span class="project-arrow">↘</span>
                     <span class="project-title-text">Coffee Pickup Wireframe</span>
                 </h2>
             </a>
-            <a href="https://nela-flosova.itch.io/secret-forest" target="_blank" class="project-card" data-category="3d game">
+            <a href="https://nela-flosova.itch.io/secret-forest" target="_blank" class="project-card" data-origin="work" data-category="3d game">
                 <div class="project-image">
-                    <img src="secretforest_1.jpg" alt="3D Unity Game">
+                    <img src="secretforest_1.jpg" alt="3D Unity Game" loading="lazy" decoding="async">
                 </div>
                 <div class="project-tags">Unity • 3D Modeling • C#</div>
                 <h2 class="project-title">
-                    <span class="project-arrow">→</span>
+                    <span class="project-arrow">↘</span>
                     <span class="project-title-text">3D Unity Game</span>
                 </h2>
             </a>
-            <a href="project-architecture.html" class="project-card" data-category="3d">
+            <a href="project-architecture.html" class="project-card" data-origin="work" data-category="3d">
                 <div class="project-image">
-                    <img src="archviz_2.jpg" alt="Architectural Visualization">
+                    <img src="archviz_2.jpg" alt="Architectural Visualization" loading="lazy" decoding="async">
                 </div>
                 <div class="project-tags">3D Modeling • Architectural Design</div>
                 <h2 class="project-title">
-                    <span class="project-arrow">→</span>
+                    <span class="project-arrow">↘</span>
                     <span class="project-title-text">Architectural Visualization</span>
                 </h2>
             </a>
-            <a href="project-imrvere.html" class="project-card" data-category="ui-ux">
+            <a href="project-imrvere.html" class="project-card" data-origin="work" data-category="ui-ux">
                 <div class="project-image">
-                    <img src="imrvere_1.jpg" alt="Café Imervere Website">
+                    <img src="imrvere_1.jpg" alt="Café Imervere Website" loading="lazy" decoding="async">
                 </div>
                 <div class="project-tags">UI Design • Web Presentation</div>
                 <h2 class="project-title">
-                    <span class="project-arrow">→</span>
+                    <span class="project-arrow">↘</span>
                     <span class="project-title-text">Café Imervere Website</span>
                 </h2>
             </a>
-            <a href="project-pension.html" class="project-card" data-category="graphics">
+            <a href="project-pension.html" class="project-card" data-origin="work" data-category="graphics">
                 <div class="project-image">
-                    <img src="pension_3.jpg" alt="Mountain Guesthouse Brand">
+                    <img src="pension_3.jpg" alt="Mountain Guesthouse Brand" loading="lazy" decoding="async">
                 </div>
                 <div class="project-tags">Brand Identity • Visual Design</div>
                 <h2 class="project-title">
-                    <span class="project-arrow">→</span>
+                    <span class="project-arrow">↘</span>
                     <span class="project-title-text">Mountain Guesthouse Brand</span>
+                </h2>
+            </a>
+            <a href="project-bracelet.html" class="project-card" data-origin="work" data-category="ui-ux">
+                <div class="project-image">
+                    <img src="bracelet_1.jpg" alt="Smart Bracelet UX Research" loading="lazy" decoding="async">
+                </div>
+                <div class="project-tags">UX Research • User Testing</div>
+                <h2 class="project-title">
+                    <span class="project-arrow">↘</span>
+                    <span class="project-title-text">Smart Bracelet UX Research</span>
                 </h2>
             </a>
         </div>
@@ -291,21 +516,20 @@
             ease: 'power2.out'
         });
 
-        // Animate project cards on scroll
-        gsap.utils.toArray('.project-card').forEach((card, index) => {
-            gsap.from(card, {
-                scrollTrigger: {
-                    trigger: card,
-                    start: 'top 80%',
-                    end: 'top 50%',
-                    toggleActions: 'play none none none'
-                },
-                opacity: 0,
-                y: 60,
-                duration: 0.8,
-                delay: index * 0.2,
-                ease: 'power3.out'
-            });
+        // Animate project cards on scroll - staggered batch animation
+        gsap.set('.project-card', { opacity: 0, y: 30 });
+
+        ScrollTrigger.batch('.project-card', {
+            start: 'top 92%',
+            onEnter: (batch) => {
+                gsap.to(batch, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.5,
+                    stagger: 0.08,
+                    ease: 'power2.out'
+                });
+            }
         });
 
         // Smooth scroll for arrow
@@ -318,57 +542,58 @@
         });
 
         // Project filtering system
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const projectCards = document.querySelectorAll('.project-card');
+        const categoryGroup = document.querySelector('[data-group="category"]');
+        const originGroup = document.querySelector('[data-group="origin"]');
+        const categoryBtns = categoryGroup.querySelectorAll('.filter-btn');
+        const originBtns = originGroup.querySelectorAll('.filter-btn');
         const projectCountEl = document.querySelector('.project-count');
-        const allBtn = document.querySelector('[data-filter="all"]');
 
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const filter = btn.dataset.filter;
+        function activeValues(btns, attr) {
+            return Array.from(btns)
+                .filter(b => b.classList.contains('active'))
+                .map(b => b.dataset[attr]);
+        }
 
-                if (filter === 'all') {
-                    // "All" button - deselect all others
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
+        function applyFilters() {
+            const activeCats = activeValues(categoryBtns, 'filter');
+            const activeOrigins = activeValues(originBtns, 'origin');
+
+            let visibleCount = 0;
+            document.querySelectorAll('.project-card').forEach(card => {
+                const categories = card.dataset.category || '';
+                const origin = card.dataset.origin || '';
+
+                const catMatch = activeCats.length === 0 || activeCats.some(f => categories.includes(f));
+                const originMatch = activeOrigins.length === 0 || activeOrigins.includes(origin);
+
+                if (catMatch && originMatch) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
                 } else {
-                    // Category button - toggle active state
-                    btn.classList.toggle('active');
-                    // Deactivate "all" if any category is selected
-                    allBtn.classList.remove('active');
-
-                    // If no categories selected, activate "all"
-                    const hasActiveCategories = Array.from(filterBtns)
-                        .some(b => b.dataset.filter !== 'all' && b.classList.contains('active'));
-                    if (!hasActiveCategories) {
-                        allBtn.classList.add('active');
-                    }
+                    card.classList.add('hidden');
                 }
-
-                // Get all active filters (excluding "all")
-                const activeFilters = Array.from(filterBtns)
-                    .filter(b => b.classList.contains('active') && b.dataset.filter !== 'all')
-                    .map(b => b.dataset.filter);
-
-                // Filter projects
-                let visibleCount = 0;
-                document.querySelectorAll('.project-card').forEach(card => {
-                    const categories = card.dataset.category;
-
-                    // Show if "all" is active OR if card matches any active filter
-                    if (allBtn.classList.contains('active') ||
-                        activeFilters.some(filter => categories.includes(filter))) {
-                        card.classList.remove('hidden');
-                        visibleCount++;
-                    } else {
-                        card.classList.add('hidden');
-                    }
-                });
-
-                // Update project count
-                projectCountEl.textContent = visibleCount;
             });
-        });
+            projectCountEl.textContent = visibleCount;
+        }
+
+        // Apply filter from URL parameter on page load (category only)
+        (function applyFilterFromURL() {
+            const filterParam = new URLSearchParams(window.location.search).get('filter');
+            if (!filterParam) return;
+            const targetBtn = categoryGroup.querySelector(`[data-filter="${filterParam}"]`);
+            if (!targetBtn) return;
+            targetBtn.classList.add('active');
+            applyFilters();
+        })();
+
+        categoryBtns.forEach(btn => btn.addEventListener('click', () => {
+            btn.classList.toggle('active');
+            applyFilters();
+        }));
+        originBtns.forEach(btn => btn.addEventListener('click', () => {
+            btn.classList.toggle('active');
+            applyFilters();
+        }));
     </script>
 </body>
 </html>
