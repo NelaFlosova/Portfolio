@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects - Nela Flosova UX/UI Designer</title>
+    <title>Projekty — Nela Flosova UX/UI designérka</title>
 
     <!-- Primary Meta Tags -->
-    <meta name="title" content="Projects - Nela Flosova UX/UI Designer">
-    <meta name="description" content="Browse my UX/UI design portfolio featuring mobile apps, web applications, and design systems. Case studies include user research, wireframes, and final designs.">
-    <meta name="keywords" content="UX Design Projects, UI Design Portfolio, Case Studies, Mobile App Design, Web Design, Design Systems, User Research">
+    <meta name="title" content="Projekty — Nela Flosova UX/UI designérka">
+    <meta name="description" content="Prohlédněte si moje portfolio UX/UI designu — mobilní aplikace, weby a design systémy. Case studies zahrnují uživatelský výzkum, wireframy a finální návrhy.">
+    <meta name="keywords" content="UX design projekty, UI design portfolio, case studies, mobilní aplikace, web design, design systémy, uživatelský výzkum">
     <meta name="author" content="Nela Flosova">
     <meta name="robots" content="index, follow">
 
@@ -21,15 +21,15 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nela-flosova.cz/projects_list.html">
-    <meta property="og:title" content="Projects - Nela Flosova UX/UI Designer">
-    <meta property="og:description" content="Browse my UX/UI design portfolio featuring mobile apps, web applications, and design systems.">
+    <meta property="og:title" content="Projekty — Nela Flosova UX/UI designérka">
+    <meta property="og:description" content="Prohlédněte si moje portfolio UX/UI designu — mobilní aplikace, weby a design systémy.">
     <meta property="og:image" content="https://nela-flosova.cz/mobile_hero.png">
     <meta property="og:site_name" content="Nela Flosova Portfolio">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Projects - Nela Flosova UX/UI Designer">
-    <meta name="twitter:description" content="Browse my UX/UI design portfolio featuring mobile apps, web applications, and design systems.">
+    <meta name="twitter:title" content="Projekty — Nela Flosova UX/UI designérka">
+    <meta name="twitter:description" content="Prohlédněte si moje portfolio UX/UI designu — mobilní aplikace, weby a design systémy.">
     <meta name="twitter:image" content="https://nela-flosova.cz/mobile_hero.png">
 
     <!-- JSON-LD Structured Data -->
@@ -37,8 +37,9 @@
     {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
-        "name": "Design Projects",
-        "description": "Portfolio of UX/UI design projects by Nela Flosova",
+        "name": "Design projekty",
+        "description": "Portfolio UX/UI design projektů Nely Flosové",
+        "inLanguage": "cs",
         "url": "https://nela-flosova.cz/projects_list.html",
         "author": {
             "@type": "Person",
@@ -57,10 +58,13 @@
         })();
     </script>
     <link rel="stylesheet" href="styles.css">
-    <script src="projects-data.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="theme.js"></script>
+    <link rel="preload" as="image" href="cards/ctedu_3.jpg" fetchpriority="high">
+    <link rel="preload" as="image" href="cards/gapcontrol_1.jpg">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <script defer src="projects-data.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script defer src="theme.js"></script>
     <style>
         /* Animation & Interaction Styles Only */
 
@@ -96,6 +100,8 @@
         /* Hover transitions */
         .project-card {
             transition: transform 0.3s ease;
+            content-visibility: auto;
+            contain-intrinsic-size: auto 600px;
         }
 
         .project-card:hover {
@@ -288,9 +294,9 @@
                 <a href="index.html"><img src="logo.svg" alt="Nela Flosova" class="nav-logo" style="height: 30px;"></a>
             </div>
             <div class="nav-right">
-                <a href="index.html#contact-section" class="swirl-button">
+                <a href="index.html#intro-section" class="nav-link">O mně</a>                <a href="index.html#services-section" class="nav-link">Služby</a>                <a href="projects_list.html" class="nav-link">Projekty</a>                <a href="index.html#contact-section" class="swirl-button">
                     <div class="wrapper">
-                        <span>Contact</span>
+                        <span>Kontakt</span>
                         <span class="arrow">↘</span>
                         <div class="circle circle-1"></div>
                         <div class="circle circle-2"></div>
@@ -306,14 +312,6 @@
                         <div class="circle circle-12"></div>
                     </div>
                 </a>
-                <div class="menu-wrapper">
-                    <button class="nav-button menu-toggle menu-icon-only" aria-label="Menu">☰</button>
-                    <div class="menu-dropdown">
-                        <a href="projects_list.html">Projects</a>
-                        <a href="index.html#intro-section">About</a>
-                        <a href="index.html#services-section">Services</a>
-                    </div>
-                </div>
             </div>
         </div>
     </nav>
@@ -321,35 +319,14 @@
     <script>
         // Menu toggle functionality
         document.addEventListener('DOMContentLoaded', function () {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const menuWrapper = document.querySelector('.menu-wrapper');
-
-            menuToggle.addEventListener('click', function (e) {
-                e.stopPropagation();
-                menuWrapper.classList.toggle('active');
-            });
-
-            // Close menu when clicking outside
-            document.addEventListener('click', function (e) {
-                if (!menuWrapper.contains(e.target)) {
-                    menuWrapper.classList.remove('active');
-                }
-            });
-
-            // Close menu when clicking a link
-            const menuLinks = document.querySelectorAll('.menu-dropdown a');
-            menuLinks.forEach(link => {
-                link.addEventListener('click', function () {
-                    menuWrapper.classList.remove('active');
-                });
-            });
+        });
         });
     </script>
 
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-title-wrapper">
-            <h1 class="hero-title">SELECTED WORK</h1>
+            <h1 class="hero-title">VYBRANÉ PROJEKTY</h1>
             <div class="hero-right">
                 <div class="project-count">0</div>
                 <div class="hero-scroll-arrow">↘</div>
@@ -362,132 +339,230 @@
         <!-- Filter Buttons -->
         <div class="filter-row">
             <div class="filter-container" data-group="origin">
-                <button class="filter-btn" data-origin="school">školní</button>
+                <button class="filter-btn active" data-origin="school">školní</button>
                 <button class="filter-btn" data-origin="work">pracovní</button>
             </div>
             <div class="filter-container" data-group="category">
-                <button class="filter-btn" data-filter="3d">3d & render</button>
-                <button class="filter-btn" data-filter="game">game design</button>
-                <button class="filter-btn" data-filter="ui-ux">ui/ux</button>
-                <button class="filter-btn" data-filter="graphics">graphics</button>
+                <button class="filter-btn" data-filter="ui-ux">UX/UI</button>
+                <button class="filter-btn" data-filter="animace">animace</button>
+                <button class="filter-btn" data-filter="marketing">marketing</button>
+                <button class="filter-btn" data-filter="video">video</button>
+                <button class="filter-btn" data-filter="grafika">grafika</button>
+                <button class="filter-btn" data-filter="3d">3D</button>
+                <button class="filter-btn" data-filter="ostatni">ostatní</button>
             </div>
         </div>
 
         <div class="projects-grid" id="projectsGrid">
-            <a href="project-gapcontrol.html" class="project-card" data-origin="work" data-category="ui-ux">
+            <a href="project-ctedu-cz.html" class="project-card" data-origin="school" data-category="animace video">
                 <div class="project-image">
-                    <img src="gapcontrol_1.png" alt="Security Data Dashboard" loading="eager" decoding="async">
+                    <img src="cards/ctedu_3.jpg" alt="Edukativní videa pro ČT edu" loading="eager" fetchpriority="high" decoding="async" width="960" height="600">
                 </div>
-                <div class="project-tags">UX/UI Design • Data Visualization</div>
+                <div class="project-tags">Motion design • Edukativní video</div>
                 <h2 class="project-title">
                     <span class="project-arrow">↘</span>
-                    <span class="project-title-text">Security Data Dashboard</span>
+                    <span class="project-title-text">Edukativní videa pro&nbsp;ČT edu</span>
                 </h2>
             </a>
-            <a href="project-logcontrol.html" class="project-card" data-origin="work" data-category="graphics">
+            <a href="project-gapcontrol-cz.html" class="project-card" data-origin="work" data-category="ui-ux">
                 <div class="project-image">
-                    <img src="logcontrol_1.jpg" alt="Security Tool Animation" loading="eager" decoding="async">
+                    <img src="cards/gapcontrol_1.jpg" alt="Dashboard pro bezpečnostní data" loading="eager" decoding="async">
                 </div>
-                <div class="project-tags">Motion Design • Animation</div>
+                <div class="project-tags">UX/UI design • Datová vizualizace</div>
                 <h2 class="project-title">
                     <span class="project-arrow">↘</span>
-                    <span class="project-title-text">Security Tool Animation</span>
+                    <span class="project-title-text">Dashboard pro&nbsp;bezpečnostní data</span>
                 </h2>
             </a>
-            <a href="project-cyberrelax.html" class="project-card" data-origin="work" data-category="graphics">
+            <a href="project-bracelet-cz.html" class="project-card" data-origin="school" data-category="ui-ux">
                 <div class="project-image">
-                    <img src="cyberrelax_3.jpg" alt="Conference Drink Design" loading="lazy" decoding="async">
+                    <img src="cards/bracelet_1.jpg" alt="Editor pro tvorbu šperků" loading="lazy" decoding="async">
                 </div>
-                <div class="project-tags">Product Design • Marketing</div>
+                <div class="project-tags">UX research • Uživatelské testování</div>
                 <h2 class="project-title">
                     <span class="project-arrow">↘</span>
-                    <span class="project-title-text">Conference Drink Design</span>
+                    <span class="project-title-text">Editor pro&nbsp;tvorbu šperků</span>
                 </h2>
             </a>
-            <a href="project-knihobot.html" class="project-card" data-origin="work" data-category="graphics">
+            <a href="project-basnik-cz.html" class="project-card" data-origin="school" data-category="video">
                 <div class="project-image">
-                    <img src="knihobot_1.jpg" alt="Book Resale Bookmarks" loading="lazy" decoding="async">
+                    <img src="cards/basnik_cover.jpg" alt="Studentský film Básník" loading="lazy" decoding="async">
                 </div>
-                <div class="project-tags">Illustration • Print Design</div>
+                <div class="project-tags">Střih • Film</div>
                 <h2 class="project-title">
                     <span class="project-arrow">↘</span>
-                    <span class="project-title-text">Book Resale Bookmarks</span>
+                    <span class="project-title-text">Studentský film Básník</span>
                 </h2>
             </a>
-            <a href="project-iphone.html" class="project-card" data-origin="work" data-category="3d">
+            <a href="project-logcontrol-cz.html" class="project-card" data-origin="school" data-category="animace video marketing">
                 <div class="project-image">
-                    <img src="iphone_1.jpg" alt="iPhone 3D Render" loading="lazy" decoding="async">
+                    <img src="cards/logcontrol_1.jpg" alt="Promo animace pro správu logů" loading="lazy" decoding="async">
                 </div>
-                <div class="project-tags">3D • Visualization</div>
+                <div class="project-tags">Motion design • Promo video</div>
                 <h2 class="project-title">
                     <span class="project-arrow">↘</span>
-                    <span class="project-title-text">iPhone 3D Render</span>
+                    <span class="project-title-text">Promo animace pro&nbsp;správu logů</span>
                 </h2>
             </a>
-            <a href="project-coffeeux.html" class="project-card" data-origin="work" data-category="ui-ux">
+            <a href="project-odstup-cz.html" class="project-card" data-origin="school" data-category="marketing grafika">
                 <div class="project-image">
-                    <img src="coffeeux_1.jpg" alt="Coffee Pickup Wireframe" loading="lazy" decoding="async">
+                    <img src="cards/odstup_1.jpg" alt="Kampaň ODSTUP! pro soutěž Moje vize nula" loading="lazy" decoding="async">
                 </div>
-                <div class="project-tags">Wireframing • UX Design</div>
+                <div class="project-tags">Vizuální komunikace • Kampaň</div>
                 <h2 class="project-title">
                     <span class="project-arrow">↘</span>
-                    <span class="project-title-text">Coffee Pickup Wireframe</span>
+                    <span class="project-title-text">Kampaň ODSTUP!</span>
                 </h2>
             </a>
-            <a href="https://nela-flosova.itch.io/secret-forest" target="_blank" class="project-card" data-origin="work" data-category="3d game">
+            <a href="project-veris-cz.html" class="project-card" data-origin="school" data-category="grafika">
                 <div class="project-image">
-                    <img src="secretforest_1.jpg" alt="3D Unity Game" loading="lazy" decoding="async">
+                    <img src="cards/veris_2.jpg" alt="Vizuální identita Veris" loading="lazy" decoding="async">
                 </div>
-                <div class="project-tags">Unity • 3D Modeling • C#</div>
+                <div class="project-tags">Brand identity • Botanická ilustrace</div>
                 <h2 class="project-title">
                     <span class="project-arrow">↘</span>
-                    <span class="project-title-text">3D Unity Game</span>
+                    <span class="project-title-text">Identita pro&nbsp;bylinné doplňky</span>
                 </h2>
             </a>
-            <a href="project-architecture.html" class="project-card" data-origin="work" data-category="3d">
+            <a href="project-knihobot-cz.html" class="project-card" data-origin="school" data-category="grafika">
                 <div class="project-image">
-                    <img src="archviz_2.jpg" alt="Architectural Visualization" loading="lazy" decoding="async">
+                    <img src="cards/knihobot_1.jpg" alt="Reklamní záložky do knih" loading="lazy" decoding="async">
                 </div>
-                <div class="project-tags">3D Modeling • Architectural Design</div>
+                <div class="project-tags">Ilustrace • Tiskovina</div>
                 <h2 class="project-title">
                     <span class="project-arrow">↘</span>
-                    <span class="project-title-text">Architectural Visualization</span>
+                    <span class="project-title-text">Reklamní záložky do&nbsp;knih</span>
                 </h2>
             </a>
-            <a href="project-imrvere.html" class="project-card" data-origin="work" data-category="ui-ux">
+            <a href="project-cyberrelax-cz.html" class="project-card" data-origin="work" data-category="marketing grafika">
                 <div class="project-image">
-                    <img src="imrvere_1.jpg" alt="Café Imervere Website" loading="lazy" decoding="async">
+                    <img src="cards/cyberrelax_3.jpg" alt="Branding konferenčního nápoje" loading="lazy" decoding="async">
                 </div>
-                <div class="project-tags">UI Design • Web Presentation</div>
+                <div class="project-tags">Product design • Marketing</div>
                 <h2 class="project-title">
                     <span class="project-arrow">↘</span>
-                    <span class="project-title-text">Café Imervere Website</span>
+                    <span class="project-title-text">Branding konferenčního nápoje</span>
                 </h2>
             </a>
-            <a href="project-pension.html" class="project-card" data-origin="work" data-category="graphics">
+            <a href="project-imrvere-cz.html" class="project-card" data-origin="work" data-category="ui-ux">
                 <div class="project-image">
-                    <img src="pension_3.jpg" alt="Mountain Guesthouse Brand" loading="lazy" decoding="async">
+                    <img src="cards/imrvere_1.jpg" alt="Web kavárny Imrvere" loading="lazy" decoding="async">
                 </div>
-                <div class="project-tags">Brand Identity • Visual Design</div>
+                <div class="project-tags">UI design • Webová prezentace</div>
                 <h2 class="project-title">
                     <span class="project-arrow">↘</span>
-                    <span class="project-title-text">Mountain Guesthouse Brand</span>
+                    <span class="project-title-text">Web kavárny Imrvere</span>
                 </h2>
             </a>
-            <a href="project-bracelet.html" class="project-card" data-origin="work" data-category="ui-ux">
+            <a href="https://nela-flosova.itch.io/secret-forest" target="_blank" class="project-card" data-origin="work" data-category="3d ostatni">
                 <div class="project-image">
-                    <img src="bracelet_1.jpg" alt="Smart Bracelet UX Research" loading="lazy" decoding="async">
+                    <img src="cards/secretforest_1.jpg" alt="3D hra v Unity" loading="lazy" decoding="async">
                 </div>
-                <div class="project-tags">UX Research • User Testing</div>
+                <div class="project-tags">Unity • 3D modelování • C#</div>
                 <h2 class="project-title">
                     <span class="project-arrow">↘</span>
-                    <span class="project-title-text">Smart Bracelet UX Research</span>
+                    <span class="project-title-text">3D hra v&nbsp;Unity</span>
                 </h2>
             </a>
+            <a href="project-pension-cz.html" class="project-card" data-origin="school" data-category="grafika">
+                <div class="project-image">
+                    <img src="cards/pension_3.jpg" alt="Identita horského penzionu" loading="lazy" decoding="async">
+                </div>
+                <div class="project-tags">Brand identity • Vizuální design</div>
+                <h2 class="project-title">
+                    <span class="project-arrow">↘</span>
+                    <span class="project-title-text">Identita horského penzionu</span>
+                </h2>
+            </a>
+            <a href="project-reklama-cz.html" class="project-card" data-origin="school" data-category="marketing grafika">
+                <div class="project-image">
+                    <img src="cards/reklama_1.jpg" alt="PPC kampaň pro IT firmu" loading="lazy" decoding="async">
+                </div>
+                <div class="project-tags">PPC kampaň • Online reklama</div>
+                <h2 class="project-title">
+                    <span class="project-arrow">↘</span>
+                    <span class="project-title-text">PPC kampaň pro&nbsp;IT firmu</span>
+                </h2>
+            </a>
+            <a href="project-iphone-cz.html" class="project-card" data-origin="school" data-category="3d">
+                <div class="project-image">
+                    <img src="cards/iphone_1.jpg" alt="Produktový render iPhone 15 Pro" loading="lazy" decoding="async">
+                </div>
+                <div class="project-tags">3D • Vizualizace</div>
+                <h2 class="project-title">
+                    <span class="project-arrow">↘</span>
+                    <span class="project-title-text">Produktový render iPhone 15 Pro</span>
+                </h2>
+            </a>
+            <a href="project-architecture-cz.html" class="project-card" data-origin="school" data-category="3d">
+                <div class="project-image">
+                    <img src="cards/archviz_2.jpg" alt="3D vizualizace architektury" loading="lazy" decoding="async">
+                </div>
+                <div class="project-tags">3D modelování • Vizualizace</div>
+                <h2 class="project-title">
+                    <span class="project-arrow">↘</span>
+                    <span class="project-title-text">3D vizualizace architektury</span>
+                </h2>
+            </a>
+            <a href="project-coffeeux-cz.html" class="project-card" data-origin="school" data-category="ui-ux">
+                <div class="project-image">
+                    <img src="cards/coffeeux_1.jpg" alt="Aplikace pro objednávání kafe" loading="lazy" decoding="async">
+                </div>
+                <div class="project-tags">Wireframing • UX design</div>
+                <h2 class="project-title">
+                    <span class="project-arrow">↘</span>
+                    <span class="project-title-text">Aplikace pro&nbsp;objednávání kafe</span>
+                </h2>
+            </a>
+            <a href="project-dokument-cz.html" class="project-card" data-origin="school" data-category="video">
+                <div class="project-image">
+                    <img src="dokument_1.jpg" alt="Dokument o roztroušené skleróze" loading="lazy" decoding="async">
+                </div>
+                <div class="project-tags">Střih • Dokument</div>
+                <h2 class="project-title">
+                    <span class="project-arrow">↘</span>
+                    <span class="project-title-text">Dokument o&nbsp;roztroušené skleróze</span>
+                </h2>
+            </a>
+            <a href="project-foto-cz.html" class="project-card" data-origin="school" data-category="ostatni">
+                <div class="project-image">
+                    <img src="cards/foto_cover.jpg" alt="Fotografické kolekce" loading="lazy" decoding="async">
+                </div>
+                <div class="project-tags">Produktová fotografie • Architektura</div>
+                <h2 class="project-title">
+                    <span class="project-arrow">↘</span>
+                    <span class="project-title-text">Fotografické kolekce</span>
+                </h2>
+            </a>
+            <!-- HIDDEN: Plakát Karlovy Vary — odkomentuj pro zobrazení v seznamu
+            <a href="project-vary-cz.html" class="project-card" data-origin="school" data-category="grafika">
+                <div class="project-image">
+                    <img src="vary_1.png" alt="Plakát pro filmový festival Karlovy Vary" loading="lazy" decoding="async">
+                </div>
+                <div class="project-tags">Ilustrace • Plakát</div>
+                <h2 class="project-title">
+                    <span class="project-arrow">↘</span>
+                    <span class="project-title-text">Plakát pro&nbsp;festival Karlovy Vary</span>
+                </h2>
+            </a>
+            -->
+            <!-- HIDDEN: Brožura o webových technologiích — odkomentuj pro zobrazení v seznamu
+            <a href="project-brozura-cz.html" class="project-card" data-origin="school" data-category="grafika">
+                <div class="project-image">
+                    <img src="brozura_1.png" alt="Brožura o webových technologiích" loading="lazy" decoding="async">
+                </div>
+                <div class="project-tags">Sazba • Typografie</div>
+                <h2 class="project-title">
+                    <span class="project-arrow">↘</span>
+                    <span class="project-title-text">Brožura o&nbsp;webových technologiích</span>
+                </h2>
+            </a>
+            -->
         </div>
     </section>
 
     <script>
+    document.addEventListener('DOMContentLoaded', function() {
         // Update project count
         document.querySelector('.project-count').textContent = document.querySelectorAll('.project-card').length;
 
@@ -514,22 +589,6 @@
             duration: 0.8,
             delay: 0.5,
             ease: 'power2.out'
-        });
-
-        // Animate project cards on scroll - staggered batch animation
-        gsap.set('.project-card', { opacity: 0, y: 30 });
-
-        ScrollTrigger.batch('.project-card', {
-            start: 'top 92%',
-            onEnter: (batch) => {
-                gsap.to(batch, {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.5,
-                    stagger: 0.08,
-                    ease: 'power2.out'
-                });
-            }
         });
 
         // Smooth scroll for arrow
@@ -583,8 +642,10 @@
             const targetBtn = categoryGroup.querySelector(`[data-filter="${filterParam}"]`);
             if (!targetBtn) return;
             targetBtn.classList.add('active');
-            applyFilters();
         })();
+
+        // Initial filter pass — applies default-active chips (e.g. "školní")
+        applyFilters();
 
         categoryBtns.forEach(btn => btn.addEventListener('click', () => {
             btn.classList.toggle('active');
@@ -594,6 +655,7 @@
             btn.classList.toggle('active');
             applyFilters();
         }));
+    });
     </script>
 </body>
 </html>

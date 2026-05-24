@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<!--
+============================================================================
+PROJECT DETAIL TEMPLATE — SHORT (CZ)
+============================================================================
+Zkrácená šablona pro menší / cvičné projekty (předloha: project-coffeeux).
+Liší se od plné šablony tím, že nemá samostatné sekce Řešení a Výsledek —
+celý popis projektu je v JEDNOM textovém bloku vedle scroll-images.
+
+Použij když:
+- Projekt je menší (cvičný, wireframe study, jeden artefakt…)
+- Není potřeba dělit popis na Výzvu / Řešení / Výsledek
+- Stačí jeden přehledový odstavec + obrázky
+
+Postup:
+1. Zkopíruj jako project-NAZEV-cz.html
+2. Vyplň placeholdery {{ ... }}
+3. Volitelný CTA link (Figma prototyp / itch.io / web) — pokud nemáš, smaž
+4. Charakteristiky max 5 slotů (nepoužité smaž), Oblast = MAX 3 klíčová slova
+============================================================================
+-->
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{PROJECT_TITLE}} | Nela Flosova</title>
+    <meta name="description" content="{{PROJECT_DESCRIPTION}}">
+    <meta name="author" content="Nela Flosova">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://nela-flosova.cz/project-{{SLUG}}-cz.html">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://nela-flosova.cz/project-{{SLUG}}-cz.html">
+    <meta property="og:title" content="{{PROJECT_TITLE}}">
+    <meta property="og:description" content="{{PROJECT_DESCRIPTION}}">
+    <meta property="og:site_name" content="Nela Flosova Portfolio">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{PROJECT_TITLE}}">
+    <meta name="twitter:description" content="{{PROJECT_DESCRIPTION}}">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"{{PROJECT_TITLE}}","author":{"@type":"Person","name":"Nela Flosova"},"publisher":{"@type":"Person","name":"Nela Flosova"},"inLanguage":"cs"}
+    </script>
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            }
+        })();
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="project-detail.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html"><img src="logo.svg" alt="Nela Flosova" class="nav-logo" style="height: 30px;"></a>
+            </div>
+            <div class="nav-right">
+                <a href="index.html#intro-section" class="nav-link">O mně</a>                <a href="index.html#services-section" class="nav-link">Služby</a>                <a href="projects_list.html" class="nav-link">Projekty</a>                <a href="index.html#contact-section" class="swirl-button">
+                    <div class="wrapper">
+                        <span>Kontakt</span>
+                        <span class="arrow">↘</span>
+                        <div class="circle circle-1"></div>
+                        <div class="circle circle-2"></div>
+                        <div class="circle circle-3"></div>
+                        <div class="circle circle-4"></div>
+                        <div class="circle circle-5"></div>
+                        <div class="circle circle-6"></div>
+                        <div class="circle circle-7"></div>
+                        <div class="circle circle-8"></div>
+                        <div class="circle circle-9"></div>
+                        <div class="circle circle-10"></div>
+                        <div class="circle circle-11"></div>
+                        <div class="circle circle-12"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        });
+        });
+    </script>
+
+    <main class="container">
+        <div class="grid-layout">
+            <!-- Hero Section -->
+            <div class="project-hero">
+                <div class="project-meta">
+                    <!-- Štítek nad titulkem: "Cvičný projekt" / "Školní projekt" / název klienta -->
+                    <span class="section-label">{{PROJECT_LABEL}}</span>
+                </div>
+                <h1 class="project-title">{{PROJECT_TITLE}}</h1>
+            </div>
+
+            <!--
+                Project Characteristics — až 5 slotů, nepoužité smaž.
+                "Oblast" = MAX 3 klíčová slova.
+            -->
+            <div class="project-characteristics">
+                <div class="characteristic-item">
+                    <div class="characteristic-label">Role</div>
+                    <div class="characteristic-value">{{ROLE}}</div>
+                </div>
+                <div class="characteristic-item">
+                    <div class="characteristic-label">{{CHAR_2_LABEL}}</div>
+                    <div class="characteristic-value">{{CHAR_2_VALUE}}</div>
+                </div>
+                <div class="characteristic-item">
+                    <div class="characteristic-label">{{CHAR_3_LABEL}}</div>
+                    <div class="characteristic-value">{{CHAR_3_VALUE}}</div>
+                </div>
+                <div class="characteristic-item">
+                    <div class="characteristic-label">Oblast</div>
+                    <div class="characteristic-value">{{OBLAST}}</div>
+                </div>
+            </div>
+
+            <!-- Hero Image -->
+            <div class="image-container">
+                <img src="{{HERO_IMAGE}}" alt="{{HERO_ALT}}" loading="lazy">
+            </div>
+
+            <!--
+                Jediný sticky scroll blok — popis projektu + scroll-images.
+                Text vlevo se připne při scrollu, obrázky vpravo projíždí.
+                Poslední obrázek MUSÍ mít class "last-scroll-image".
+                Volitelný link pod text (Figma prototyp / itch.io / web) — pokud nepoužiješ, smaž.
+            -->
+            <div class="sticky-scroll-section grid-layout">
+                <div class="sticky-text">
+                    <h2 class="section-title">{{SECTION_HEADING}}</h2>
+                    <p class="section-text">
+                        {{PROJECT_TEXT}}
+                    </p>
+                    <a href="{{EXTERNAL_LINK}}" target="_blank" class="project-link">{{LINK_LABEL}} →</a>
+                </div>
+
+                <div class="scroll-images">
+                    <div class="scroll-image" style="background-image: url('{{SCROLL_IMG_1}}');" role="img" aria-label="{{SCROLL_ALT_1}}"></div>
+                    <div class="scroll-image" style="background-image: url('{{SCROLL_IMG_2}}');" role="img" aria-label="{{SCROLL_ALT_2}}"></div>
+                    <div class="scroll-image last-scroll-image" style="background-image: url('{{SCROLL_IMG_3}}');" role="img" aria-label="{{SCROLL_ALT_3}}"></div>
+                </div>
+            </div>
+
+            <!-- Next Project -->
+            <div class="next-project">
+                <a href="projects_list.html" class="next-link">
+                    <div>
+                        <div class="next-label">Zpět na</div>
+                        <div class="next-title">Všechny projekty</div>
+                    </div>
+                    <div class="next-arrow">→</div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- GSAP and ScrollTrigger -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="theme.js"></script>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        ScrollTrigger.matchMedia({
+            "(min-width: 769px)": function() {
+                ScrollTrigger.create({
+                    trigger: ".sticky-text",
+                    start: "top 120px",
+                    endTrigger: ".last-scroll-image",
+                    end: () => {
+                        const stickyText = document.querySelector('.sticky-text');
+                        const textHeight = stickyText.offsetHeight;
+                        const pinOffset = 120;
+                        return `bottom top+=${pinOffset + textHeight}px`;
+                    },
+                    pin: ".sticky-text",
+                    pinSpacing: false,
+                    invalidateOnRefresh: true
+                });
+            },
+            "(max-width: 768px)": function() {}
+        });
+
+        window.addEventListener('load', () => {
+            ScrollTrigger.refresh();
+        });
+    </script>
+</body>
+</html>

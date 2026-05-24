@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nela Flosova - UX/UI Designer Portfolio</title>
+    <title>Nela Flosova — UX/UI designérka | Portfolio</title>
 
     <!-- Primary Meta Tags -->
-    <meta name="title" content="Nela Flosova - UX/UI Designer Portfolio">
-    <meta name="description" content="UX/UI Designer specializing in user experience design, interface design, and digital product development. View my portfolio of mobile apps, web applications, and design systems.">
-    <meta name="keywords" content="UX Designer, UI Designer, Product Designer, User Experience, Interface Design, Portfolio, Mobile App Design, Web Design, Figma, Design Systems">
+    <meta name="title" content="Nela Flosova — UX/UI designérka | Portfolio">
+    <meta name="description" content="UX/UI designérka se specializací na uživatelské rozhraní, digitální produkty a vizuální identitu. Prohlédněte si moje projekty — mobilní aplikace, weby a design systémy.">
+    <meta name="keywords" content="UX designérka, UI design, produktový design, uživatelské rozhraní, portfolio, mobilní aplikace, web design, Figma, design systémy">
     <meta name="author" content="Nela Flosova">
     <meta name="robots" content="index, follow">
-    <meta name="language" content="English">
+    <meta name="language" content="Czech">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://nela-flosova.cz/">
@@ -24,8 +24,8 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nela-flosova.cz/">
-    <meta property="og:title" content="Nela Flosova - UX/UI Designer Portfolio">
-    <meta property="og:description" content="UX/UI Designer specializing in user experience design, interface design, and digital product development. View my portfolio of mobile apps, web applications, and design systems.">
+    <meta property="og:title" content="Nela Flosova — UX/UI designérka | Portfolio">
+    <meta property="og:description" content="UX/UI designérka se specializací na uživatelské rozhraní, digitální produkty a vizuální identitu. Prohlédněte si moje projekty — mobilní aplikace, weby a design systémy.">
     <meta property="og:image" content="https://nela-flosova.cz/mobile_hero.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -35,8 +35,8 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://nela-flosova.cz/">
-    <meta name="twitter:title" content="Nela Flosova - UX/UI Designer Portfolio">
-    <meta name="twitter:description" content="UX/UI Designer specializing in user experience design, interface design, and digital product development.">
+    <meta name="twitter:title" content="Nela Flosova — UX/UI designérka | Portfolio">
+    <meta name="twitter:description" content="UX/UI designérka se specializací na uživatelské rozhraní a digitální produkty.">
     <meta name="twitter:image" content="https://nela-flosova.cz/mobile_hero.png">
 
     <!-- AI Search Optimization -->
@@ -55,8 +55,9 @@
         "name": "Nela Flosova",
         "url": "https://nela-flosova.cz",
         "image": "https://nela-flosova.cz/mobile_hero.png",
-        "jobTitle": "UX/UI Designer",
-        "description": "UX/UI Designer specializing in user experience design, interface design, and digital product development.",
+        "jobTitle": "UX/UI designérka",
+        "description": "UX/UI designérka se specializací na uživatelské rozhraní a digitální produkty.",
+        "inLanguage": "cs",
         "knowsAbout": ["UX Design", "UI Design", "Product Design", "User Research", "Wireframing", "Prototyping", "Figma", "Design Systems", "Mobile App Design", "Web Design"],
         "sameAs": [],
         "mainEntityOfPage": {
@@ -71,7 +72,7 @@
         "@type": "WebSite",
         "name": "Nela Flosova Portfolio",
         "url": "https://nela-flosova.cz",
-        "description": "Portfolio website of Nela Flosova, UX/UI Designer",
+        "description": "Portfolio Nely Flosové, UX/UI designérky",
         "publisher": {
             "@type": "Person",
             "name": "Nela Flosova"
@@ -82,26 +83,27 @@
     {
         "@context": "https://schema.org",
         "@type": "ItemList",
-        "name": "Design Portfolio",
-        "description": "Collection of UX/UI design projects",
+        "name": "Design portfolio",
+        "description": "Soubor UX/UI design projektů",
+        "inLanguage": "cs",
         "itemListElement": [
             {
                 "@type": "ListItem",
                 "position": 1,
-                "name": "Mobile App Design Projects",
-                "description": "User-centered mobile application designs"
+                "name": "Návrhy mobilních aplikací",
+                "description": "Návrhy mobilních aplikací zaměřené na uživatele"
             },
             {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "Web Application Design Projects",
-                "description": "Responsive web application interfaces"
+                "name": "Návrhy webových aplikací",
+                "description": "Responzivní webová rozhraní"
             },
             {
                 "@type": "ListItem",
                 "position": 3,
-                "name": "Design System Projects",
-                "description": "Scalable design systems and component libraries"
+                "name": "Design systémy",
+                "description": "Škálovatelné design systémy a knihovny komponent"
             }
         ]
     }
@@ -134,6 +136,7 @@
         .projects-section .grid-layout {
             grid-template-columns: 1fr 2fr;
             column-gap: 60px;
+            row-gap: 60px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -197,7 +200,7 @@
 
         .card {
             position: absolute;
-            border-radius: 24px;
+            border-radius: 8px;
             will-change: transform;
             transform: translateZ(0);
             backface-visibility: hidden;
@@ -217,6 +220,15 @@
             pointer-events: none;
         }
 
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.2);
+            z-index: 2;
+            pointer-events: none;
+        }
+
         .card.hoverable:hover::after {
             opacity: 1;
         }
@@ -231,7 +243,7 @@
         }
 
         .c2::after {
-            background-image: url('logcontrol_5.jpg');
+            background-image: url('foto_3.jpg');
         }
 
         .c3::after {
@@ -244,15 +256,16 @@
         }
 
         .c5::after {
-            background-image: url('imrvere_4.jpg');
+            background-image: url('reklama_2.jpg');
+            background-position: right;
         }
 
         .c6::after {
-            background-image: url('gapcontrol_end.png');
+            background-image: url('ctedu_3.jpg');
         }
 
         .c7::after {
-            background-image: url('coffeeux_3.jpg');
+            background-image: url('basnik_2.jpg');
         }
 
         .c8::after {
@@ -276,9 +289,10 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-53%, -50%);
+            transform: translate(-50%, -50%);
             z-index: 50;
             pointer-events: none;
+            width: max-content;
         }
 
         .hero-text-row {
@@ -295,8 +309,8 @@
         }
 
         .hero-text-row.row-2 {
-            padding-left: 18%;
-            margin-top: 64px;
+            padding-left: 1.5em;
+            margin-top: 16px;
         }
 
         .hero-prefix {
@@ -364,7 +378,7 @@
 
         .c2 {
             background-color: var(--placeholder-bg);
-            background-image: url('logcontrol_preview.png');
+            background-image: url('foto_cover.jpg');
             background-size: cover;
             background-position: center;
         }
@@ -385,23 +399,23 @@
 
         .c5 {
             background-color: var(--placeholder-bg);
-            background-image: url('imrvere_2.jpg');
+            background-image: url('reklama_1.jpg');
             background-size: cover;
-            background-position: left;
+            background-position: right;
         }
 
         .c6 {
             background-color: var(--placeholder-bg);
-            background-image: url('gapcontrol_preview.png');
+            background-image: url('ctedu_2.jpg');
             background-size: cover;
             background-position: center;
         }
 
         .c7 {
             background-color: var(--placeholder-bg);
-            background-image: url('coffeeux_preview.png');
+            background-image: url('basnik_cover_1.jpg');
             background-size: cover;
-            background-position: top;
+            background-position: center;
         }
 
         .c8 {
@@ -533,16 +547,15 @@
         .scroll-indicator-band {
             width: 100%;
             padding: 6px 60px;
-            background-color: var(--background-color);
+            background-color: #0e0e10;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            
         }
 
         .scroll-indicator-band .marker {
             font-size: 16px;
-            color: var(--secondary-text);
+            color: rgba(255, 255, 255, 0.6);
             font-weight: 300;
         }
 
@@ -1559,9 +1572,9 @@
                     </svg>
                 </button>
                 -->
-                <a href="#contact-section" class="swirl-button">
+                <a href="#intro-section" class="nav-link">O mně</a>                <a href="#services-section" class="nav-link">Služby</a>                <a href="projects_list.html" class="nav-link">Projekty</a>                <a href="#contact-section" class="swirl-button">
                     <div class="wrapper">
-                        <span>Contact</span>
+                        <span>Kontakt</span>
                         <span class="arrow">↘</span>
                         <div class="circle circle-1"></div>
                         <div class="circle circle-2"></div>
@@ -1577,40 +1590,13 @@
                         <div class="circle circle-12"></div>
                     </div>
                 </a>
-                <div class="menu-wrapper">
-                    <button class="nav-button menu-toggle menu-icon-only" aria-label="Menu">☰</button>
-                    <div class="menu-dropdown">
-                        <a href="projects_list.html">Projects</a>
-                        <a href="#intro-section">About</a>
-                        <a href="#services-section">Services</a>
-                    </div>
-                </div>
             </div>
         </div>
     </nav>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const menuWrapper = document.querySelector('.menu-wrapper');
-
-            menuToggle.addEventListener('click', function (e) {
-                e.stopPropagation();
-                menuWrapper.classList.toggle('active');
-            });
-
-            document.addEventListener('click', function (e) {
-                if (!menuWrapper.contains(e.target)) {
-                    menuWrapper.classList.remove('active');
-                }
-            });
-
-            const menuLinks = document.querySelectorAll('.menu-dropdown a');
-            menuLinks.forEach(link => {
-                link.addEventListener('click', function () {
-                    menuWrapper.classList.remove('active');
-                });
-            });
+        });
 
             // Smooth scroll for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1632,26 +1618,26 @@
     <div class="scroll-container">
         <div class="sticky-wrapper">
             <!-- Mobile Hero Image (shown only on mobile) -->
-            <img src="mobile_hero.png" alt="Portfolio Hero" class="mobile-hero-image">
+            <img src="mobile_hero.png" alt="Portfolio Nely Flosové" class="mobile-hero-image">
 
             <!-- Hero Text Overlay -->
             <div class="hero-text-overlay">
                 <div class="hero-text-row row-1"><span class="hero-prefix">(tvořím)</span>Design, který</div>
-                <div class="hero-text-row row-2">posouvá značky.</div>
+                <div class="hero-text-row row-2">zanechá stopu.</div>
             </div>
 
             <div class="cards-container">
-                <div class="card c1" data-project="knihobot" data-url="project-knihobot.html"></div>
-                <div class="card c2" data-project="logcontrol" data-url="project-logcontrol.html"></div>
-                <div class="card c3" data-project="cyberrelax" data-url="project-cyberrelax.html"></div>
-                <div class="card c4" data-project="architecture" data-url="project-architecture.html"></div>
-                <div class="card c5" data-project="imrvere" data-url="project-imrvere.html"></div>
-                <div class="card c6" data-project="gapcontrol" data-url="project-gapcontrol.html"></div>
-                <div class="card c7" data-project="coffeeux" data-url="project-coffeeux.html"></div>
-                <div class="card c8" data-project="bracelet" data-url="project-bracelet.html"></div>
-                <div class="card c9" data-project="iphone" data-url="project-iphone.html"></div>
+                <div class="card c1" data-project="knihobot" data-url="project-knihobot-cz.html"></div>
+                <div class="card c2" data-project="foto" data-url="project-foto-cz.html"></div>
+                <div class="card c3" data-project="cyberrelax" data-url="project-cyberrelax-cz.html"></div>
+                <div class="card c4" data-project="architecture" data-url="project-architecture-cz.html"></div>
+                <div class="card c5" data-project="reklama" data-url="project-reklama-cz.html"></div>
+                <div class="card c6" data-project="ctedu" data-url="project-ctedu-cz.html"></div>
+                <div class="card c7" data-project="basnik" data-url="project-basnik-cz.html"></div>
+                <div class="card c8" data-project="bracelet" data-url="project-bracelet-cz.html"></div>
+                <div class="card c9" data-project="iphone" data-url="project-iphone-cz.html"></div>
                 <div class="card c10" data-project="secretforest" data-url="project-secretforest.html"></div>
-                <div class="card c11" data-project="pension" data-url="project-pension.html"></div>
+                <div class="card c11" data-project="pension" data-url="project-pension-cz.html"></div>
             </div>
 
             
@@ -1675,7 +1661,7 @@
     <div class="scroll-indicator-band">
         <span class="marker">+</span>
         <span class="marker">+</span>
-        <span class="scroll-text">Scroll to explore</span>
+        <span class="marker">+</span>
         <span class="marker">+</span>
         <span class="marker">+</span>
     </div>
@@ -1692,55 +1678,55 @@
                         <line x1="90" y1="90" x2="40" y2="90" />
                     </svg>
                 </div>
-                <p class="intro-statement letter-reveal">Hi, I am Nela. I help modern brands communicate through clear design solutions. Focusing on Web and UI/UX, I don't just design for aesthetics — I build for impact.</p>
+                <p class="intro-statement letter-reveal">Ahoj, jsem Nela. Navrhuji weby a&nbsp;digitální produkty pro&nbsp;moderní značky. Tvořím design, který funguje a&nbsp;má dopad.</p>
             </div>
         </section>
 
         <!-- Services Section -->
         <section class="services-section" id="services-section">
             <div class="services-grid">
-                <h1 class="services-title animate-fade-up">Services</h1>
+                <h1 class="services-title animate-fade-up">Služby</h1>
 
                 <div class="services-list">
                     <div class="service-item animate-stagger">
-                        <h3 class="service-name">UI/UX Design</h3>
+                        <h3 class="service-name">UI/UX design</h3>
                         <div class="service-details">
-                            <p class="service-description">User-centered interfaces that blend beauty with function. I build accessible, seamless experiences that look great on every device.</p>
+                            <p class="service-description">Navrhuji strukturu webů a&nbsp;aplikací od&nbsp;prvních wireframů po&nbsp;finální rozhraní. Řeším tok obrazovek, navigaci, rozvržení obsahu i&nbsp;vizuální podobu produktu.</p>
                             <div class="service-tags">
-                                <span class="service-tag">User Research</span>
+                                <span class="service-tag">Uživatelský výzkum</span>
                                 <span class="service-tag">Wireframing</span>
-                                <span class="service-tag">Prototyping</span>
-                                <span class="service-tag">Design Systems</span>
+                                <span class="service-tag">Prototypování</span>
+                                <span class="service-tag">Design systémy</span>
                             </div>
-                            <a href="projects_list.html?filter=ui-ux" class="service-link">View UX projects <span class="arrow">↘</span></a>
+                            <a href="projects_list.html?filter=ui-ux" class="service-link">Zobrazit UX projekty <span class="arrow">↘</span></a>
                         </div>
                     </div>
 
                     <div class="service-item animate-stagger">
-                        <h3 class="service-name">Web Development</h3>
+                        <h3 class="service-name">Webový vývoj</h3>
                         <div class="service-details">
-                            <p class="service-description">Fast, responsive websites designed to convert. Using modern tech, I design and build solutions focused on performance.</p>
+                            <p class="service-description">Převádím návrhy do&nbsp;funkčních webů. Pracuji s&nbsp;responzivním layoutem, animacemi, komponentami a&nbsp;frontendovým zpracováním.</p>
                             <div class="service-tags">
-                                <span class="service-tag">HTML & CSS</span>
+                                <span class="service-tag">HTML &amp; CSS</span>
                                 <span class="service-tag">JavaScript</span>
                                 <span class="service-tag">Vue</span>
-                                <span class="service-tag">Responsive Design</span>
+                                <span class="service-tag">Responzivní design</span>
                             </div>
-                            <a href="projects_list.html?filter=ui-ux" class="service-link">View web projects <span class="arrow">↘</span></a>
+                            <a href="projects_list.html?filter=ui-ux" class="service-link">Zobrazit webové projekty <span class="arrow">↘</span></a>
                         </div>
                     </div>
 
                     <div class="service-item animate-stagger">
-                        <h3 class="service-name">Brand Identity</h3>
+                        <h3 class="service-name">Vizuální identita</h3>
                         <div class="service-details">
-                            <p class="service-description">Cohesive visual systems that tell your story. From logos to full brand guidelines, I create distinct identities that set you apart.</p>
+                            <p class="service-description">Tvořím loga, barevné systémy, typografii a&nbsp;další vizuální prvky značky. Navrhuji identitu tak, aby fungovala napříč digitálními i&nbsp;tiskovými výstupy.</p>
                             <div class="service-tags">
-                                <span class="service-tag">Logo Design</span>
-                                <span class="service-tag">Visual Identity</span>
-                                <span class="service-tag">Brand Guidelines</span>
-                                <span class="service-tag">Typography</span>
+                                <span class="service-tag">Logo design</span>
+                                <span class="service-tag">Vizuální identita</span>
+                                <span class="service-tag">Brand manuál</span>
+                                <span class="service-tag">Typografie</span>
                             </div>
-                            <a href="projects_list.html?filter=graphics" class="service-link">View branding projects <span class="arrow">↘</span></a>
+                            <a href="projects_list.html?filter=grafika" class="service-link">Zobrazit brandingové projekty <span class="arrow">↘</span></a>
                         </div>
                     </div>
                 </div>
@@ -1750,54 +1736,49 @@
         <!-- Projects Section -->
         <section class="container projects-section">
             <div class="grid-layout">
-                <h1 class="section-title animate-fade-up">PROJECTS</h1>
-
-                <div class="projects-intro animate-fade-up">
-                    <p>I collaborate with companies that prioritize thoughtful design, clear communication, and measurable
-                        impact — from ambitious startups to established industry leaders.</p>
-                </div>
+                <h1 class="section-title animate-fade-up">PROJEKTY</h1>
 
                 <div class="projects">
                     <div class="projects-wrapper">
 
                         <div class="project">
                             <div class="project-image">
-                                <div class="image-placeholder" style="background-image: url('gapcontrol_cover.png'); background-size: cover; background-position: left;"></div>
-                                <span class="project-tags-horizontal">UX/UI Design • Data Visualization</span>
+                                <div class="image-placeholder" style="background-image: url('ctedu_2.jpg'); background-size: cover; background-position: left;"></div>
+                                <span class="project-tags-horizontal">Motion design • Edukativní video</span>
                             </div>
                             <div class="project-details">
-                                <h2>Security Data Dashboard</h2>
-                                <p class="project-description">A comprehensive security monitoring dashboard designed to visualize complex data in an intuitive and actionable way.</p>
-                                <a href="project-gapcontrol.html" class="btn-primary">view project</a>
+                                <h2>Edukativní videa pro&nbsp;ČT edu</h2>
+                                <p class="project-description">Série pěti edukativních videí o&nbsp;kartografii pro&nbsp;platformu ČT edu — od&nbsp;analýzy cílové skupiny po&nbsp;finální publikaci.</p>
+                                <a href="project-ctedu-cz.html" class="btn-primary">zobrazit projekt</a>
                             </div>
                         </div>
 
                         <div class="project">
                             <div class="project-image">
-                                <div class="image-placeholder" style="background-image: url('cyberrelax_3.jpg'); background-size: cover; background-position: center;"></div>
-                                <span class="project-tags-horizontal">Product Design • Branding • Marketing</span>
+                                <div class="image-placeholder" style="background-image: url('basnik_cover.jpg'); background-size: cover; background-position: center;"></div>
+                                <span class="project-tags-horizontal">Střih • Film</span>
                             </div>
                             <div class="project-details">
-                                <h2>Conference Drink Design</h2>
-                                <p class="project-description">A custom branded drink design created for a cybersecurity conference, combining product design with marketing strategy.</p>
-                                <a href="project-cyberrelax.html" class="btn-primary">view project</a>
+                                <h2>Studentský film Básník</h2>
+                                <p class="project-description">Krátkometrážní studentský film, který prošel celou produkcí od&nbsp;scénáře po&nbsp;veřejnou projekci v&nbsp;kině Lucerna.</p>
+                                <a href="project-basnik-cz.html" class="btn-primary">zobrazit projekt</a>
                             </div>
                         </div>
 
                         <div class="project">
                             <div class="project-image">
-                                <div class="image-placeholder" style="background-image: url('coffeeux_1.jpg'); background-size: cover; background-position: center;"></div>
-                                <span class="project-tags-horizontal">Wireframing • UX Design</span>
+                                <div class="image-placeholder" style="background-image: url('logcontrol_1.jpg'); background-size: cover; background-position: left;"></div>
+                                <span class="project-tags-horizontal">Motion design • Promo video</span>
                             </div>
                             <div class="project-details">
-                                <h2>Coffee Pickup Wireframe</h2>
-                                <p class="project-description">UX wireframes for a coffee pickup app, focusing on streamlined user flows and intuitive ordering experience.</p>
-                                <a href="project-coffeeux.html" class="btn-primary">view project</a>
+                                <h2>Promo animace pro&nbsp;správu logů</h2>
+                                <p class="project-description">Krátké promo video převádějící technické funkce produktu do&nbsp;srozumitelné vizuální prezentace.</p>
+                                <a href="project-logcontrol-cz.html" class="btn-primary">zobrazit projekt</a>
                             </div>
                         </div>
 
                         <div class="archive-link-wrapper">
-                            <a href="projects_list.html" class="archive-link">view full archive ↘</a>
+                            <a href="projects_list.html" class="archive-link">zobrazit všechny projekty ↘</a>
                         </div>
 
                     </div>
@@ -1876,12 +1857,12 @@
         <!-- CTA Section -->
         <section class="cta-section container" id="contact-section">
             <div class="grid-layout">
-                <p class="cta-statement letter-reveal">Have a project in mind? I'm just an email away. From full rebrands to custom websites, I'm ready to make it happen. Let's create something bold.</p>
+                <p class="cta-statement letter-reveal">Přemýšlíte nad&nbsp;novým projektem? Napište mi. Pojďme vytvořit něco, co&nbsp;bude mít skutečný dopad.</p>
                 <div class="cta-button-wrapper animate-fade-up">
                     <button class="copy-email-btn" onclick="copyEmail()">
                         nela.flosova@email.cz ↘
                     </button>
-                    <span class="copy-popup" id="copyPopup">email copied</span>
+                    <span class="copy-popup" id="copyPopup">email zkopírován</span>
                 </div>
                 <div class="cta-arrow animate-fade-up">
                     <svg viewBox="0 0 100 100">
@@ -1927,16 +1908,16 @@
             <div class="footer-card">
                 <div class="footer-content">
                     <div class="footer-section animate-stagger">
-                        <h3 class="footer-heading">Navigate</h3>
+                        <h3 class="footer-heading">Navigace</h3>
                         <ul class="footer-links">
-                            <li><a href="projects_list.html">Projects</a></li>
-                            <li><a href="#intro-section">About</a></li>
-                            <li><a href="#services-section">Services</a></li>
+                            <li><a href="projects_list.html">Projekty</a></li>
+                            <li><a href="#intro-section">O mně</a></li>
+                            <li><a href="#services-section">Služby</a></li>
                         </ul>
                     </div>
 
                     <div class="footer-section animate-stagger">
-                        <h3 class="footer-heading">Connect</h3>
+                        <h3 class="footer-heading">Kontakt</h3>
                         <ul class="footer-links">
                             <li><a href="javascript:void(0)" onclick="copyFooterEmail()">nela.flosova@email.cz</a></li>
                             <li><a href="https://www.linkedin.com/in/nela-flosova" target="_blank">LinkedIn</a></li>
@@ -1944,9 +1925,9 @@
                     </div>
 
                     <div class="footer-section animate-stagger">
-                        <h3 class="footer-heading">Location</h3>
-                        <p class="footer-text">Prague, Czech Republic</p>
-                        <p class="footer-text">Available for projects</p>
+                        <h3 class="footer-heading">Lokalita</h3>
+                        <p class="footer-text">Praha, Česká republika</p>
+                        <p class="footer-text">Otevřená pro&nbsp;projekty</p>
                     </div>
                 </div>
             </div>

@@ -19,7 +19,7 @@
 }
 
 .project-title {
-    font-size: clamp(48px, 8vw, 80px);
+    font-size: clamp(48px, 8vw, 78px);
     font-weight: 400;
     letter-spacing: -0.02em;
     line-height: 1;
@@ -33,6 +33,16 @@
     letter-spacing: 1.5px;
     color: var(--tertiary-text);
     margin-bottom: 12px;
+}
+
+/* Project-page section titles: 32px uppercase with 24px gap below */
+.section-title {
+    font-size: 32px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+ 
 }
 
 .section-content {
@@ -51,10 +61,10 @@
 }
 
 .section-text {
-    font-size: clamp(16px, 1.8vw, 18px);
+    font-size: 16px;
     line-height: 1.5;
     color: var(--secondary-text);
-    font-weight: 300;
+    font-weight: 200;
 }
 
 /* Project Link */
@@ -279,7 +289,7 @@
     .section-title {
         grid-column: 1;
         font-size: 32px;
-        margin-bottom: 20px;
+        margin-bottom: 24px;
     }
 
     .section-content {

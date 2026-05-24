@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogControl - Animation video for a security tool | Nela Flosova</title>
+    <meta name="description" content="Motion design case study: Creating an engaging animation video to explain a complex security tool's features.">
+    <meta name="author" content="Nela Flosova">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://nela-flosova.cz/project-logcontrol.html">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://nela-flosova.cz/project-logcontrol.html">
+    <meta property="og:title" content="LogControl - Animation video for a security tool">
+    <meta property="og:description" content="Motion design case study: Creating an engaging animation video to explain a complex security tool.">
+    <meta property="og:site_name" content="Nela Flosova Portfolio">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LogControl - Animation video for a security tool">
+    <meta name="twitter:description" content="Motion design case study: Creating an engaging animation video for a security tool.">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"LogControl - Animation video for a security tool","author":{"@type":"Person","name":"Nela Flosova"},"publisher":{"@type":"Person","name":"Nela Flosova"}}
+    </script>
+    <script>
+        // Immediately apply theme before page renders to prevent flash
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            }
+        })();
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="project-detail.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html"><img src="logo.svg" alt="Nela Flosova" class="nav-logo" style="height: 30px;"></a>
+            </div>
+            <div class="nav-right">
+                <a href="index.html#contact-section" class="swirl-button">
+                    <div class="wrapper">
+                        <span>Contact</span>
+                        <span class="arrow">↘</span>
+                        <div class="circle circle-1"></div>
+                        <div class="circle circle-2"></div>
+                        <div class="circle circle-3"></div>
+                        <div class="circle circle-4"></div>
+                        <div class="circle circle-5"></div>
+                        <div class="circle circle-6"></div>
+                        <div class="circle circle-7"></div>
+                        <div class="circle circle-8"></div>
+                        <div class="circle circle-9"></div>
+                        <div class="circle circle-10"></div>
+                        <div class="circle circle-11"></div>
+                        <div class="circle circle-12"></div>
+                    </div>
+                </a>
+                <div class="menu-wrapper">
+                    <button class="nav-button menu-toggle menu-icon-only" aria-label="Menu">☰</button>
+                    <div class="menu-dropdown">
+                        <a href="projects_list.html">Projects</a>
+                        <a href="index.html#intro-section">About</a>
+                        <a href="index.html#services-section">Services</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        // Menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const menuWrapper = document.querySelector('.menu-wrapper');
+
+            menuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                menuWrapper.classList.toggle('active');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!menuWrapper.contains(e.target)) {
+                    menuWrapper.classList.remove('active');
+                }
+            });
+
+            // Close menu when clicking a link
+            const menuLinks = document.querySelectorAll('.menu-dropdown a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    menuWrapper.classList.remove('active');
+                });
+            });
+        });
+    </script>
+
+    <main class="container">
+        <div class="grid-layout">
+            <!-- Hero Section -->
+            <div class="project-hero">
+                <div class="project-meta">
+                    <span class="section-label">LogControl</span>
+                </div>
+                <h1 class="project-title">Animation video for a security tool</h1>
+            </div>
+
+            <!-- Project Characteristics -->
+            <div class="project-characteristics">
+                <div class="characteristic-item">
+                    <div class="characteristic-label">Role</div>
+                    <div class="characteristic-value">Motion Designer</div>
+                </div>
+                <div class="characteristic-item">
+                    <div class="characteristic-label">Company</div>
+                    <div class="characteristic-value">ORBIT s.r.o.</div>
+                </div>
+                <div class="characteristic-item">
+                    <div class="characteristic-label">Product</div>
+                    <div class="characteristic-value">LogControl (Security Product)</div>
+                </div>
+                <div class="characteristic-item">
+                    <div class="characteristic-label">Focus</div>
+                    <div class="characteristic-value">Motion Design, Animation, Promo</div>
+                </div>
+            </div>
+
+            <!-- Hero Image -->
+            <div class="image-container">
+                <img src="logcontrol_1.jpg" alt="LogControl animation video" loading="lazy">
+            </div>
+
+            <!-- Mission/Overview - Sticky Scroll Section -->
+            <div class="sticky-scroll-section grid-layout">
+                <div class="sticky-text">
+                    <div>
+                        <div class="section-label">Mission</div>
+                        <h2 class="section-title">Motion design for complex data</h2>
+                    </div>
+                    <p class="section-text">
+                        LogControl is a powerful tool for centralized log management, but explaining it with static screenshots or text is difficult. ORBIT needed a promo video that would do the heavy lifting—explaining the core features and value proposition quickly while keeping the viewer engaged.
+                    </p>
+                </div>
+
+                <div class="scroll-images">
+                    <div class="scroll-image" style="background-image: url('logcontrol_2.jpg');" role="img" aria-label="LogControl animation frame"></div>
+                    <div class="scroll-image" style="background-image: url('logcontrol_3.jpg');" role="img" aria-label="LogControl interface animation"></div>
+                    <div class="scroll-image last-scroll-image" style="background-image: url('logcontrol_4.jpg');" role="img" aria-label="LogControl data visualization"></div>
+                </div>
+            </div>
+
+            <!-- The Concept Section -->
+            <h2 class="section-title">The Concept</h2>
+
+            <div class="section-content">
+                <p class="section-text">
+                    Instead of abstract shapes, I animated the actual product interface. The video serves as a dynamic walkthrough, simulating real interactions—like navigating through logs and filtering data. This gives potential clients a genuine feel for the tool's workflow and speed before they even book a demo.
+                </p>
+            </div>
+
+            <!-- Final Results Image -->
+            <div class="image-container">
+                <img src="logcontrol_5.jpg" alt="LogControl final animation" loading="lazy">
+            </div>
+
+            <!-- Results Section -->
+            <div class="div">
+                <div class="section-label">Result</div>
+                <h2 class="section-title">A clear visual pitch</h2>
+            </div>
+            <div class="section-content">
+                <div>
+                    <p class="section-text">
+                        The video translates complex features into an accessible visual story. It allows the sales team to explain the product's value in under a minute, delivering key information in a digestible way without overwhelming the viewer.
+                    </p>
+                    <a href="https://www.orbit.cz/en/logcontrol-siem-as-a-service/" target="_blank" class="project-link">Watch the video on ORBIT website →</a>
+                </div>
+            </div>
+
+            <!-- Next Project -->
+            <div class="next-project">
+                <a href="projects_list.html" class="next-link">
+                    <div>
+                        <div class="next-label">Back to</div>
+                        <div class="next-title">All Projects</div>
+                    </div>
+                    <div class="next-arrow">→</div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- GSAP and ScrollTrigger -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="theme.js"></script>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Only apply sticky scroll on desktop (min-width: 769px)
+        ScrollTrigger.matchMedia({
+            // Desktop - pin the sticky text
+            "(min-width: 769px)": function() {
+                ScrollTrigger.create({
+                    trigger: ".sticky-text",
+                    start: "top 120px", // Account for fixed nav (120px from top)
+                    endTrigger: ".last-scroll-image",
+                    end: () => {
+                        // Unpin when bottom of last image aligns with bottom of sticky text
+                        const stickyText = document.querySelector('.sticky-text');
+                        const textHeight = stickyText.offsetHeight;
+                        const pinOffset = 120; // Where text is pinned from top
+                        return `bottom top+=${pinOffset + textHeight}px`;
+                    },
+                    pin: ".sticky-text",
+                    pinSpacing: false,
+                    invalidateOnRefresh: true // Recalculate on window resize
+                });
+            },
+
+            // Mobile - no pinning, normal scroll
+            "(max-width: 768px)": function() {
+                // Normal scroll behavior on mobile
+            }
+        });
+
+        // Refresh ScrollTrigger after all content loads
+        window.addEventListener('load', () => {
+            ScrollTrigger.refresh();
+        });
+    </script>
+</body>
+</html>

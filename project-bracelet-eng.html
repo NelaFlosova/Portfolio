@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Jewelry Designer - UX Research | Nela Flosova</title>
+    <meta name="description" content="UX research case study: Exploring user needs and designing an intuitive visual jewelry customization experience.">
+    <meta name="author" content="Nela Flosova">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://nela-flosova.cz/project-bracelet.html">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://nela-flosova.cz/project-bracelet.html">
+    <meta property="og:title" content="Visual Jewelry Designer - UX Research">
+    <meta property="og:description" content="UX research case study: Exploring user needs and designing an intuitive visual jewelry customization experience.">
+    <meta property="og:site_name" content="Nela Flosova Portfolio">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Visual Jewelry Designer - UX Research">
+    <meta name="twitter:description" content="UX research case study: Designing an intuitive visual jewelry customization experience.">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"Visual Jewelry Designer - UX Research","author":{"@type":"Person","name":"Nela Flosova"},"publisher":{"@type":"Person","name":"Nela Flosova"}}
+    </script>
+    <script>
+        // Immediately apply theme before page renders to prevent flash
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            }
+        })();
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="project-detail.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html"><img src="logo.svg" alt="Nela Flosova" class="nav-logo" style="height: 30px;"></a>
+            </div>
+            <div class="nav-right">
+                <a href="index.html#contact-section" class="swirl-button">
+                    <div class="wrapper">
+                        <span>Contact</span>
+                        <span class="arrow">↘</span>
+                        <div class="circle circle-1"></div>
+                        <div class="circle circle-2"></div>
+                        <div class="circle circle-3"></div>
+                        <div class="circle circle-4"></div>
+                        <div class="circle circle-5"></div>
+                        <div class="circle circle-6"></div>
+                        <div class="circle circle-7"></div>
+                        <div class="circle circle-8"></div>
+                        <div class="circle circle-9"></div>
+                        <div class="circle circle-10"></div>
+                        <div class="circle circle-11"></div>
+                        <div class="circle circle-12"></div>
+                    </div>
+                </a>
+                <div class="menu-wrapper">
+                    <button class="nav-button menu-toggle menu-icon-only" aria-label="Menu">☰</button>
+                    <div class="menu-dropdown">
+                        <a href="projects_list.html">Projects</a>
+                        <a href="index.html#intro-section">About</a>
+                        <a href="index.html#services-section">Services</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        // Menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const menuWrapper = document.querySelector('.menu-wrapper');
+
+            menuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                menuWrapper.classList.toggle('active');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!menuWrapper.contains(e.target)) {
+                    menuWrapper.classList.remove('active');
+                }
+            });
+
+            // Close menu when clicking a link
+            const menuLinks = document.querySelectorAll('.menu-dropdown a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    menuWrapper.classList.remove('active');
+                });
+            });
+        });
+    </script>
+
+    <main class="container">
+        <div class="grid-layout">
+            <!-- Hero Section -->
+            <div class="project-hero">
+                <div class="project-meta">
+                    <span class="section-label">UX Research</span>
+                </div>
+                <h1 class="project-title">Visual jewelry designer UX research</h1>
+            </div>
+
+            <!-- Project Characteristics -->
+            <div class="project-characteristics">
+                <div class="characteristic-item">
+                    <div class="characteristic-label">Role</div>
+                    <div class="characteristic-value">UX Designer</div>
+                </div>
+                <div class="characteristic-item">
+                    <div class="characteristic-label">Company</div>
+                    <div class="characteristic-value">Practice Project</div>
+                </div>
+                <div class="characteristic-item">
+                    <div class="characteristic-label">Product</div>
+                    <div class="characteristic-value">UX Research Report</div>
+                </div>
+                <div class="characteristic-item">
+                    <div class="characteristic-label">Focus</div>
+                    <div class="characteristic-value">User Research, Prototyping</div>
+                </div>
+            </div>
+
+            <!-- Hero Image -->
+            <div class="image-container">
+                <img src="bracelet_1.jpg" alt="Visual Jewelry Designer UX Research" loading="lazy">
+            </div>
+
+            <!-- Mission/Overview - Sticky Scroll Section -->
+            <div class="sticky-scroll-section grid-layout">
+                <div class="sticky-text">
+                    <div>
+                        <div class="section-label">Mission</div>
+                        <h2 class="section-title">Simplify the process</h2>
+                    </div>
+                    <p class="section-text">
+                        Many desire personalized jewelry that reflects their specific style but lack the technical skills to design it or the ability to clearly describe their vision to a maker. The challenge was to create a digital tool that simplifies jewelry design, allowing users to move beyond mass-produced items without needing to learn complex professional tools.
+                    </p>
+                </div>
+
+                <div class="scroll-images">
+                    <img class="scroll-image" src="bracelet_2.jpg" alt="Research findings" loading="lazy">
+                    <img class="scroll-image last-scroll-image" src="bracelet_3.jpg" alt="Interface design" loading="lazy">
+                </div>
+            </div>
+
+            <!-- The Concept Section -->
+            <h2 class="section-title">The Concept</h2>
+
+            <div class="section-content">
+                <p class="section-text">
+                    Primary and secondary research critically redefined the project's direction. Interviews and a survey of 106 respondents debunked the initial focus and refined the requirements. I designed the interface as a "digital playground" that removes complex parameters. It allows users to intuitively drag, drop, and rotate 3D bead combinations, bringing their vision to life.
+                </p>
+            </div>
+
+            <!-- Final Results Image -->
+            <div class="image-container">
+                <img src="bracelet_4.jpg" alt="Final prototype showcase" loading="lazy">
+            </div>
+
+            <!-- Result Section -->
+            <div class="section-label">Result</div>
+            <h2 class="section-title">Intuitive creation</h2>
+
+            <div class="section-content">
+                <p class="section-text">
+                    The final prototype successfully fills the market gap between rigid e-shop offers and difficult custom production. User testing confirmed that the streamlined interface removes the friction from the design process, allowing anyone to easily transform a vague idea into a concrete, personalized product. Read more in the research report.
+                </p>
+                <a href="bracelet_UX.pdf" target="_blank" class="project-link">UX Research Report →</a>
+            </div>
+
+            <!-- Next Project -->
+            <div class="next-project">
+                <a href="projects_list.html" class="next-link">
+                    <div>
+                        <div class="next-label">Back to</div>
+                        <div class="next-title">All Projects</div>
+                    </div>
+                    <div class="next-arrow">→</div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- GSAP and ScrollTrigger -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="theme.js"></script>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Only apply sticky scroll on desktop (min-width: 769px)
+        ScrollTrigger.matchMedia({
+            // Desktop - pin the sticky text
+            "(min-width: 769px)": function() {
+                ScrollTrigger.create({
+                    trigger: ".sticky-text",
+                    start: "top 120px", // Account for fixed nav (120px from top)
+                    endTrigger: ".last-scroll-image",
+                    end: () => {
+                        // Unpin when bottom of last image aligns with bottom of sticky text
+                        const stickyText = document.querySelector('.sticky-text');
+                        const textHeight = stickyText.offsetHeight;
+                        const pinOffset = 120; // Where text is pinned from top
+                        return `bottom top+=${pinOffset + textHeight}px`;
+                    },
+                    pin: ".sticky-text",
+                    pinSpacing: false,
+                    invalidateOnRefresh: true // Recalculate on window resize
+                });
+            },
+
+            // Mobile - no pinning, normal scroll
+            "(max-width: 768px)": function() {
+                // Normal scroll behavior on mobile
+            }
+        });
+
+        // Refresh ScrollTrigger after all content loads
+        window.addEventListener('load', () => {
+            ScrollTrigger.refresh();
+        });
+    </script>
+</body>
+</html>
