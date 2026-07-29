@@ -173,15 +173,15 @@
 
         .scroll-container {
             width: 100%;
-            height: 95vh;
+            height: 100vh;
             position: relative;
             z-index: 1;
-            margin-bottom: 40px;
+            margin-bottom: 0;
         }
 
         .sticky-wrapper {
             width: 100vw;
-            height: 95vh;
+            height: 100vh;
             position: relative;
             overflow: hidden;
             display: flex;
@@ -238,12 +238,11 @@
 
 
         .c1::after {
-            background-image: url('knihobot_2.jpg');
-            background-position: right;
+            background-image: url('coffeeux_3.jpg');
         }
 
         .c2::after {
-            background-image: url('foto_3.jpg');
+            background-image: url('flux_2.jpg');
         }
 
         .c3::after {
@@ -256,16 +255,15 @@
         }
 
         .c5::after {
-            background-image: url('reklama_2.jpg');
-            background-position: right;
+            background-image: url('imrvere_2.jpg');
         }
 
         .c6::after {
-            background-image: url('ctedu_3.jpg');
+            background-image: url('gapcontrol_end.png');
         }
 
         .c7::after {
-            background-image: url('basnik_2.jpg');
+            background-image: url('phish_2.jpg');
         }
 
         .c8::after {
@@ -273,7 +271,8 @@
         }
 
         .c9::after {
-            background-image: url('iphone_cover_2.jpg');
+            background-image: url('knihobot_2.jpg');
+            background-position: right;
         }
 
         .c10::after {
@@ -370,16 +369,16 @@
 
         .c1 {
             background-color: var(--placeholder-bg);
-            background-image: url('knihobot_preview.png');
+            background-image: url('coffeeux_preview.png');
             background-size: cover;
-            background-position: center;
+            background-position: top;
         }
 
         .c2 {
             background-color: var(--placeholder-bg);
-            background-image: url('foto_cover.jpg');
+            background-image: url('flux_1.jpg');
             background-size: cover;
-            background-position: center;
+            background-position: left;
         }
 
         .c3 {
@@ -398,23 +397,23 @@
 
         .c5 {
             background-color: var(--placeholder-bg);
-            background-image: url('reklama_1.jpg');
+            background-image: url('imrvere_4.jpg');
             background-size: cover;
-            background-position: right;
+            background-position: left;
         }
 
         .c6 {
             background-color: var(--placeholder-bg);
-            background-image: url('ctedu_2.jpg');
+            background-image: url('gapcontrol_1.png');
             background-size: cover;
-            background-position: center;
+            background-position: left;
         }
 
         .c7 {
             background-color: var(--placeholder-bg);
-            background-image: url('basnik_cover_1.jpg');
+            background-image: url('phish_1.jpg');
             background-size: cover;
-            background-position: center;
+            background-position: left;
         }
 
         .c8 {
@@ -426,7 +425,7 @@
 
         .c9 {
             background-color: var(--placeholder-bg);
-            background-image: url('iphone_cover_1.jpg');
+            background-image: url('knihobot_preview.png');
             background-size: cover;
             background-position: center;
         }
@@ -542,28 +541,35 @@
             margin: 0;
         }
 
-        /* Scroll indicator band */
+        /* Scroll indicator band — overlaid at bottom of hero */
         .scroll-indicator-band {
-            width: 100%;
-            padding: 6px 60px;
-            background-color: #0e0e10;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 24px;
+            padding: 0 60px;
+            background-color: transparent;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            z-index: 60;
+            pointer-events: none;
         }
 
-        .scroll-indicator-band .marker {
+        .scroll-indicator-band .status-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .scroll-indicator-band .arrow-icon {
             font-size: 16px;
-            color: rgba(255, 255, 255, 0.6);
             font-weight: 300;
-        }
-
-        .scroll-indicator-band .scroll-text {
-            font-size: 12px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--secondary-text);
+            opacity: 0.85;
         }
 
         /* Text Animation Styles */
@@ -1573,7 +1579,7 @@
                 -->
                 <a href="#intro-section" class="nav-link">About</a>                <a href="#services-section" class="nav-link">Services</a>                <a href="projects_list.html" class="nav-link">Projects</a>                <a href="#contact-section" class="swirl-button">
                     <div class="wrapper">
-                        <span>Contact</span>
+                        <span>Get in touch</span>
                         <span class="arrow">↘</span>
                         <div class="circle circle-1"></div>
                         <div class="circle circle-2"></div>
@@ -1626,15 +1632,15 @@
             </div>
 
             <div class="cards-container">
-                <div class="card c1" data-project="knihobot" data-url="project-knihobot-cz.html"></div>
-                <div class="card c2" data-project="foto" data-url="project-foto-cz.html"></div>
+                <div class="card c1" data-project="coffeeux" data-url="project-coffeeux-eng.html"></div>
+                <div class="card c2" data-project="fluxcode" data-url="project-fluxcode-eng.html"></div>
                 <div class="card c3" data-project="cyberrelax" data-url="project-cyberrelax-eng.html"></div>
                 <div class="card c4" data-project="architecture" data-url="project-architecture-cz.html"></div>
-                <div class="card c5" data-project="reklama" data-url="project-reklama-cz.html"></div>
-                <div class="card c6" data-project="ctedu" data-url="project-ctedu-cz.html"></div>
-                <div class="card c7" data-project="basnik" data-url="project-basnik-cz.html"></div>
+                <div class="card c5" data-project="imrvere" data-url="project-imrvere-eng.html"></div>
+                <div class="card c6" data-project="gapcontrol" data-url="project-gapcontrol-eng.html"></div>
+                <div class="card c7" data-project="phishcontrol" data-url="project-phishcontrol-eng.html"></div>
                 <div class="card c8" data-project="bracelet" data-url="project-bracelet-eng.html"></div>
-                <div class="card c9" data-project="iphone" data-url="project-iphone-cz.html"></div>
+                <div class="card c9" data-project="knihobot" data-url="project-knihobot-cz.html"></div>
                 <div class="card c10" data-project="secretforest" data-url="https://nela-flosova.itch.io/secret-forest"></div>
                 <div class="card c11" data-project="pension" data-url="project-pension-cz.html"></div>
             </div>
@@ -1658,11 +1664,8 @@
 
     <!-- Scroll Indicator Band -->
     <div class="scroll-indicator-band">
-        <span class="marker">+</span>
-        <span class="marker">+</span>
-        <span class="marker">+</span>
-        <span class="marker">+</span>
-        <span class="marker">+</span>
+        <span class="status-item"><span class="arrow-icon">↓</span>Open to work</span>
+        <span class="status-item">UX, Web &amp; Brand Designer<span class="arrow-icon">↓</span></span>
     </div>
      </div>
 
@@ -1742,7 +1745,7 @@
 
                         <div class="project">
                             <div class="project-image">
-                                <div class="image-placeholder" style="background-image: url('gapcontrol_1.png'); background-size: cover; background-position: center;"></div>
+                                <div class="image-placeholder" style="background-image: url('gapcontrol_1.png'); background-size: cover; background-position: left;"></div>
                                 <span class="project-tags-horizontal">UX/UI Design • Data Visualization</span>
                             </div>
                             <div class="project-details">
@@ -1754,25 +1757,25 @@
 
                         <div class="project">
                             <div class="project-image">
-                                <div class="image-placeholder" style="background-image: url('bracelet_1.jpg'); background-size: cover; background-position: center;"></div>
-                                <span class="project-tags-horizontal">UX Research • Prototyping</span>
+                                <div class="image-placeholder" style="background-image: url('flux_1.jpg'); background-size: cover; background-position: left;"></div>
+                                <span class="project-tags-horizontal">UX/UI Design • Brand Identity</span>
                             </div>
                             <div class="project-details">
-                                <h2>Jewelry Designer UX Research</h2>
-                                <p class="project-description">Primary and secondary research with 106 respondents redefined the tool into a digital playground for intuitive 3D jewelry design.</p>
-                                <a href="project-bracelet-eng.html" class="btn-primary">view project</a>
+                                <h2>FluxCode — IT Company Web</h2>
+                                <p class="project-description">A Bachelor thesis project: web presentation and visual identity for a B2B IT company, built around trust signals and a modern brand system.</p>
+                                <a href="project-fluxcode-eng.html" class="btn-primary">view project</a>
                             </div>
                         </div>
 
                         <div class="project">
                             <div class="project-image">
-                                <div class="image-placeholder" style="background-image: url('imrvere_1.jpg'); background-size: cover; background-position: center;"></div>
-                                <span class="project-tags-horizontal">UI Design • Web Presentation</span>
+                                <div class="image-placeholder" style="background-image: url('phish_1.jpg'); background-size: cover; background-position: left;"></div>
+                                <span class="project-tags-horizontal">UX/UI Design • Landing &amp; Dashboard</span>
                             </div>
                             <div class="project-details">
-                                <h2>Café Imervere Website</h2>
-                                <p class="project-description">A calm, welcoming web presentation for a Žižkov café — organic shapes, warm photography, and a direct visual menu.</p>
-                                <a href="project-imrvere-eng.html" class="btn-primary">view project</a>
+                                <h2>PhishControl Platform</h2>
+                                <p class="project-description">A phishing simulation platform for ORBIT — merging a persuasive landing page with a practical management dashboard in one cohesive user journey.</p>
+                                <a href="project-phishcontrol-eng.html" class="btn-primary">view project</a>
                             </div>
                         </div>
 
@@ -1940,7 +1943,7 @@
         // Cards render in position immediately; mouse parallax + hover + click on desktop.
         const CARDS = [
             { sel: '.c1',  top: '10%',  left: '-4%',  w: '10%', h: '30%', z: 3 },
-            { sel: '.c2',  top: '12%',  left: '20%',  w: '14%', h: '20%', z: 5 },
+            { sel: '.c2',  top: '10%',  left: '18%',  w: '18%', h: '26%', z: 5 },
             { sel: '.c3',  top: '-6%',  left: '48%',  w: '12%', h: '32%', z: 2 },
             { sel: '.c4',  top: '22%',  left: '74%',  w: '14%', h: '20%', z: 4 },
             { sel: '.c5',  top: '54%',  left: '10%',  w: '14%', h: '32%', z: 6 },

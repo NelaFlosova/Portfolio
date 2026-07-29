@@ -120,6 +120,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scrollbar-gutter: stable;
+}
+
 body {
     font-family: var(--font-family);
     background-color: var(--bg-color);
@@ -261,33 +265,60 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(20, 20, 24, 0.55);
-    backdrop-filter: blur(20px) saturate(160%);
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: transparent;
     z-index: 1000;
-    padding: 16px 40px;
-    transition: background-color var(--transition-base);
+    padding: 20px 32px;
+    pointer-events: none;
+}
+
+nav .nav-container,
+nav .nav-left,
+nav .nav-right {
+    pointer-events: auto;
 }
 
 nav .nav-logo {
     filter: brightness(0) invert(1);
+    height: 26px;
+}
+
+/* Logo — no pill background */
+.nav-left {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 4px;
+    background: transparent;
+    border: none;
+}
+
+/* Floating pill: nav links + CTA button */
+.nav-right {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 6px 6px 12px;
+    background: rgba(221, 222, 221, 0.7);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .nav-link {
     display: inline-flex;
     align-items: center;
-    padding: 10px 14px;
-    color: rgba(255, 255, 255, 0.92);
-    font-size: 15px;
+    padding: 8px 14px;
+    color: var(--text-color);
+    font-size: 13px;
     font-weight: 400;
     letter-spacing: 0.01em;
     text-decoration: none;
-    transition: opacity 0.2s ease;
+    border-radius: 999px;
+    transition: color 0.2s ease, opacity 0.2s ease;
 }
 
 .nav-link:hover {
-    opacity: 0.7;
+    opacity: 0.65;
 }
 
 .nav-container {
@@ -297,12 +328,6 @@ nav .nav-logo {
     justify-content: space-between;
     align-items: center;
     height: 100%;
-}
-
-.nav-left {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
 }
 
 .nav-logo {
@@ -344,10 +369,6 @@ nav .nav-logo {
     text-transform: uppercase;
 }
 
-.nav-right {
-    display: flex;
-    gap: var(--spacing-sm);
-}
 
 .nav-button {
     padding: 12px 28px;
